@@ -1,0 +1,11 @@
+.appBackground {
+  width: 100%;
+  height: 905px;
+  padding: 70px 10%;
+  background-color: rgb(171, 243, 243);
+}
+
+.muiPaper {
+  width: 80%;
+  height: 740px;
+}

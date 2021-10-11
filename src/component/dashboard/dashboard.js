@@ -7,10 +7,21 @@ export default function Dashboard() {
       style={{
         backgroundColor: "#0000ff",
         width: "100%",
-        height: "750px",
+        height: "720px",
+        padding: "20px",
       }}
     >
-      <Paper>
+      {/* <div></div> */}
+      <Paper
+        style={{
+          height: "600px",
+          width: "90%",
+          marginLeft: "70px",
+          marginTop: "30px",
+          marginRight: "120px",
+          marginBottom: "60px",
+        }}
+      >
         <div></div>
         <div></div>
         <div></div>

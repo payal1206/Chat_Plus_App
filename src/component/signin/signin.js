@@ -7,7 +7,7 @@ const Signin = () => {
   return (
     <Paper className={classes.muiPaper}>
       <div className={classes.grid}>
-        <div className={classes.item1}>agahj</div>
+        <div className={classes.item1}></div>
         <div className={classes.item2}>
           <Form1 />
         </div>

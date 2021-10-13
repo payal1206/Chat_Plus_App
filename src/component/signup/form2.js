@@ -16,7 +16,7 @@ import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { width } from "@mui/system";
 
-export default function Form2() {
+export default function SignupForm() {
   const [values, setValues] = React.useState({
     username: "",
     password: "",
@@ -52,7 +52,7 @@ export default function Form2() {
           margin: "0px 5%",
         }}
       >
-        <h3>CHAT+</h3>
+        <h3 style={{ color: "#508ee5" }}>CHAT+</h3>
         <Button variant="outlined">Signin</Button>
       </div>
 
@@ -62,13 +62,15 @@ export default function Form2() {
           width: "100%",
         }}
       >
-        <h1>SIGNUP</h1>
+        <h1 style={{ color: "rgb(7, 36, 63)" }}>SIGNUP</h1>
         <div
           style={{
+            height: "500px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "space-evenly",
+            alignContent: "space-between",
           }}
         >
           <FormControl sx={{ width: "40ch" }} variant="standard">
@@ -108,8 +110,17 @@ export default function Form2() {
           <Upload>
             <Button icon={<UploadOutlined />}>Upload Picture</Button>
           </Upload>
-          <br></br>
-          <Button variant="contained">Signup</Button>
+
+          <Button
+            style={{
+              marginTop: "0px",
+              height: "45px",
+              width: "150px",
+            }}
+            variant="contained"
+          >
+            Signup
+          </Button>
         </div>
       </div>
     </div>

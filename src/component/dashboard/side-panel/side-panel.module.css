@@ -1,0 +1,18 @@
+.topIcons {
+  display: flex;
+  width: 90%;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 3%;
+}
+
+.profileDiv {
+  width: 100%;
+  height: 300px;
+}
+
+.navigations {
+  /* background-color: aqua; */
+  color: rgb(161, 174, 187);
+}

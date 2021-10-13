@@ -14,8 +14,9 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { width } from "@mui/system";
 
-export default function Form2() {
+export default function SignupForm() {
   const [values, setValues] = React.useState({
     username: "",
     password: "",
@@ -40,40 +41,51 @@ export default function Form2() {
   };
 
   return (
-    <div>
+    <div style={{ height: "100%", width: "100%" }}>
       <div
         style={{
-          marginTop: "6px",
-          marginRight: "7px",
-          float: " right",
+          height: "70px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "90%",
+          margin: "0px 5%",
         }}
       >
+        <h3 style={{ color: "#508ee5" }}>CHAT+</h3>
         <Button variant="outlined">Signin</Button>
       </div>
 
-      <form>
+      <div
+        style={{
+          height: "730px",
+          width: "100%",
+        }}
+      >
+        <h1 style={{ color: "rgb(7, 36, 63)" }}>SIGNUP</h1>
         <div
           style={{
-            align: "middle",
-            justify: "center",
-            padding: "80px",
-            color: "black",
+            height: "500px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+            alignContent: "space-between",
           }}
         >
-          <h1>CHAT+ SIGNUP</h1>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+          <FormControl sx={{ width: "40ch" }} variant="standard">
             <InputLabel>username</InputLabel>
             <Input type="text" value={values.username} />
           </FormControl>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+          <FormControl sx={{ width: "40ch" }} variant="standard">
             <InputLabel>email</InputLabel>
             <Input value={values.email} />
           </FormControl>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+          <FormControl sx={{ width: "40ch" }} variant="standard">
             <InputLabel>Phone</InputLabel>
             <Input type="text" value={values.phone} />
           </FormControl>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+          <FormControl sx={{ width: "40ch" }} variant="standard">
             <InputLabel htmlFor="standard-adornment-password">
               Password
             </InputLabel>
@@ -98,10 +110,19 @@ export default function Form2() {
           <Upload>
             <Button icon={<UploadOutlined />}>Upload Picture</Button>
           </Upload>
-          <br></br>
-          <Button variant="contained">Signup</Button>
+
+          <Button
+            style={{
+              marginTop: "0px",
+              height: "45px",
+              width: "150px",
+            }}
+            variant="contained"
+          >
+            Signup
+          </Button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

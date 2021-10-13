@@ -1,0 +1,23 @@
+.muiPaper {
+  width: 70%;
+  margin-left: 180px;
+  margin-right: 120px;
+  height: 640px;
+}
+
+.grid {
+  display: grid;
+  height: 640px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 640px;
+}
+
+.item1 {
+  background-color: rgb(96, 149, 247);
+  grid-column: 1/4;
+}
+
+.item2 {
+  background-color: rgba(240, 247, 242, 0.938);
+  grid-column: 4/12;
+}

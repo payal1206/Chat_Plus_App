@@ -8,6 +8,8 @@
 }
 
 .muiPaper {
-  width: 80%;
-  height: 740px;
+  width: 70%;
+  margin-left: 180px;
+  margin-right: 120px;
+  height: 640px;
 }

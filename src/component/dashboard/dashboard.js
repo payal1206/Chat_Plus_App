@@ -1,9 +1,25 @@
 import React from "react";
+import { Grid, Paper } from "@material-ui/core";
+import classes from "./dashboard.module.css";
 
-import { Paper } from "@material-ui/core";
+import SidePanel from "./side-panel/sidePanel";
+import MessagePanel from "./message-panel/messagePanel";
+import ContactPanel from "./contact-panel/contactPanel";
 
-import Layout from "./layout/layout";
-import { Signup } from "../signup/signup";
 export default function Dashboard() {
-  return <Layout></Layout>;
+  return (
+    <Paper className={classes.muiPaper}>
+      <Grid container style={{ height: "100%" }}>
+        <Grid item lg={2} className={classes.sidePanel}>
+          <SidePanel />
+        </Grid>
+        <Grid item lg={3} className={classes.contactPanel}>
+          <ContactPanel />
+        </Grid>
+        <Grid item lg={7} className={classes.messagePanel}>
+          <MessagePanel />
+        </Grid>
+      </Grid>
+    </Paper>
+  );
 }

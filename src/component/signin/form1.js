@@ -1,13 +1,16 @@
 import React from "react";
 
-import { Button, Col, Form, Row, Input, Typography } from "antd";
-
-const { Title, Text } = Typography;
-
 function Form1() {
   return (
-    <>
-      <Title style={{}}>CHAT+APP LOGIN</Title>
+    <div>
+      <h1>Sign in</h1>
+    </div>
+  );
+}
+
+export default Form1;
+
+/* <Title style={{}}>CHAT+APP LOGIN</Title>
       <Form
         style={{
           align: "middle",
@@ -71,9 +74,4 @@ function Form1() {
             Login
           </Button>
         </Form.Item>
-      </Form>
-    </>
-  );
-}
-
-export default Form1;
+      </Form> */

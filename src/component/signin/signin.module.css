@@ -1,25 +1,18 @@
 .muiPaper {
-  width: 70%;
-  margin-left: 180px;
-  margin-right: 120px;
-  margin-bottom: 120px;
-  height: 540px;
-}
-
-.grid {
-  display: grid;
-  height: 640px;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 640px;
+  width: 80%;
+  height: 800px;
 }
 
 .item1 {
-  background-color: rgba(51, 88, 155, 0.877);
-  grid-column: 1/4;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(7, 36, 63);
+  /* grid-column: 1/4; */
 }
 
 .item2 {
+  height: 100%;
+  width: 100%;
   background-color: rgba(240, 247, 242, 0.938);
-  grid-column: 4/12;
+  /* grid-column: 4/12; */
 }
-

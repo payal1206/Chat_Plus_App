@@ -1,77 +1,100 @@
-import React from "react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import Input from "@mui/material/Input";
+import FilledInput from "@mui/material/FilledInput";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Button from "@mui/material/Button";
+import { Upload } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-function Form1() {
+export default function Form1() {
+  const [values, setValues] = React.useState({
+    username: "",
+    password: "",
+
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div>
-      <h1>Sign in</h1>
+      <div
+        style={{
+          marginTop: "6px",
+          marginRight: "7px",
+          float: " right",
+        }}
+      >
+        <Button variant="outlined">Signup</Button>
+      </div>
+
+      <form>
+        <div
+          style={{
+            align: "middle",
+            justify: "center",
+            padding: "80px",
+            color: "black",
+          }}
+        >
+          <h1>CHAT+ SIGNIN</h1>
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+            <InputLabel>username</InputLabel>
+            <Input type="text" value={values.username} />
+          </FormControl>
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+            <InputLabel htmlFor="standard-adornment-password">
+              Password
+            </InputLabel>
+            <Input
+              id="standard-adornment-password"
+              type={values.showPassword ? "text" : "password"}
+              value={values.password}
+              onChange={handleChange("password")}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+
+          <br></br>
+          <br></br>
+          <Button variant="contained">Signin</Button>
+
+          {/* <ArrowForwardIcon></ArrowForwardIcon> */}
+        </div>
+      </form>
     </div>
   );
 }
-
-export default Form1;
-
-/* <Title style={{}}>CHAT+APP LOGIN</Title>
-      <Form
-        style={{
-          align: "middle",
-          justify: "center",
-          padding: "150px",
-          color: "black",
-        }}
-      >
-        <Form.Item
-          style={{
-            fontSize: "20px",
-          }}
-          label="Email"
-          name="email"
-          rules={[
-            {
-              required: true,
-              message: "Please input a valid email!",
-              type: "email",
-            },
-          ]}
-        >
-          <Input
-            style={{ width: "200px", color: "black", height: "15px" }}
-            placeholder="example@.com"
-          />
-        </Form.Item>
-        <br />
-        <Form.Item
-          style={{
-            fontSize: "20px",
-          }}
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please enter password",
-            },
-          ]}
-        >
-          <Input.Password
-            style={{ width: "350px", color: "black" }}
-            placeholder="*****"
-          />
-        </Form.Item>
-        <br />
-        <Form.Item>
-          <Button
-            type="secondary"
-            htmlType="submit"
-            block
-            style={{
-              borderRadius: "70px",
-              width: "120px",
-              color: "blue",
-              fontSize: "20px",
-            }}
-          >
-            {" "}
-            Login
-          </Button>
-        </Form.Item>
-      </Form> */

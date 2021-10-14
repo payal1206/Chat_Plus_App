@@ -2,7 +2,8 @@
   width: 70%;
   margin-left: 180px;
   margin-right: 120px;
-  height: 640px;
+  margin-bottom: 120px;
+  height: 540px;
 }
 
 .grid {
@@ -13,7 +14,7 @@
 }
 
 .item1 {
-  background-color: rgb(96, 149, 247);
+  background-color: rgba(51, 88, 155, 0.877);
   grid-column: 1/4;
 }
 
@@ -21,3 +22,4 @@
   background-color: rgba(240, 247, 242, 0.938);
   grid-column: 4/12;
 }
+

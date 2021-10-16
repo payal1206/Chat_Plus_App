@@ -20,7 +20,23 @@
 }
 
 /* components */
+/* 1. contact panel */
 .contactPanelDiv {
-  border-right: 1px solid rgb(203, 206, 206);
+  border-right: 1px solid rgba(203, 206, 206, 0.609);
   height: 100%;
+}
+
+.contactPanelHead {
+  /* background-color: red; */
+  height: 80px;
+  width: 100%;
+  padding-bottom: 30px;
+}
+
+.search {
+  text-align: left;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

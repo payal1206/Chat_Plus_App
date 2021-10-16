@@ -9,6 +9,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import ChatIcon from "@mui/icons-material/Chat";
 import GroupWorkIcon from "@mui/icons-material/GroupWork";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import GroupIcon from "@mui/icons-material/Group";
 
 const bkcol = "rgb(161, 174, 187)";
 const Navigation = () => {
@@ -29,6 +30,14 @@ const Navigation = () => {
               <ChatIcon style={{ color: bkcol }} />
             </ListItemIcon>
             <ListItemText primary="Chats" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <GroupIcon style={{ color: bkcol }} />
+            </ListItemIcon>
+            <ListItemText primary="Contacts" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>

@@ -4,6 +4,7 @@ import classes from "../dashboard.module.css";
 
 import ContactHead from "./contact-head";
 import ContactSearch from "./search";
+import Contacts from "./contacts";
 
 function ContactPanel() {
   return (
@@ -16,6 +17,9 @@ function ContactPanel() {
       </div>
       <Divider />
       <div className={classes.contactList}>ContactPanel List</div>
+      <div className={classes.contactList}>
+        <Contacts />
+      </div>
     </div>
   );
 }

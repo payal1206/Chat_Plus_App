@@ -21,7 +21,7 @@ const Search = styled("div")(({ theme }) => ({
   border: "1px solid rgba(203, 206, 206, 0.609)",
   margin: theme.spacing(1),
   marginLeft: "20px",
-  width: "200%",
+  width: "100%",
   height: "45px",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(),
@@ -88,10 +88,7 @@ const Bottom = (props) => {
                 />
               </Search>
             </ListItemText>
-            <ListItemText>
-              {" "}
-              <SendIcon />
-            </ListItemText>
+            <SendIcon fontSize="large" style={{ color: "green" }} />
           </ListItemButton>
         </ListItem>
       </List>

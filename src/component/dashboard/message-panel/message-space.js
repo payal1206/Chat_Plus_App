@@ -4,7 +4,7 @@ import Divider from "@mui/material/Divider";
 const MessageSpace = (props) => {
   return (
     <>
-      <div style={{ height: "500px", width: "100%" }}></div>
+      <div style={{ height: "540px", width: "100%" }}></div>
       <Divider />
     </>
   );

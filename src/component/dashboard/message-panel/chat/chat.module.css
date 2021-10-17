@@ -1,0 +1,13 @@
+.chatBox {
+  border: 1px solid grey;
+  height: 100px;
+  width: 70%;
+}
+
+.avatar {
+  float: left;
+}
+
+.time {
+  float: right;
+}

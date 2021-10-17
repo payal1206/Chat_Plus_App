@@ -1,7 +1,12 @@
 import React from "react";
+import Bottom from "./bottom";
 
 function MessagePanel() {
-  return <div>message panel</div>;
+  return (
+    <div>
+      <Bottom />
+    </div>
+  );
 }
 
 export default MessagePanel;

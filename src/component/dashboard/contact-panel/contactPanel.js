@@ -16,7 +16,6 @@ function ContactPanel() {
         <ContactSearch />
       </div>
       <Divider />
-      <div className={classes.contactList}>ContactPanel List</div>
       <div className={classes.contactList}>
         <Contacts />
       </div>

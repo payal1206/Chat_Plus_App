@@ -1,0 +1,28 @@
+.chatBox {
+  width: 70%;
+  text-align: left;
+}
+
+.avatar {
+  display: inline-block;
+  margin: 10px;
+}
+
+.time {
+  display: inline-block;
+}
+.textBox {
+  display: inline-block;
+  margin-right: 10px;
+  max-width: 70%;
+}
+.textDiv {
+  background-color: rgb(189, 190, 190);
+  margin-top: 0px;
+  min-height: 50px;
+  max-width: 100%;
+  padding: 4px;
+  border-radius: 7px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 0px;
+}

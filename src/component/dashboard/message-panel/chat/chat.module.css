@@ -1,13 +1,22 @@
 .chatBox {
+  display: flex;
   border: 1px solid grey;
   height: 100px;
   width: 70%;
 }
 
 .avatar {
-  float: left;
+  flex-grow: 0.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .time {
-  float: right;
+  flex-grow: 0.5;
+  background-color: blue;
+}
+.textBox {
+  flex-grow: 4;
+  background-color: green;
 }

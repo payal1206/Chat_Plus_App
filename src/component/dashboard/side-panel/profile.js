@@ -1,5 +1,4 @@
 import React from "react";
-import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 
 const styles = {

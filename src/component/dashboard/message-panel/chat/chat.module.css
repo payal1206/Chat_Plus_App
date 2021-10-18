@@ -1,8 +1,9 @@
 .chatBox {
   display: flex;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   height: 100px;
   width: 70%;
+  float:right;
 }
 
 .avatar {
@@ -14,9 +15,21 @@
 
 .time {
   flex-grow: 0.5;
-  background-color: blue;
+  /* background-color: blue; */
 }
 .textBox {
   flex-grow: 4;
-  background-color: green;
+  /* border: 1px solid grey; */
+  background-color: rgb(199, 231, 243);
+  border-radius: 10px;
+
 }
+.containertext {
+  /* text-align: left; */
+  background-color: #c5ebf0;
+  /* width: 10px; */
+}
+.text{
+      /* font-family: "Sans" */
+}
+

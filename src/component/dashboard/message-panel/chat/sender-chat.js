@@ -5,6 +5,9 @@ import Avatar from "@mui/material/Avatar";
 const SenderChat = (props) => {
   return (
     <div className={classes.chatBox}>
+      <p className={classes.time}>15:30</p>
+
+      <div className={classes.textBox}>hello this is a test</div>
       <div className={classes.avatar}>
         <Avatar
           alt="Remy Sharp"
@@ -12,8 +15,6 @@ const SenderChat = (props) => {
           sx={{ width: 56, height: 56 }}
         />
       </div>
-      <div className={classes.textBox}>hello this is a test</div>
-      <p className={classes.time}>15:30</p>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
-import SenderChat from "./sender-chat";
+import ReceiverChat from "./receiver-chat";
 
 const Chats = (props) => {
   return (
     <>
-      <SenderChat />
+      <ReceiverChat />
     </>
   );
 };

@@ -1,13 +1,10 @@
 import React from "react";
-import classes from "./chat.module.css";
+import classes from "./sender-chat.module.css";
 import Avatar from "@mui/material/Avatar";
 
 const SenderChat = (props) => {
   return (
     <div className={classes.chatBox}>
-      <p className={classes.time}>15:30</p>
-
-      <div className={classes.textBox}>hello this is a test</div>
       <div className={classes.avatar}>
         <Avatar
           alt="Remy Sharp"
@@ -15,6 +12,14 @@ const SenderChat = (props) => {
           sx={{ width: 56, height: 56 }}
         />
       </div>
+      <div className={classes.textBox}>
+        <div className={classes.textDiv}>
+          <p className={classes.message}>
+            The testing THGESHRTJ REHHTW sdghgtrhrthhhyfghtdjh, gfd erarerh
+          </p>
+        </div>
+      </div>
+      <p className={classes.time}>15:30</p>
     </div>
   );
 };

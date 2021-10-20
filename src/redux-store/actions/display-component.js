@@ -1,11 +1,10 @@
-const DISPLAY = "DISPLAY_COMPONENT";
+const DASHBOARD = "DASHBOARD";
 
 //action creators
-const selectDisplayComponent = (data) => {
+const selectDashboadComponent = (data) => {
   return {
-    type: DISPLAY,
-    payload: data,
+    type: DASHBOARD,
   };
 };
 
-export { DISPLAY, selectDisplayComponent };
+export { DASHBOARD, selectDashboadComponent };

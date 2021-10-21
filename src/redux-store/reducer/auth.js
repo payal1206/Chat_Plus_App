@@ -1,4 +1,4 @@
-import { DASHBOARD, SIGNIN, SIGNUP } from "../actions/display-component";
+import { DASHBOARD, SIGNIN, SIGNUP } from "../actions/auth";
 
 const initialState = {
   isDashboard: false,
@@ -6,7 +6,7 @@ const initialState = {
   isSignup: false,
 };
 
-function displayComponentReducer(state = initialState, action) {
+function authReducer(state = initialState, action) {
   switch (action.type) {
     case DASHBOARD:
       return { isDashboard: true, isSignin: false, isSignup: false };
@@ -20,4 +20,4 @@ function displayComponentReducer(state = initialState, action) {
   }
 }
 
-export default displayComponentReducer;
+export default authReducer;

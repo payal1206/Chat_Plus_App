@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import displayComponentReduce from "./display-component";
+import authReducer from "./auth";
 
 const rootReducer = combineReducers({
-  displayComponent_slice: displayComponentReduce,
+  auth_slice: authReducer,
 });
 
 export default rootReducer;

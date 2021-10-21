@@ -3,7 +3,7 @@ import { Grid, Paper } from "@material-ui/core";
 import classes from "./signin.module.css";
 import SigninForm from "./signInForm";
 import { connect } from "react-redux";
-import { selectSignupComponent } from "../../redux-store/actions/display-component";
+import { selectSignupComponent } from "../../redux-store/actions/auth";
 
 function Signin(props) {
   return (

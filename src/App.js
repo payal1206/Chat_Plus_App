@@ -8,7 +8,6 @@ import Signup from "./component/signup/signup";
 import { connect } from "react-redux";
 
 function App(props) {
-  console.log(props.component);
   return (
     <div className="App">
       <Layout>
@@ -25,7 +24,7 @@ function App(props) {
 }
 const mapStatetoProps = (state) => {
   return {
-    component: state.displayComponent_slice, // key
+    component: state.auth_slice, // key
   };
 };
 

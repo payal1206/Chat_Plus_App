@@ -14,7 +14,7 @@ import Button from "@mui/material/Button";
 import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
-export default function SignupForm() {
+export default function SignupForm(props) {
   const [values, setValues] = React.useState({
     username: "",
     password: "",
@@ -51,7 +51,9 @@ export default function SignupForm() {
         }}
       >
         <h3 style={{ color: "#508ee5" }}>CHAT+</h3>
-        <Button variant="outlined">Signin</Button>
+        <Button onClick={() => props.SigninComponent({})} variant="outlined">
+          Signin
+        </Button>
       </div>
 
       <div

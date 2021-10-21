@@ -1,30 +1,28 @@
-const DASHBOARD = "DASHBOARD";
+const LOGIN = "LOGIN-USER";
 const SIGNUP = "SIGNUP";
 const SIGNIN = "SIGNIN";
 
 //action creators
-const selectDashboardComponent = () => {
+const loginUser = (data) => {
   return {
-    type: DASHBOARD,
-    // payload: data,
+    type: LOGIN,
+    payload: data,
   };
 };
 const selectSigninComponent = () => {
   return {
     type: SIGNIN,
-    // payload: data,
   };
 };
 const selectSignupComponent = () => {
   return {
     type: SIGNUP,
-    // payload: data,
   };
 };
 
 export {
-  DASHBOARD,
-  selectDashboardComponent,
+  LOGIN,
+  loginUser,
   SIGNUP,
   selectSigninComponent,
   SIGNIN,

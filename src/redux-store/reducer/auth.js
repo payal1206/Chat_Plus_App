@@ -1,19 +1,47 @@
-import { DASHBOARD, SIGNIN, SIGNUP } from "../actions/auth";
+import { LOGIN, SIGNIN, SIGNUP } from "../actions/auth";
 
 const initialState = {
-  isDashboard: false,
-  isSignin: true,
-  isSignup: false,
+  displayComponent: {
+    showSigninComponent: true,
+    showSignupComponent: false,
+  },
+  user: {
+    id: "",
+    username: "",
+    loggedin: false,
+  },
 };
 
 function authReducer(state = initialState, action) {
   switch (action.type) {
-    case DASHBOARD:
-      return { isDashboard: true, isSignin: false, isSignup: false };
+    case LOGIN:
+      return {
+        displayComponent: {
+          showSigninComponent: false,
+          showSignupComponent: false,
+        },
+        user: {
+          id: action.payload.id,
+          username: action.payload.username,
+          loggedin: true,
+        },
+      };
     case SIGNUP:
-      return { isDashboard: false, isSignin: false, isSignup: true };
+      return {
+        ...state,
+        displayComponent: {
+          showSigninComponent: false,
+          showSignupComponent: true,
+        },
+      };
     case SIGNIN:
-      return { isDashboard: false, isSignin: true, isSignup: false };
+      return {
+        ...state,
+        displayComponent: {
+          showSigninComponent: true,
+          showSignupComponent: false,
+        },
+      };
 
     default:
       return state;

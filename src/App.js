@@ -8,14 +8,19 @@ import Signup from "./component/signup/signup";
 import { connect } from "react-redux";
 
 function App(props) {
+  const {
+    displayComponent: { showSigninComponent, showSignupComponent },
+    user: { loggedin },
+  } = props.userAuth;
+
   return (
     <div className="App">
       <Layout>
-        {props.component.isDashboard ? (
+        {loggedin ? (
           <Dashboard />
-        ) : props.component.isSignup ? (
+        ) : showSignupComponent ? (
           <Signup />
-        ) : props.component.isSignin ? (
+        ) : showSigninComponent ? (
           <Signin />
         ) : null}
       </Layout>
@@ -24,7 +29,7 @@ function App(props) {
 }
 const mapStatetoProps = (state) => {
   return {
-    component: state.auth_slice, // key
+    userAuth: state.auth_slice, // key
   };
 };
 

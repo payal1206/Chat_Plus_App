@@ -1,13 +1,9 @@
 import * as React from "react";
-
 import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
-
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
-
 import FormControl from "@mui/material/FormControl";
-
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
@@ -22,6 +18,10 @@ export default function SignupForm(props) {
     phone: "",
     showPassword: false,
   });
+
+  const onsubmit = () => {
+    console.log(values);
+  };
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -73,19 +73,35 @@ export default function SignupForm(props) {
             alignContent: "space-between",
           }}
         >
-          <FormControl sx={{ width: "40ch" }} variant="standard">
+          <FormControl
+            sx={{ width: "40ch" }}
+            name="username"
+            variant="standard"
+          >
             <InputLabel>username</InputLabel>
-            <Input type="text" value={values.username} />
+            <Input
+              type="text"
+              onChange={handleChange("username")}
+              value={values.username}
+            />
           </FormControl>
-          <FormControl sx={{ width: "40ch" }} variant="standard">
+          <FormControl sx={{ width: "40ch" }} name="email" variant="standard">
             <InputLabel>email</InputLabel>
-            <Input value={values.email} />
+            <Input onChange={handleChange("email")} value={values.email} />
           </FormControl>
-          <FormControl sx={{ width: "40ch" }} variant="standard">
+          <FormControl sx={{ width: "40ch" }} name="Phone" variant="standard">
             <InputLabel>Phone</InputLabel>
-            <Input type="text" value={values.phone} />
+            <Input
+              onChange={handleChange("phone")}
+              type="number"
+              value={values.phone}
+            />
           </FormControl>
-          <FormControl sx={{ width: "40ch" }} variant="standard">
+          <FormControl
+            sx={{ width: "40ch" }}
+            name="password"
+            variant="standard"
+          >
             <InputLabel htmlFor="standard-adornment-password">
               Password
             </InputLabel>
@@ -117,6 +133,7 @@ export default function SignupForm(props) {
               height: "45px",
               width: "150px",
             }}
+            onClick={onsubmit}
             variant="contained"
           >
             Signup

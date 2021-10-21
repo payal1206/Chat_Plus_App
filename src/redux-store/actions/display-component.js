@@ -3,19 +3,19 @@ const SIGNUP = "SIGNUP";
 const SIGNIN = "SIGNIN";
 
 //action creators
-const selectDashboardComponent = (data) => {
+const selectDashboardComponent = () => {
   return {
     type: DASHBOARD,
     // payload: data,
   };
 };
-const selectSigninComponent = (data) => {
+const selectSigninComponent = () => {
   return {
     type: SIGNIN,
     // payload: data,
   };
 };
-const selectSignupComponent = (data) => {
+const selectSignupComponent = () => {
   return {
     type: SIGNUP,
     // payload: data,

@@ -17,8 +17,6 @@ export default function SigninForm(props) {
   const [values, setValues] = React.useState({
     username: "",
     password: "",
-    email: "",
-    phone: "",
     showPassword: false,
   });
 
@@ -37,6 +35,11 @@ export default function SigninForm(props) {
     event.preventDefault();
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("values", values);
+  };
+
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <div
@@ -50,7 +53,7 @@ export default function SigninForm(props) {
         }}
       >
         <h3 style={{ color: "#508ee5" }}>CHAT+</h3>
-        <Button onClick={() => props.SignupComponent({})} variant="outlined">
+        <Button onClick={props.showSignUpModal} variant="outlined">
           Signup
         </Button>
       </div>
@@ -74,7 +77,11 @@ export default function SigninForm(props) {
         >
           <FormControl sx={{ width: "40ch" }} variant="standard">
             <InputLabel>username</InputLabel>
-            <Input type="text" value={values.username} />
+            <Input
+              type="text"
+              value={values.username}
+              onChange={handleChange("username")}
+            />
           </FormControl>
           <FormControl sx={{ width: "40ch" }} variant="standard">
             <InputLabel htmlFor="standard-adornment-password">
@@ -100,10 +107,10 @@ export default function SigninForm(props) {
           </FormControl>
           <Button
             style={{
-              // marginTop: "0px",
               height: "45px",
               width: "150px",
             }}
+            onClick={handleSubmit}
             variant="contained"
           >
             Signin

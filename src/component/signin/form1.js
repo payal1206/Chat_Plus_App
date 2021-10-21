@@ -11,8 +11,9 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
+// import { selectSignupComponent } from "../../redux-store/actions/display-component";
 
-export default function SigninForm() {
+export default function SigninForm(props) {
   const [values, setValues] = React.useState({
     username: "",
     password: "",
@@ -49,7 +50,9 @@ export default function SigninForm() {
         }}
       >
         <h3 style={{ color: "#508ee5" }}>CHAT+</h3>
-        <Button variant="outlined">Signup</Button>
+        <Button onClick={() => props.SignupComponent({})} variant="outlined">
+          Signup
+        </Button>
       </div>
 
       <div

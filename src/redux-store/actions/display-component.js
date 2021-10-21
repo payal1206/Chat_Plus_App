@@ -1,11 +1,32 @@
-const DISPLAY = "DISPLAY_COMPONENT";
+const DASHBOARD = "DASHBOARD";
+const SIGNUP = "SIGNUP";
+const SIGNIN = "SIGNIN";
 
 //action creators
-const selectDisplayComponent = (data) => {
+const selectDashboardComponent = (data) => {
   return {
-    type: DISPLAY,
-    payload: data,
+    type: DASHBOARD,
+    // payload: data,
+  };
+};
+const selectSigninComponent = (data) => {
+  return {
+    type: SIGNIN,
+    // payload: data,
+  };
+};
+const selectSignupComponent = (data) => {
+  return {
+    type: SIGNUP,
+    // payload: data,
   };
 };
 
-export { DISPLAY, selectDisplayComponent };
+export {
+  DASHBOARD,
+  selectDashboardComponent,
+  SIGNUP,
+  selectSigninComponent,
+  SIGNIN,
+  selectSignupComponent,
+};

@@ -15,7 +15,7 @@ function Signup(props) {
         </Grid>
         <Grid item lg={6}>
           <div className={classes.item2}>
-            <SignupForm SigninComponent={props.SigninComponent} />
+            <SignupForm showSigninComponent={props.SigninComponent} />
           </div>
         </Grid>
       </Grid>

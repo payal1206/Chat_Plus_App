@@ -51,7 +51,10 @@ export default function SignupForm(props) {
         }}
       >
         <h3 style={{ color: "#508ee5" }}>CHAT+</h3>
-        <Button onClick={() => props.SigninComponent({})} variant="outlined">
+        <Button
+          onClick={() => props.showSigninComponent({})}
+          variant="outlined"
+        >
           Signin
         </Button>
       </div>

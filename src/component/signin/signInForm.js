@@ -37,7 +37,9 @@ export default function SigninForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("values", values);
+    props.validateUser(values);
+
+    // console.log("validUser", validUser);
   };
 
   return (

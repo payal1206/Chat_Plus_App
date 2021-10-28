@@ -27,7 +27,9 @@ function Signup(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+ 
+});
 const mapDispatchToProps = (dispatch) => ({
   SigninComponent: () => dispatch(selectSigninComponent()),
   addUser: (data) => dispatch(adduser(data)),

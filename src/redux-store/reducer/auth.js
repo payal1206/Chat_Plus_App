@@ -44,18 +44,16 @@ function authReducer(state = initialState, action) {
       };
     case LOGOUT:
       return {
-
-
         displayComponent: {
           showSigninComponent: true,
           showSignupComponent: false,
         },
         user: {
-          id:'',
-          username: '',
+          id: "",
+          username: "",
           loggedin: false,
         },
-        
+
         // ...state,
         // initialState.user.loggedin=false,
         // displayComponent: {

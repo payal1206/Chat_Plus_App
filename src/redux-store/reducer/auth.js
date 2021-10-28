@@ -1,4 +1,4 @@
-import { LOGIN, SIGNIN, SIGNUP } from "../actions/auth";
+import { LOGIN, LOGOUT, SIGNIN, SIGNUP } from "../actions/auth";
 
 const initialState = {
   displayComponent: {
@@ -41,6 +41,25 @@ function authReducer(state = initialState, action) {
           showSigninComponent: true,
           showSignupComponent: false,
         },
+      };
+    case LOGOUT:
+      return {
+        displayComponent: {
+          showSigninComponent: true,
+          showSignupComponent: false,
+        },
+        user: {
+          id: "",
+          username: "",
+          loggedin: false,
+        },
+
+        // ...state,
+        // initialState.user.loggedin=false,
+        // displayComponent: {
+        //   showSigninComponent: true,
+        //   showSignupComponent: true,
+        // },
       };
 
     default:

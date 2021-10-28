@@ -19,8 +19,9 @@ export default function SignupForm(props) {
     showPassword: false,
   });
 
-  const onsubmit = () => {
-    console.log(values);
+  const handleSubmit = () => {
+    // console.log(values);
+    props.createUser({ ...values, id: Date.now() });
   };
 
   const handleChange = (prop) => (event) => {
@@ -136,7 +137,7 @@ export default function SignupForm(props) {
               height: "45px",
               width: "150px",
             }}
-            onClick={onsubmit}
+            onClick={handleSubmit}
             variant="contained"
           >
             Signup

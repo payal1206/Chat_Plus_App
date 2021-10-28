@@ -7,11 +7,12 @@ import {
   selectSignupComponent,
   loginUser,
 } from "../../redux-store/actions/auth";
-import users from "../../pseudoDB/user-db";
 
 function Signin(props) {
   const handleUserValidation = (data) => {
-    const validUser = users.filter((user) => user.username === data.username);
+    const validUser = props.users.filter(
+      (user) => user.username === data.username
+    );
     if (validUser.length !== 0) {
       if (data.password === validUser[0].password) {
         setTimeout(props.handleUserLogin(data), 5000);
@@ -23,6 +24,7 @@ function Signin(props) {
     }
     console.log("data", validUser);
   };
+  console.log("data", props.users);
 
   return (
     <Paper className={classes.muiPaper}>
@@ -43,7 +45,9 @@ function Signin(props) {
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  users: state.user_slice.users,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   SignupComponent: () => dispatch(selectSignupComponent()),

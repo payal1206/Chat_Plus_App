@@ -15,4 +15,3 @@ function MessagePanel() {
 }
 
 export default MessagePanel;
-

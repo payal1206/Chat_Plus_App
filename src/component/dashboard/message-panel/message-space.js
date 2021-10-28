@@ -5,7 +5,7 @@ import Chats from "./chat/chats";
 const MessageSpace = (props) => {
   return (
     <>
-      <div style={{ height: "540px", width: "100%" }}>
+      <div style={{ height: "612px", width: "100%" }}>
         <Chats />
       </div>
       <Divider />

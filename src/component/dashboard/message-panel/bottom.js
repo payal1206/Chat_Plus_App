@@ -97,4 +97,3 @@ const Bottom = (props) => {
 };
 
 export default Bottom;
-

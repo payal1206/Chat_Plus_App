@@ -7,7 +7,7 @@ const users = [
   {
     id: "user002",
     username: "Payal",
-    password: "user002Payal",
+    password: "123",
   },
 ];
 

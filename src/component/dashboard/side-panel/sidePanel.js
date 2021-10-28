@@ -4,8 +4,11 @@ import classes from "./side-panel.module.css";
 import TopIcons from "./top-icons";
 import Profile from "./profile";
 import Navigation from "./navigation";
+import { connect } from "react-redux";
+import { selectLogoutComponent } from "../../../redux-store/actions/auth";
+import { getThemeProps } from "@mui/system";
 
-function SidePanel() {
+function SidePanel(props) {
   return (
     <div>
       <div className={classes.topIcons}>
@@ -15,10 +18,16 @@ function SidePanel() {
         <Profile />
       </div>
       <div className={classes.navigations}>
-        <Navigation />
+        <Navigation showLogoutComponent = {props.LogoutComponent} />
       </div>
     </div>
   );
 }
 
-export default SidePanel;
+const mapStateToProps = (state)=>{};
+
+const mapDispatchToProps = (dispatch) => ({
+  LogoutComponent: () => dispatch(selectLogoutComponent()),
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(SidePanel);

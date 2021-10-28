@@ -12,7 +12,6 @@ function App(props) {
     displayComponent: { showSigninComponent, showSignupComponent },
     user: { loggedin },
   } = props.userAuth;
-
   return (
     <div className="App">
       <Layout>
@@ -29,7 +28,7 @@ function App(props) {
 }
 const mapStatetoProps = (state) => {
   return {
-    userAuth: state.auth_slice, // key
+    userAuth: state.auth_slice, // state->object in root reducer
   };
 };
 

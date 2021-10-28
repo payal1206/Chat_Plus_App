@@ -6,7 +6,7 @@ function UserReducer(state = initialState, action) {
   switch (action.type) {
     case ADDUSER:
       return {
-        user: [...state.users, action.payload],
+        users: [...state.users, action.payload],
       };
     case UPDATEUSER:
       return {
@@ -16,8 +16,8 @@ function UserReducer(state = initialState, action) {
       return {
         ...state,
       };
-       default:
-          return state
+    default:
+      return state;
   }
 }
 export default UserReducer;

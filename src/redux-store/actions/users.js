@@ -3,6 +3,7 @@ const DELETEUSER = "DELETEUSER";
 const UPDATEUSER = "UPDATEUSER";
 
 const adduser = (data) => {
+  console.log("redux data", data);
   return {
     type: ADDUSER,
     payload: data,

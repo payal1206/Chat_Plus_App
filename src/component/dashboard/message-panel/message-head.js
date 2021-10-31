@@ -14,7 +14,7 @@ const MessageHead = (props) => {
   return (
     <div>
       <Grid container style={{ padding: "10px" }}>
-        <Grid item lg={9}>
+        <Grid item lg={6}>
           <ListItem>
             <ListItemAvatar>
               <Avatar>
@@ -24,10 +24,12 @@ const MessageHead = (props) => {
             <ListItemText primary="Pemy Sharp" secondary="Online" />
           </ListItem>
         </Grid>
-        <Grid item lg={3} style={{ paddingTop: "10px" }}>
-          <IconOutline icon={<ChatOutlinedIcon />} />
-          <IconOutline icon={<EmailOutlinedIcon />} />
-          <IconOutline icon={<MoreVertOutlinedIcon />} />
+        <Grid item lg={6} style={{ paddingTop: "10px" }}>
+          <div style={{ float: "right" }}>
+            <IconOutline icon={<ChatOutlinedIcon />} />
+            <IconOutline icon={<EmailOutlinedIcon />} />
+            <IconOutline icon={<MoreVertOutlinedIcon />} />
+          </div>
         </Grid>
       </Grid>
       <Divider style={{ marginTop: "13.5px" }} />
@@ -36,4 +38,3 @@ const MessageHead = (props) => {
 };
 
 export default MessageHead;
-

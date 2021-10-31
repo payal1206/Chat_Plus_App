@@ -7,7 +7,6 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
-// import { selectSignupComponent } from "../../redux-store/actions/display-component";
 
 export default function SigninForm(props) {
   const [values, setValues] = React.useState({
@@ -34,9 +33,6 @@ export default function SigninForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.validateUser(values);
-    // console.log("&&&&&&&&&&&&&&&&&&&");
-
-    // console.log("validUser", validUser);
   };
 
   return (

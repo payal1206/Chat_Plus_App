@@ -19,4 +19,3 @@ const IconOutline = (props) => {
 };
 
 export default IconOutline;
-

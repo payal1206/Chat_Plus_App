@@ -81,6 +81,7 @@ export default function SignupForm(props) {
             sx={{ width: "40ch" }}
             name="username"
             variant="standard"
+            required="true"
           >
             <InputLabel>username</InputLabel>
             <Input
@@ -89,11 +90,20 @@ export default function SignupForm(props) {
               value={values.username}
             />
           </FormControl>
-          <FormControl sx={{ width: "40ch" }} name="email" variant="standard">
+          <FormControl
+            sx={{ width: "40ch" }}
+            required="true"
+            name="email"
+            variant="standard"
+          >
             <InputLabel>email</InputLabel>
-            <Input onChange={handleChange("email")} value={values.email} />
+            <Input
+              placeholder="hello@gmail.com"
+              onChange={handleChange("email")}
+              value={values.email}
+            />
           </FormControl>
-          <FormControl sx={{ width: "40ch" }} name="Phone" variant="standard">
+          <FormControl sx={{ width: "40ch" }}    required="true" name="Phone" variant="standard">
             <InputLabel>Phone</InputLabel>
             <Input
               onChange={handleChange("phone")}

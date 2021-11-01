@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import classes from "./dashboard.module.css";
 
@@ -7,8 +7,13 @@ import MessagePanel from "./message-panel/messagePanel";
 import ContactPanel from "./contact-panel/contactPanel";
 import DefaultPage from "./default/defaultpage";
 import Loading from "./loading/loading";
+
 export default function Dashboard() {
-  return (
+  const [isLoading, setIsLoading] = useState(true);
+
+  setTimeout(() => setIsLoading(false), 7000);
+
+  const mainDashboard = (
     <Paper className={classes.muiPaper}>
       <Grid container style={{ height: "100%" }}>
         <Grid item lg={2} className={classes.sidePanel}>
@@ -19,10 +24,11 @@ export default function Dashboard() {
         </Grid>
         <Grid item lg={7} className={classes.messagePanel}>
           {/* <MessagePanel /> */}
-          {/* <DefaultPage /> */}
-          <Loading />
+          <DefaultPage />
         </Grid>
       </Grid>
     </Paper>
   );
+
+  return isLoading ? <Loading /> : mainDashboard;
 }

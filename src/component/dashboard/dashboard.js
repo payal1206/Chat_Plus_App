@@ -5,7 +5,8 @@ import classes from "./dashboard.module.css";
 import SidePanel from "./side-panel/sidePanel";
 import MessagePanel from "./message-panel/messagePanel";
 import ContactPanel from "./contact-panel/contactPanel";
-
+import DefaultPage from "./default/defaultpage";
+import Loading from "./loading/loading";
 export default function Dashboard() {
   return (
     <Paper className={classes.muiPaper}>
@@ -17,7 +18,9 @@ export default function Dashboard() {
           <ContactPanel />
         </Grid>
         <Grid item lg={7} className={classes.messagePanel}>
-          <MessagePanel />
+          {/* <MessagePanel /> */}
+          {/* <DefaultPage /> */}
+          <Loading />
         </Grid>
       </Grid>
     </Paper>

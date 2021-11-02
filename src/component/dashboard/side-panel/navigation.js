@@ -10,9 +10,9 @@ import ChatIcon from "@mui/icons-material/Chat";
 import GroupWorkIcon from "@mui/icons-material/GroupWork";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import GroupIcon from "@mui/icons-material/Group";
-import { getThemeProps } from "@mui/system";
 
 const bkcol = "rgb(161, 174, 187)";
+
 const Navigation = (props) => {
   return (
     <div>

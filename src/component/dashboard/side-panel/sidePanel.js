@@ -6,7 +6,6 @@ import Profile from "./profile";
 import Navigation from "./navigation";
 import { connect } from "react-redux";
 import { selectLogoutComponent } from "../../../redux-store/actions/auth";
-import { getThemeProps } from "@mui/system";
 
 function SidePanel(props) {
   return (
@@ -18,16 +17,16 @@ function SidePanel(props) {
         <Profile />
       </div>
       <div className={classes.navigations}>
-        <Navigation showLogoutComponent = {props.LogoutComponent} />
+        <Navigation showLogoutComponent={props.LogoutComponent} />
       </div>
     </div>
   );
 }
 
-const mapStateToProps = (state)=>{};
+const mapStateToProps = (state) => {};
 
 const mapDispatchToProps = (dispatch) => ({
   LogoutComponent: () => dispatch(selectLogoutComponent()),
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(SidePanel);
+export default connect(mapStateToProps, mapDispatchToProps)(SidePanel);

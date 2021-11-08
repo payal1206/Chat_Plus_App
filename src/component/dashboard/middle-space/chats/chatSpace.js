@@ -1,23 +1,23 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
-import classes from "../dashboard.module.css";
+import classes from "../../dashboard.module.css";
 
-import ContactHead from "./contact-head";
-import ContactSearch from "./search";
-import Contacts from "./contacts";
+import ChatHead from "./chats-head";
+import Search from "../general/search";
+import ChattedLists from "./chattedLists";
 
 function ContactPanel() {
   return (
     <div className={classes.contactPanelDiv}>
       <div className={classes.contactPanelHead}>
-        <ContactHead />
+        <ChatHead />
       </div>
       <div className={classes.search}>
-        <ContactSearch />
+        <Search />
       </div>
       <Divider />
       <div className={classes.contactList}>
-        <Contacts />
+        <ChattedLists />
       </div>
     </div>
   );

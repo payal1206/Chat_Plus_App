@@ -2,14 +2,13 @@ import React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
-import Icon from "@mui/material/Icon";
+
 import SendIcon from "@mui/icons-material/Send";
 import AddIcon from "@mui/icons-material/Add";
-import { List, listItemButtonClasses, ListItemText } from "@mui/material";
+import { List, ListItemText } from "@mui/material";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import { flexbox } from "@mui/system";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,7 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Bottom = (props) => {
+const ChatInput = (props) => {
   return (
     <>
       <List>
@@ -96,4 +95,4 @@ const Bottom = (props) => {
   );
 };
 
-export default Bottom;
+export default ChatInput;

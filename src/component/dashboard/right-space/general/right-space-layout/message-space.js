@@ -1,7 +1,8 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
 
-import Chats from "./chat/chats";
+import Chats from "../../chat/chats";
+
 const MessageSpace = (props) => {
   return (
     <>

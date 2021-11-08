@@ -5,7 +5,6 @@ import classes from "./dashboard.module.css";
 import SidePanel from "./side-panel/sidePanel";
 import RightSpace from "./right-space/chat/rightSpace";
 import MiddleSpace from "./middle-space/general/middleSpace";
-import DefaultPage from "./right-space/general/default/defaultpage";
 import Loading from "./loading/loading";
 
 export default function Dashboard() {

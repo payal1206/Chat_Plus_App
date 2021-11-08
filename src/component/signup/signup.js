@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Paper } from "@material-ui/core";
 import classes from "./signup.module.css";
 import SignupForm from "./signupform";
-import { OmitProps } from "antd/lib/transfer/ListBody";
 import { selectSigninComponent } from "../../redux-store/actions/auth";
 import { connect } from "react-redux";
 import { adduser } from "../../redux-store/actions/users";
@@ -27,9 +26,7 @@ function Signup(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
- 
-});
+const mapStateToProps = (state) => ({});
 const mapDispatchToProps = (dispatch) => ({
   SigninComponent: () => dispatch(selectSigninComponent()),
   addUser: (data) => dispatch(adduser(data)),

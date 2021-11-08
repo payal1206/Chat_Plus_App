@@ -1,24 +1,21 @@
-import { ALLCONTACTS, ALLDEVELOPERS, ALLEMAILS } from "../actions/view";
+import { CONTACTS, DEVELOPERS, EMAILS } from "../actions/view";
 
 const initialState = {
-  selectAllContactsComponent: false,
-  selectAllEmailsComponent: false,
-  selectAllDevelopersComponent: false,
+  showContactsComponent: false,
+  showEmailsComponent: false,
+  showDevelopersComponent: false,
+  showChatsComponent: true,
 };
 
 function viewReducer(state = initialState, action) {
   switch (action.type) {
-    case ALLCONTACTS: {
+    case CONTACTS:
       return {
-        selectAllContactsComponent: true,
+        showContactsComponent: true,
+        showEmailsComponent: false,
+        showDevelopersComponent: false,
+        showChatsComponent: false,
       };
-    }
-    case ALLEMAILS: {
-      return { selectAllEmailsComponent: true };
-    }
-    case ALLDEVELOPERS: {
-      return { selectAllDevelopersComponent: true };
-    }
     default:
       return state;
   }

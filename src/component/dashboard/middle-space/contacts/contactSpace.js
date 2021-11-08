@@ -4,9 +4,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-import hello from "../default/image/avatar/hello.jpeg";
+import hello from "./avatar/hello.jpeg";
 
-const Allcontact = (props) => {
+const ContactSpace = (props) => {
   return (
     <ListItem divider bottom disablePadding>
       <ListItemButton>
@@ -34,4 +34,4 @@ const Allcontact = (props) => {
   );
 };
 
-export default Allcontact;
+export default ContactSpace;

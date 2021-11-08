@@ -1,29 +1,29 @@
-const ALLCONTACTS = "ALLCONTACTS";
-const ALLDEVELOPERS = "ALLDEVELOPERS";
-const ALLEMAILS = "ALLEMAILS";
+const CONTACTS = "ALLCONTACTS";
+const DEVELOPERS = "ALLDEVELOPERS";
+const EMAILS = "ALLEMAILS";
 
 //action creators
 
-const selectAllEmailsComponent = () => {
+const selectEmailsComponent = () => {
   return {
-    type: ALLEMAILS,
+    type: EMAILS,
   };
 };
-const selectAllDeveopersComponent = () => {
+const selectDeveopersComponent = () => {
   return {
-    type: ALLDEVELOPERS,
+    type: DEVELOPERS,
   };
 };
-const selectAllContactsComponent = () => {
+const selectContactsComponent = () => {
   return {
-    type: ALLCONTACTS,
+    type: CONTACTS,
   };
 };
 export {
-  ALLCONTACTS,
-  ALLDEVELOPERS,
-  ALLEMAILS,
-  selectAllContactsComponent,
-  selectAllDeveopersComponent,
-  selectAllEmailsComponent,
+  CONTACTS,
+  DEVELOPERS,
+  EMAILS,
+  selectContactsComponent,
+  selectDeveopersComponent,
+  selectEmailsComponent,
 };

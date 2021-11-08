@@ -11,6 +11,10 @@ import GroupWorkIcon from "@mui/icons-material/GroupWork";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import GroupIcon from "@mui/icons-material/Group";
 
+//redux
+import { connect } from "react-redux";
+import { selectContactsComponent } from "../../../redux-store/actions/view";
+
 const bkcol = "rgb(161, 174, 187)";
 
 const Navigation = (props) => {
@@ -40,8 +44,7 @@ const Navigation = (props) => {
             </ListItemIcon>
             <ListItemText
               primary="Contacts"
-              onClick={props.showAllContactsComponent}
-          
+              onClick={props.showContactsComponent}
             />
           </ListItemButton>
         </ListItem>
@@ -69,4 +72,7 @@ const Navigation = (props) => {
   );
 };
 
-export default Navigation;
+const mapDispatchToProps = (dispatch) => ({
+  showContactsComponent: () => dispatch(selectContactsComponent()),
+});
+export default connect(null, mapDispatchToProps)(Navigation);

@@ -4,6 +4,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
+import hello from "../default/image/avatar/hello.jpeg";
 
 const Contact = (props) => {
   return (
@@ -11,7 +12,7 @@ const Contact = (props) => {
       <ListItemButton>
         <ListItemIcon>
           <Avatar>
-            <Avatar alt="Pemy Sharp" src="./images/1.jpeg" />
+            <Avatar alt="Pemy Sharp" src={hello} />
           </Avatar>
         </ListItemIcon>
         <ListItemText

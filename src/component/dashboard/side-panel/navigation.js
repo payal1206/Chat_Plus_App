@@ -38,7 +38,11 @@ const Navigation = (props) => {
             <ListItemIcon>
               <GroupIcon style={{ color: bkcol }} />
             </ListItemIcon>
-            <ListItemText primary="Contacts" />
+            <ListItemText
+              primary="Contacts"
+              onClick={props.showAllContactsComponent}
+          
+            />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>

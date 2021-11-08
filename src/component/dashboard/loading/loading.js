@@ -12,17 +12,14 @@ export default function CircularColor() {
         padding="200px"
         display="flex"
       >
+        <p>
+          <b>Fetching Results</b>
+        </p>
+
         <CircularProgress color="secondary" />
         <CircularProgress color="success" />
         <CircularProgress color="inherit" />
       </Stack>
-      {/* <p
-        style={{
-          paddingBottom: "200px",
-        }}
-      >
-        <b>Fetching Results</b>
-      </p> */}
     </>
   );
 }

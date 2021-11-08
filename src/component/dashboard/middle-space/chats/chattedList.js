@@ -4,15 +4,17 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-import hello from "../default/image/avatar/hello.jpeg";
+// import hello from "../default/image/avatar/hello.jpeg";
 
-const Contact = (props) => {
+import Hello from "../../right-space/general/default/image/avatar//hello.jpeg";
+
+const ChattedList = (props) => {
   return (
     <ListItem divider bottom disablePadding>
       <ListItemButton>
         <ListItemIcon>
           <Avatar>
-            <Avatar alt="Pemy Sharp" src={hello} />
+            <Avatar alt="Pemy Sharp" src={Hello} />
           </Avatar>
         </ListItemIcon>
         <ListItemText
@@ -34,4 +36,4 @@ const Contact = (props) => {
   );
 };
 
-export default Contact;
+export default ChattedList;

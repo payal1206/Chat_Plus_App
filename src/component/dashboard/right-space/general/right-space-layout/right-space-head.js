@@ -10,7 +10,8 @@ import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import IconOutline from "./icon-outline";
-const MessageHead = (props) => {
+
+const SpaceHead = (props) => {
   return (
     <div>
       <Grid container style={{ padding: "10px" }}>
@@ -37,4 +38,4 @@ const MessageHead = (props) => {
   );
 };
 
-export default MessageHead;
+export default SpaceHead;

@@ -3,15 +3,15 @@ import { Grid, Paper } from "@material-ui/core";
 import classes from "./dashboard.module.css";
 
 import SidePanel from "./side-panel/sidePanel";
-import MessagePanel from "./message-panel/messagePanel";
-import ContactPanel from "./contact-panel/contactPanel";
-import DefaultPage from "./default/defaultpage";
+import RightSpace from "./right-space/chat/rightSpace";
+import MiddleSpace from "./middle-space/general/middleSpace";
+import DefaultPage from "./right-space/general/default/defaultpage";
 import Loading from "./loading/loading";
 
 export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
 
-  setTimeout(() => setIsLoading(false), 7000);
+  setTimeout(() => setIsLoading(false), 7);
 
   const mainDashboard = (
     <Paper className={classes.muiPaper}>
@@ -20,11 +20,11 @@ export default function Dashboard() {
           <SidePanel />
         </Grid>
         <Grid item lg={3} className={classes.contactPanel}>
-          <ContactPanel />
+          <MiddleSpace />
         </Grid>
         <Grid item lg={7} className={classes.messagePanel}>
-          {/* <MessagePanel /> */}
-          <DefaultPage />
+          <RightSpace />
+          {/* <DefaultPage /> */}
         </Grid>
       </Grid>
     </Paper>

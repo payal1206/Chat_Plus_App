@@ -4,7 +4,8 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import GroupsIcon from "@mui/icons-material/Groups";
 import Divider from "@mui/material/Divider";
-const ContactHead = () => {
+
+const chatHead = () => {
   return (
     <>
       <ListItem style={{ padding: "20px" }}>
@@ -12,7 +13,7 @@ const ContactHead = () => {
           <GroupsIcon fontSize="large" />
         </ListItemIcon>
         <ListItemText
-          primary="Contacts"
+          primary="Chats"
           secondary="No Conversations"
           style={{ fontWeight: "bolder" }}
         />
@@ -22,4 +23,4 @@ const ContactHead = () => {
   );
 };
 
-export default ContactHead;
+export default chatHead;

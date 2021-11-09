@@ -1,20 +1,14 @@
-// import React from "react";
-// import ListItem from "@mui/material/ListItem";
-// import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemIcon from "@mui/material/ListItemIcon";
-// import ListItemText from "@mui/material/ListItemText";
-// import Avatar from "@mui/material/Avatar";
-// import hello from "./avatar/hello.jpeg";
-
-import React from "react";
+import React, { useState } from "react";
 import Divider from "@mui/material/Divider";
 import classes from "../../dashboard.module.css";
 import AddNewContact from "./contactadd";
+import { Modal, Button } from "antd";
 
 import ContactHead from "./contact-head";
 import Search from "../general/search";
 
 function ContactSpace() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <div className={classes.contactPanelDiv}>
       <div className={classes.contactPanelHead}>
@@ -25,10 +19,21 @@ function ContactSpace() {
       </div>
       <Divider />
       <div className={classes.contactList}>
-        {
-          <AddNewContact />
-          /* <ContactLists /> */
-        }
+        <AddNewContact
+          handleClick={() => {
+            setIsModalVisible(true);
+          }}
+        />
+        <Modal
+          title="Basic Modal"
+          visible={isModalVisible}
+          // onOk={handleOk}
+          // onCancel={handleCancel}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
       </div>
     </div>
   );

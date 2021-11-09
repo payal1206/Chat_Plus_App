@@ -9,6 +9,7 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
 import classes from "../../dashboard.module.css";
+import AddNewContact from "./contactadd";
 
 function ContactSpace() {
   return (
@@ -17,8 +18,10 @@ function ContactSpace() {
       <div className={classes.search}>{/* <Search /> */}</div>
       <Divider />
       <div className={classes.contactList}>
-        {/* <AddNewContact/>
-        <ContactLists /> */}
+        {
+          <AddNewContact />
+          /* <ContactLists /> */
+        }
       </div>
     </div>
   );

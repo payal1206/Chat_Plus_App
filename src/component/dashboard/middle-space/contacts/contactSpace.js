@@ -1,14 +1,33 @@
-import React from "react";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import hello from "./avatar/hello.jpeg";
+// import React from "react";
+// import ListItem from "@mui/material/ListItem";
+// import ListItemButton from "@mui/material/ListItemButton";
+// import ListItemIcon from "@mui/material/ListItemIcon";
+// import ListItemText from "@mui/material/ListItemText";
+// import Avatar from "@mui/material/Avatar";
+// import hello from "./avatar/hello.jpeg";
 
-const ContactSpace = (props) => {
+import React from "react";
+import Divider from "@mui/material/Divider";
+import classes from "../../dashboard.module.css";
+
+function ContactSpace() {
   return (
-    <ListItem divider bottom disablePadding>
+    <div className={classes.contactPanelDiv}>
+      <div className={classes.contactPanelHead}>{/* <ContactHead /> */}</div>
+      <div className={classes.search}>{/* <Search /> */}</div>
+      <Divider />
+      <div className={classes.contactList}>
+        {/* <AddNewContact/>
+        <ContactLists /> */}
+      </div>
+    </div>
+  );
+}
+
+export default ContactSpace;
+
+{
+  /* <ListItem divider bottom disablePadding>
       <ListItemButton>
         <ListItemIcon>
           <Avatar>
@@ -27,8 +46,5 @@ const ContactSpace = (props) => {
       >
         15:30
       </p>
-    </ListItem>
-  );
-};
-
-export default ContactSpace;
+    </ListItem> */
+}

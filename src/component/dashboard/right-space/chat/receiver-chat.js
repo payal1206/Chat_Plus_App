@@ -14,7 +14,7 @@ const ReceiverChat = (props) => {
 
       <div className={classes.avatar}>
         <Avatar
-          alt="Remy Sharp"
+          alt="Payal"
           src="/static/images/avatar/1.jpg"
           sx={{ width: 56, height: 56 }}
         />

@@ -19,10 +19,10 @@ const SpaceHead = (props) => {
           <ListItem>
             <ListItemAvatar>
               <Avatar>
-                <Avatar alt="Pemy Sharp" src="./images/1.jpeg" />
+                <Avatar alt="Payal" src="./images/1.jpeg" />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="Pemy Sharp" secondary="Online" />
+            <ListItemText primary="Payal Jain" secondary="Online" />
           </ListItem>
         </Grid>
         <Grid item lg={6} style={{ paddingTop: "10px" }}>

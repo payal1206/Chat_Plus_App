@@ -13,7 +13,11 @@ import GroupIcon from "@mui/icons-material/Group";
 
 //redux
 import { connect } from "react-redux";
-import { selectContactsComponent } from "../../../redux-store/actions/view";
+import {
+  selectContactsComponent,
+  selectEmailsComponent,
+  selectChatsComponent,
+} from "../../../redux-store/actions/view";
 
 const bkcol = "rgb(161, 174, 187)";
 
@@ -26,7 +30,7 @@ const Navigation = (props) => {
             <ListItemIcon>
               <EmailIcon style={{ color: bkcol }} />
             </ListItemIcon>
-            <ListItemText primary="Mails" />
+            <ListItemText primary="Mails" onClick={props.showEmailsComponent} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -34,7 +38,7 @@ const Navigation = (props) => {
             <ListItemIcon>
               <ChatIcon style={{ color: bkcol }} />
             </ListItemIcon>
-            <ListItemText primary="Chats" />
+            <ListItemText primary="Chats" onClick={props.showChatsComponent} />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -73,6 +77,8 @@ const Navigation = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  showChatsComponent: () => dispatch(selectChatsComponent()),
+  showEmailsComponent: () => dispatch(selectEmailsComponent()),
   showContactsComponent: () => dispatch(selectContactsComponent()),
 });
 export default connect(null, mapDispatchToProps)(Navigation);

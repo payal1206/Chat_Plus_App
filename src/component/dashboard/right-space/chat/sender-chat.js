@@ -7,7 +7,7 @@ const SenderChat = (props) => {
     <div className={classes.chatBox}>
       <div className={classes.avatar}>
         <Avatar
-          alt="Remy Sharp"
+          alt="Rohit"
           src="/static/images/avatar/1.jpg"
           sx={{ width: 56, height: 56 }}
         />
@@ -15,7 +15,7 @@ const SenderChat = (props) => {
       <div className={classes.textBox}>
         <div className={classes.textDiv}>
           <p className={classes.message}>
-            The testing THGESHRTJ REHHTW sdghgtrhrthhhyfghtdjh, gfd erarerh
+            crazy man !!!!!
           </p>
         </div>
       </div>

@@ -18,8 +18,8 @@ const ChattedList = (props) => {
           </Avatar>
         </ListItemIcon>
         <ListItemText
-          primary="Pemy Sharp"
-          secondary="hello Payal, Please don't forget to cook..."
+          primary="Rohit"
+          secondary="hello Payal, are you there..."
         />
       </ListItemButton>
       <p

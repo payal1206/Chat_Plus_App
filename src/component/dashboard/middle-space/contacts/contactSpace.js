@@ -15,10 +15,7 @@ const ContactSpace = (props) => {
             <Avatar alt="Pemy Sharp" src={hello} />
           </Avatar>
         </ListItemIcon>
-        <ListItemText
-          primary="Pemy Sharp"
-          secondary="hello Payal, Please don't forget to cook..."
-        />
+        <ListItemText primary="Payal Jain" />
       </ListItemButton>
       <p
         style={{

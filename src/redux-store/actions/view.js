@@ -1,6 +1,7 @@
 const CONTACTS = "ALLCONTACTS";
 const DEVELOPERS = "ALLDEVELOPERS";
 const EMAILS = "ALLEMAILS";
+const CHATS = "ALLCHATS";
 
 //action creators
 
@@ -19,11 +20,18 @@ const selectContactsComponent = () => {
     type: CONTACTS,
   };
 };
+const selectChatsComponent = () => {
+  return {
+    type: CHATS,
+  };
+};
 export {
   CONTACTS,
   DEVELOPERS,
   EMAILS,
+  CHATS,
   selectContactsComponent,
   selectDeveopersComponent,
   selectEmailsComponent,
+  selectChatsComponent,
 };

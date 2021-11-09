@@ -4,7 +4,7 @@ import classes from "./middleSpace.module.css";
 //components
 import ChatSpace from "../chats/chatSpace";
 import ContactSpace from "../contacts/contactSpace";
-
+import EmailSpace from "../Emails/EmailSpace";
 //redux
 import { connect } from "react-redux";
 
@@ -17,7 +17,7 @@ function MiddleSpace(props) {
     <div className={classes.middlespace}>
       {showChatsComponent && <ChatSpace />}
       {showContactsComponent && <ContactSpace />}
-      {/* {showChatsComponent && <EmailSpace />} */}
+      {ShowEmailsComponent && <EmailSpace />}
     </div>
   );
 }

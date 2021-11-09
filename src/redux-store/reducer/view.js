@@ -1,4 +1,4 @@
-import { CONTACTS, DEVELOPERS, EMAILS } from "../actions/view";
+import { CONTACTS, DEVELOPERS, EMAILS ,CHATS} from "../actions/view";
 
 const initialState = {
   showContactsComponent: false,
@@ -16,6 +16,28 @@ function viewReducer(state = initialState, action) {
         showDevelopersComponent: false,
         showChatsComponent: false,
       };
+    case CHATS:
+      return {
+        showContactsComponent: false,
+        showEmailsComponent: false,
+        showDevelopersComponent: false,
+        showChatsComponent: true,
+      };
+    case DEVELOPERS:
+      return {
+        showContactsComponent: true,
+        showEmailsComponent: false,
+        showDevelopersComponent: true,
+        showChatsComponent: false,
+      };
+    case EMAILS:
+      return {
+        showContactsComponent: false,
+        showEmailsComponent: true,
+        showDevelopersComponent: false,
+        showChatsComponent: false,
+      };
+
     default:
       return state;
   }

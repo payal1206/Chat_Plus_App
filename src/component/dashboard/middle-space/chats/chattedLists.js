@@ -7,6 +7,7 @@ const ChattedLists = () => {
     <div>
       <List>
         <br></br>
+        
         <ChattedList />
         <ChattedList />
         <ChattedList />

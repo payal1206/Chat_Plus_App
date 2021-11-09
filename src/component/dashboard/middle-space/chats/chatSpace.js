@@ -6,7 +6,7 @@ import ChatHead from "./chats-head";
 import Search from "../general/search";
 import ChattedLists from "./chattedLists";
 
-function ContactPanel() {
+function ChatSpace() {
   return (
     <div className={classes.contactPanelDiv}>
       <div className={classes.contactPanelHead}>
@@ -23,4 +23,4 @@ function ContactPanel() {
   );
 }
 
-export default ContactPanel;
+export default ChatSpace;

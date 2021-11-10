@@ -15,7 +15,8 @@ function Signin(props) {
     );
     if (validUser.length !== 0) {
       if (data.password === validUser[0].password) {
-        setTimeout(props.handleUserLogin(data), 5000);
+        // setTimeout(props.handleUserLogin(data), 5000);
+        console.log(validUser.id)
       } else {
         window.alert("invalid password");
       }

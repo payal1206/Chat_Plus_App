@@ -8,6 +8,7 @@ import rootReducer from "./redux-store/reducer/rootreducer";
 import "antd/dist/antd.css";
 
 function saveToLocalStorage(state) {
+
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("chat-plus-app", serializedState);
@@ -30,7 +31,7 @@ function loadFromLocalStorage() {
 }
 
 const persistState = loadFromLocalStorage();
-
+// localStorage.clear();
 const store = createStore(
   rootReducer,
   persistState,

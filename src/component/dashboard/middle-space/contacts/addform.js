@@ -1,16 +1,5 @@
 import React, { useState } from "react";
-import {
-  Form,
-  Input,
-  InputNumber,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete,
-} from "antd";
+import { Form, Input, Cascader, Select, Button } from "antd";
 const { Option } = Select;
 const residences = [
   {
@@ -77,6 +66,9 @@ const tailFormItemLayout = {
   },
 };
 
+const values={
+    
+}
 const AddForm = () => {
   const [form] = Form.useForm();
 
@@ -130,11 +122,7 @@ const AddForm = () => {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ["zhejiang", "hangzhou", "xihu"],
-        prefix: "86",
-      }}
-      scrollToFirstError
+      
     >
       <Form.Item
         name="email"
@@ -161,25 +149,11 @@ const AddForm = () => {
           {
             required: true,
             message: "Please input your nickname!",
-            whitespace: true,
+            // whitespace: true,
           },
         ]}
       >
         <Input />
-      </Form.Item>
-
-      <Form.Item
-        name="residence"
-        label="Habitual Residence"
-        rules={[
-          {
-            type: "array",
-            required: true,
-            message: "Please select your habitual residence!",
-          },
-        ]}
-      >
-        <Cascader options={residences} />
       </Form.Item>
 
       <Form.Item
@@ -193,7 +167,7 @@ const AddForm = () => {
         ]}
       >
         <Input
-          addonBefore={prefixSelector}
+        //   addonBefore={prefixSelector}
           style={{
             width: "100%",
           }}
@@ -202,7 +176,7 @@ const AddForm = () => {
 
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
-          Register
+          SAVE
         </Button>
       </Form.Item>
     </Form>

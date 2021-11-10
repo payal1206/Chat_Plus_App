@@ -3,7 +3,7 @@ import Divider from "@mui/material/Divider";
 import classes from "../../dashboard.module.css";
 import AddNewContact from "./contactadd";
 import { Modal } from "antd";
-
+import AddForm from "./addform";
 import ContactHead from "./contact-head";
 import Search from "../general/search";
 import ContactList from "./contactList";
@@ -25,14 +25,15 @@ function ContactSpace() {
           }}
         />
         <Modal
-          title="Basic Modal"
+          title="ADD CONTACT"
           visible={isModalVisible}
           onOk={() => setIsModalVisible(false)}
           onCancel={() => setIsModalVisible(false)}
         >
+          {/* <p>Some contents...</p>
           <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <p>Some contents...</p> */}
+          <AddForm/>
         </Modal>
         <ContactList />
       </div>

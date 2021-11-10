@@ -9,8 +9,6 @@ import EmailSpace from "../Emails/EmailSpace";
 import { connect } from "react-redux";
 
 function MiddleSpace(props) {
-  console.log("view_slice", props.component);
-
   const { showChatsComponent, showContactsComponent, ShowEmailsComponent } =
     props.showComponent;
   return (

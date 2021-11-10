@@ -18,6 +18,7 @@ import {
   selectEmailsComponent,
   selectChatsComponent,
 } from "../../../redux-store/actions/view";
+import { selectLogoutComponent } from "../../../redux-store/actions/auth";
 
 const bkcol = "rgb(161, 174, 187)";
 
@@ -65,10 +66,7 @@ const Navigation = (props) => {
             <ListItemIcon>
               <ExitToAppIcon style={{ color: bkcol }} />
             </ListItemIcon>
-            <ListItemText
-              primary="Logout"
-              onClick={props.showLogoutComponent}
-            />
+            <ListItemText primary="Logout" onClick={props.LogoutComponent} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -80,5 +78,6 @@ const mapDispatchToProps = (dispatch) => ({
   showChatsComponent: () => dispatch(selectChatsComponent()),
   showEmailsComponent: () => dispatch(selectEmailsComponent()),
   showContactsComponent: () => dispatch(selectContactsComponent()),
+  LogoutComponent: () => dispatch(selectLogoutComponent()),
 });
 export default connect(null, mapDispatchToProps)(Navigation);

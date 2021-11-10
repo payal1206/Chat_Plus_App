@@ -67,7 +67,7 @@ const tailFormItemLayout = {
 };
 
 const values = {};
-const AddForm = () => {
+const EditContactForm = (props) => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -174,4 +174,4 @@ const AddForm = () => {
     </Form>
   );
 };
-export default AddForm;
+export default EditContactForm;

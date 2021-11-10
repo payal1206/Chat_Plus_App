@@ -13,10 +13,14 @@ import GroupIcon from "@mui/icons-material/Group";
 
 //redux
 import { connect } from "react-redux";
+
+import { selectLogoutComponent } from "../../../redux-store/actions/auth";
+
 import {
   selectContactsComponent,
   selectEmailsComponent,
   selectChatsComponent,
+  
 } from "../../../redux-store/actions/view";
 
 const bkcol = "rgb(161, 174, 187)";
@@ -80,5 +84,6 @@ const mapDispatchToProps = (dispatch) => ({
   showChatsComponent: () => dispatch(selectChatsComponent()),
   showEmailsComponent: () => dispatch(selectEmailsComponent()),
   showContactsComponent: () => dispatch(selectContactsComponent()),
+  showLogoutComponent: () => dispatch(selectLogoutComponent()),
 });
 export default connect(null, mapDispatchToProps)(Navigation);

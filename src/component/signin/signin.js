@@ -15,7 +15,13 @@ function Signin(props) {
     );
     if (validUser.length !== 0) {
       if (data.password === validUser[0].password) {
-        setTimeout(props.handleUserLogin(data), 5000);
+        setTimeout(
+          props.handleUserLogin({
+            id: validUser[0].id,
+            username: validUser[0].username,
+          }),
+          5000
+        );
       } else {
         window.alert("invalid password");
       }

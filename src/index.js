@@ -30,7 +30,7 @@ function loadFromLocalStorage() {
 }
 
 const persistState = loadFromLocalStorage();
-
+// localStorage.clear();
 const store = createStore(
   rootReducer,
   persistState,

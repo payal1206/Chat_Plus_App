@@ -5,15 +5,14 @@ import { Addcontact } from "../../../../redux-store/actions/contact";
 
 function AddForm(props) {
   const onFinish = (values) => {
-    console.log("Success:", values);
-
-    console.log({ ...values, user_id: props.user_id, id: Date.now() });
+    // console.log("Success:", values);
+    props.addcontact({ ...values, user_id: props.user_id, id: Date.now() });
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  console.log(props.user_id);
+
   return (
     <Form
       name="basic"
@@ -81,7 +80,7 @@ function AddForm(props) {
   );
 }
 const mapStateToProps = (state) => ({
-  user_id: state.user_slice.users
+  user_id: state.auth_slice.user.id,
 });
 const mapDispatchToProps = (dispatch) => {
   return {

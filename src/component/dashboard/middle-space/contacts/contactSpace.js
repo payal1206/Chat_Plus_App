@@ -33,7 +33,7 @@ function ContactSpace() {
           {/* <p>Some contents...</p>
           <p>Some contents...</p>
           <p>Some contents...</p> */}
-          <AddForm/>
+          <AddForm />
         </Modal>
         <ContactList />
       </div>

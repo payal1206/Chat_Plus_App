@@ -7,13 +7,14 @@ import Avatar from "@mui/material/Avatar";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import { Menu, Dropdown } from "antd";
 
-const menu = (
-  <Menu>
-    <Menu.Item>Edit</Menu.Item>
-    <Menu.Item>Delete</Menu.Item>
-  </Menu>
-);
 const ContactListItem = (props) => {
+  const { showEditModal } = props;
+  const menu = (
+    <Menu>
+      <Menu.Item onClick={showEditModal}>Edit</Menu.Item>
+      <Menu.Item>Delete</Menu.Item>
+    </Menu>
+  );
   return (
     <>
       <ListItem divider bottom disablePadding>

@@ -9,12 +9,12 @@ import { Menu, Dropdown, Modal } from "antd";
 import EditContactForm from "./edit-contact-form";
 
 const ContactListItem = (props) => {
-  const { details, handleDelete } = props;
+  const { details, handleDelete, showChatUI } = props;
   const [isModalVisible, setIsModalVisible] = useState(false);
   const menu = (
     <Menu>
       <Menu.Item onClick={() => setIsModalVisible(true)}>Edit</Menu.Item>
-      <Menu.Item  onClick={handleDelete}>Delete</Menu.Item>
+      <Menu.Item onClick={handleDelete}>Delete</Menu.Item>
     </Menu>
   );
 
@@ -27,7 +27,11 @@ const ContactListItem = (props) => {
               <Avatar alt="Pemy Sharp" src="" />
             </Avatar>
           </ListItemIcon>
-          <ListItemText primary={details.name} secondary={details.email} />
+          <ListItemText
+            primary={details.name}
+            secondary={details.email}
+            onClick={showChatUI}
+          />
           <Dropdown
             trigger={["click"]}
             overlay={menu}

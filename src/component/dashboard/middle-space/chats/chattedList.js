@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 // import hello from "../default/image/avatar/hello.jpeg";
 
 import Hello from "../../right-space/general/default/image/avatar//hello.jpeg";
+import { Typography } from "@mui/material";
 
 const ChattedList = (props) => {
   return (
@@ -21,17 +22,8 @@ const ChattedList = (props) => {
           primary="Rohit"
           secondary="hello Payal, are you there..."
         />
+        <Typography> 15:30</Typography>
       </ListItemButton>
-      <p
-        style={{
-          float: "right",
-          marginRight: "15px",
-          fontSize: "15px",
-          color: "grey",
-        }}
-      >
-        15:30
-      </p>
     </ListItem>
   );
 };

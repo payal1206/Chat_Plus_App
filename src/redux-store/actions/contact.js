@@ -14,7 +14,7 @@ const deletecontact = (data) => {
     payload: data,
   };
 };
-const editcontact = (data) => {
+const editContact = (data) => {
   return {
     type: EDIT_CONTACT,
     payload: data,
@@ -26,5 +26,5 @@ export {
   EDIT_CONTACT,
   Addcontact,
   deletecontact,
-  editcontact,
+  editContact,
 };

@@ -5,7 +5,6 @@ const LOGOUT = "LOGOUT";
 
 //action creators
 const loginUser = (data) => {
-  console.log(data, "in action");
   return {
     type: LOGIN,
     payload: data,

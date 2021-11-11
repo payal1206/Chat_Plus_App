@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-import { Menu, Dropdown } from "antd";
+import { Menu, Dropdown, Modal } from "antd";
+import EditContactForm from "./edit-contact-form";
 
 const ContactListItem = (props) => {
-  const { showEditModal } = props;
+  const { details, handleDelete } = props;
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const menu = (
     <Menu>
-      <Menu.Item onClick={showEditModal}>Edit</Menu.Item>
-      <Menu.Item>Delete</Menu.Item>
+      <Menu.Item onClick={() => setIsModalVisible(true)}>Edit</Menu.Item>
+      <Menu.Item  onClick={handleDelete}>Delete</Menu.Item>
     </Menu>
   );
+
   return (
     <>
       <ListItem divider bottom disablePadding>
@@ -24,7 +27,7 @@ const ContactListItem = (props) => {
               <Avatar alt="Pemy Sharp" src="" />
             </Avatar>
           </ListItemIcon>
-          <ListItemText primary="Payal Jain" secondary="jainpayal@test.com" />
+          <ListItemText primary={details.name} secondary={details.email} />
           <Dropdown
             trigger={["click"]}
             overlay={menu}
@@ -35,6 +38,19 @@ const ContactListItem = (props) => {
           </Dropdown>
         </ListItemButton>
       </ListItem>
+
+      <Modal
+        title="EDIT CONTACT"
+        visible={isModalVisible}
+        onOk={() => setIsModalVisible(false)}
+        onCancel={() => setIsModalVisible(false)}
+        footer={null}
+      >
+        <EditContactForm
+          values={details}
+          submitValues={(data) => props.editValues(data)}
+        />
+      </Modal>
     </>
   );
 };

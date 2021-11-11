@@ -20,7 +20,7 @@ function Signin(props) {
             id: validUser[0].id,
             username: validUser[0].username,
           }),
-          5000
+          10000
         );
       } else {
         window.alert("invalid password");
@@ -28,9 +28,7 @@ function Signin(props) {
     } else {
       window.alert("invalid username");
     }
-    console.log("data", validUser);
   };
-  console.log("data", props.users);
 
   return (
     <Paper className={classes.muiPaper}>

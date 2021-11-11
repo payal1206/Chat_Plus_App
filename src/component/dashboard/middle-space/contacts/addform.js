@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Input, Button } from "antd";
 import { connect } from "react-redux";
 import { Addcontact } from "../../../../redux-store/actions/contact";
@@ -30,7 +30,7 @@ function AddForm(props) {
     >
       <Form.Item
         label="Name"
-        name="username"
+        name="name"
         rules={[
           {
             required: true,
@@ -43,7 +43,7 @@ function AddForm(props) {
 
       <Form.Item
         label="Email"
-        name="Email"
+        name="email"
         rules={[
           {
             required: true,
@@ -55,7 +55,7 @@ function AddForm(props) {
       </Form.Item>
       <Form.Item
         label="Contact Number"
-        name="contact"
+        name="phone"
         rules={[
           {
             required: true,

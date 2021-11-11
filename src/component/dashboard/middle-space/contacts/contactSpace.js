@@ -30,9 +30,6 @@ function ContactSpace() {
           onOk={() => setIsModalVisible(false)}
           onCancel={() => setIsModalVisible(false)}
         >
-          {/* <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p> */}
           <AddForm />
         </Modal>
         <ContactList />

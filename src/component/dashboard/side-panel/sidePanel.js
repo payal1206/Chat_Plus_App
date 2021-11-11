@@ -4,8 +4,6 @@ import classes from "./side-panel.module.css";
 import TopIcons from "./top-icons";
 import Profile from "./profile";
 import Navigation from "./navigation";
-import { connect } from "react-redux";
-// import { selectLogoutComponent,selectAllContactsComponent } from "../../../redux-store/actions/auth";
 
 function SidePanel(props) {
   return (
@@ -17,20 +15,10 @@ function SidePanel(props) {
         <Profile />
       </div>
       <div className={classes.navigations}>
-        <Navigation
-          showLogoutComponent={props.LogoutComponent}
-          showAllContactsComponent={props.AllContactsComponent}
-        />
+        <Navigation />
       </div>
     </div>
   );
 }
 
-const mapStateToProps = (state) => {};
-
-const mapDispatchToProps = (dispatch) => ({
-  // LogoutComponent: () => dispatch(selectLogoutComponent()),
-  // AllContactsComponent: () => dispatch(selectAllContactsComponent()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SidePanel);
+export default SidePanel;

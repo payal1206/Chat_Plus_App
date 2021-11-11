@@ -30,6 +30,7 @@ const ChattedList = (props) => {
           color: "grey",
         }}
       >
+      
         15:30
       </p>
     </ListItem>

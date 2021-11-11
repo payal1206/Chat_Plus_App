@@ -12,12 +12,11 @@ const MessageSpace = (props) => {
 
   return (
     <>
-      <div style={{ height: "612px", width: "100%" }}>
+      <div style={{ height: "830px", width: "100%" }}>
         {props.showIU.showDefaultUI && <DefaultPage />}
         {props.showIU.showChatUI && <Chats />}
         {/* {props.showIU.showEmailUI && <Emails />} */}
       </div>
-      <Divider />
     </>
   );
 };

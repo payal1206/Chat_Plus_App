@@ -23,7 +23,6 @@ export default function Dashboard() {
         </Grid>
         <Grid item lg={7} className={classes.messagePanel}>
           <RightSpace />
-          {/* <DefaultPage /> */}
         </Grid>
       </Grid>
     </Paper>

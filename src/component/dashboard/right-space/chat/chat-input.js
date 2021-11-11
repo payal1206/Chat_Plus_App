@@ -1,6 +1,5 @@
 import React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 
 import SendIcon from "@mui/icons-material/Send";
@@ -78,9 +77,6 @@ const ChatInput = (props) => {
             </ListItemIcon>
             <ListItemText>
               <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
                 <StyledInputBase
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}

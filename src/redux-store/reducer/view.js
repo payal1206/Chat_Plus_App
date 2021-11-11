@@ -1,4 +1,4 @@
-import { CONTACTS, DEVELOPERS, EMAILS ,CHATS} from "../actions/view";
+import { CONTACTS, DEVELOPERS, EMAILS, CHATS } from "../actions/view";
 
 const initialState = {
   showContactsComponent: false,

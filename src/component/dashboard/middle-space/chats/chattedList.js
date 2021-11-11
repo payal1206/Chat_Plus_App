@@ -7,32 +7,26 @@ import Avatar from "@mui/material/Avatar";
 // import hello from "../default/image/avatar/hello.jpeg";
 
 import Hello from "../../right-space/general/default/image/avatar//hello.jpeg";
+import { Typography } from "@mui/material";
 
 const ChattedList = (props) => {
+  const { details } = props;
   return (
-    <ListItem divider bottom disablePadding>
-      <ListItemButton>
-        <ListItemIcon>
-          <Avatar>
-            <Avatar alt="Pemy Sharp" src={Hello} />
-          </Avatar>
-        </ListItemIcon>
-        <ListItemText
-          primary="Rohit"
-          secondary="hello Payal, are you there..."
-        />
-      </ListItemButton>
-      <p
-        style={{
-          float: "right",
-          marginRight: "15px",
-          fontSize: "15px",
-          color: "grey",
-        }}
-      >
-      
-        15:30
-      </p>
+    <ListItem
+      divider
+      bottom
+      disablePadding
+      style={{
+        padding: "10px",
+      }}
+    >
+      <ListItemIcon>
+        <Avatar>
+          <Avatar alt="Pemy Sharp" src={Hello} />
+        </Avatar>
+      </ListItemIcon>
+      <ListItemText primary={details.name} secondary={details.message} />
+      <Typography>{details.time}</Typography>
     </ListItem>
   );
 };

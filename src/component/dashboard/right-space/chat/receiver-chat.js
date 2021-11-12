@@ -5,13 +5,13 @@ import Avatar from "@mui/material/Avatar";
 const ReceiverChat = (props) => {
   return (
     <div className={classes.chatBox}>
-      <p className={classes.time}>15:30</p>
+      <p className={classes.time}>15:30 </p>
+      &nbsp;&nbsp;
       <div className={classes.textBox}>
         <div className={classes.textDiv}>
           <p className={classes.message}>The testing is in proocess</p>
         </div>
       </div>
-
       <div className={classes.avatar}>
         <Avatar
           alt="Payal"

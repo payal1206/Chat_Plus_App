@@ -2,13 +2,13 @@ import React from "react";
 import classes from "./receiver-chat.module.css";
 import Avatar from "@mui/material/Avatar";
 
-const ReceiverChat = (props) => {
+const SenderChat = (props) => {
   return (
     <div className={classes.chatBox}>
       <p className={classes.time}>15:30</p>
       <div className={classes.textBox}>
         <div className={classes.textDiv}>
-          <p className={classes.message}>The testing is in proocess</p>
+          <p className={classes.message}>The testing </p>
         </div>
       </div>
 
@@ -23,4 +23,4 @@ const ReceiverChat = (props) => {
   );
 };
 
-export default ReceiverChat;
+export default SenderChat;

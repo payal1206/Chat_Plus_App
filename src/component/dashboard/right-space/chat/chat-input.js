@@ -55,10 +55,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const ChatInput = (props) => {
-  const [state, setstate] = useState();
-  const handleChange = (e) => {
-    console.log(e.target.value);
+  const [state, setState] = useState("");
+
+  const handleChange = (event) => {
+    const chatText = event.target.value;
+    setState(chatText);
   };
+
+  const sendChatText = () => {
+    props.chatInput(state);
+  };
+
   return (
     <>
       <List>
@@ -89,7 +96,11 @@ const ChatInput = (props) => {
                 />
               </Search>
             </ListItemText>
-            <SendIcon fontSize="large" style={{ color: "green" }} />
+            <SendIcon
+              onClick={sendChatText}
+              fontSize="large"
+              style={{ color: "green" }}
+            />
           </ListItemButton>
         </ListItem>
       </List>

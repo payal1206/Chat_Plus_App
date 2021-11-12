@@ -13,7 +13,7 @@ const ChattedLists = () => {
     <div>
       <List>
         {chats.map((chat, idx) => (
-          <ChattedList key={idx} details={chat}/>
+          <ChattedList key={idx} details={chat} />
         ))}
       </List>
     </div>

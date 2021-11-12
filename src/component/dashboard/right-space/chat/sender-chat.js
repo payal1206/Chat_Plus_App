@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./sender-chat.module.css";
 import Avatar from "@mui/material/Avatar";
 
-const SenderChat = (props) => {
+const ReceiverChat = (props) => {
   return (
     <div className={classes.chatBox}>
       <div className={classes.avatar}>
@@ -14,9 +14,7 @@ const SenderChat = (props) => {
       </div>
       <div className={classes.textBox}>
         <div className={classes.textDiv}>
-          <p className={classes.message}>
-            crazy man !!!!!
-          </p>
+          <p className={classes.message}>crazy man !!!!!</p>
         </div>
       </div>
       <p className={classes.time}>15:30</p>
@@ -24,4 +22,4 @@ const SenderChat = (props) => {
   );
 };
 
-export default SenderChat;
+export default ReceiverChat;

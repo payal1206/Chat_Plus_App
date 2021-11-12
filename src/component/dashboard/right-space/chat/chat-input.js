@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 
@@ -55,6 +55,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const ChatInput = (props) => {
+  const [state, setstate] = useState();
+  const handleChange = (e) => {
+    console.log(e.target.value);
+  };
   return (
     <>
       <List>
@@ -78,6 +82,8 @@ const ChatInput = (props) => {
             <ListItemText>
               <Search>
                 <StyledInputBase
+                  value={state}
+                  onChange={handleChange}
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
                 />

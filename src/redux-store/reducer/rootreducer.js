@@ -4,6 +4,7 @@ import UserReducer from "./users";
 import viewReducer from "./view";
 import contactReducer from "./contact";
 import chatEmailUI from "./chat_email_view";
+import chatReducer from "./chat";
 
 const rootReducer = combineReducers({
   auth_slice: authReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   view_slice: viewReducer,
   chat_email_ui_slice: chatEmailUI,
   contact_slice: contactReducer,
+  chat_slice: chatReducer,
 });
 
 export default rootReducer;

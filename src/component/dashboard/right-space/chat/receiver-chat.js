@@ -6,7 +6,7 @@ const SenderChat = (props) => {
   const { chat } = props;
   return (
     <div className={classes.chatBox}>
-      <p className={classes.time}>{chat.time} </p>
+      <p className={classes.time}>{chat.timeStamp} </p>
       &nbsp;&nbsp;
       <div className={classes.textBox}>
         <div className={classes.textDiv}>

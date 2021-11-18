@@ -17,7 +17,7 @@ const ReceiverChat = (props) => {
           <p className={classes.message}>crazy man !!!!!</p>
         </div>
       </div>
-      <p className={classes.time}>15:30</p>
+      <p className={classes.time}>time</p>
     </div>
   );
 };

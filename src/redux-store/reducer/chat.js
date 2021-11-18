@@ -1,8 +1,11 @@
 import { SEND, SET_RECEIVER } from "../actions/chat";
 
 const initialState = {
-  chats: [],
-  currentReceiverId: "",
+  chats: {},
+  currentReceiver: {
+    id: "",
+    fullname: "",
+  },
 };
 
 export default function chatReducer(state = initialState, action) {

@@ -35,9 +35,9 @@ const Chats = (props) => {
       >
         {props.chats.map((chat) =>
           chat.id === props.userId ? (
-            <SenderChat key={chat.id} />
+            <SenderChat key={chat.id}  chat={chat}/>
           ) : (
-            <ReceiverChat key={chat.id} />
+            <ReceiverChat key={chat.id}   chat={chat} />
           )
         )}
       </div>

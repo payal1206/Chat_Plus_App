@@ -3,13 +3,14 @@ import classes from "./receiver-chat.module.css";
 import Avatar from "@mui/material/Avatar";
 
 const SenderChat = (props) => {
+  const { chat } = props;
   return (
     <div className={classes.chatBox}>
-      <p className={classes.time}>15:30 </p>
+      <p className={classes.time}>{chat.time} </p>
       &nbsp;&nbsp;
       <div className={classes.textBox}>
         <div className={classes.textDiv}>
-          <p className={classes.message}>The testing </p>
+          <p className={classes.message}>{chat.message} </p>
         </div>
       </div>
       <div className={classes.avatar}>

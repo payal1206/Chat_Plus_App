@@ -6,6 +6,7 @@ const initialState = {
     id: "",
     fullname: "",
   },
+  recentChats: [],
 };
 
 export default function chatReducer(state = initialState, action) {
@@ -19,12 +20,17 @@ export default function chatReducer(state = initialState, action) {
           ? [...state.chats[chatSessionId], payload]
           : [payload],
       };
-
-      return { ...state, chats: newChats };
+      // const updatedRecentChats = state.recentChats[payload.receiverId]?(state.recentChats.map((recentchat) =>
+      //   recentchat.receiverId === payload.receiverId ? payload : recentchat)): [...state.recentChats,payload]
+      const updatedRecentChats = state.recentChats[payload.receiverId]
+        ? "exist"
+        : payload;
+      return { ...state, chats: newChats, recentChats: updatedRecentChats };
     }
 
     case SET_RECEIVER:
       return { ...state, currentReceiver: action.payload };
+
     default:
       return state;
   }

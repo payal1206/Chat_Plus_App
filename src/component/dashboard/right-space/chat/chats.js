@@ -23,6 +23,9 @@ const Chats = (props) => {
     props.submitChat(chatData);
   };
 
+  const chatHistory = props.chats[props.userId + props.receiverId];
+  console.log("chats", chatHistory);
+
   return (
     <>
       <SpaceHead />
@@ -33,7 +36,7 @@ const Chats = (props) => {
           margin: "20px 5%",
         }}
       >
-        {props.chats.map((chat) =>
+        {chatHistory.map((chat) =>
           chat.id === props.userId ? (
             <SenderChat key={chat.id} chat={chat} />
           ) : (

@@ -25,7 +25,7 @@ export default function chatReducer(state = initialState, action) {
       const updatedRecentChats = state.recentChats[payload.receiverId]
         ? "exist"
         : payload;
-      return { ...state, chats: newChats, recentChats: updatedRecentChats };
+      return {...state, chats: newChats,recentChats:updatedRecentChats};
     }
 
     case SET_RECEIVER:

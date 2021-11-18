@@ -22,7 +22,7 @@ const SpaceHead = (props) => {
                 <Avatar alt="Payal" src="./images/1.jpeg" />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="Payal Jain" secondary="Online" />
+            <ListItemText primary={props.fullname} secondary="Online" />
           </ListItem>
         </Grid>
         <Grid item lg={6} style={{ paddingTop: "10px" }}>

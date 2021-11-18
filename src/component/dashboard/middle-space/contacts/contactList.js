@@ -19,10 +19,14 @@ const ContactList = (props) => {
     ({ user_id }) => user_id === props.userId
   );
 
-  const handleChatViews = (contactId) => {
+  const handleChatViews = (contact) => {
+    const { id, name } = contact;
     props.showTheChatComponent();
     props.showTheChatUI();
-    props.setTheReceiverId(contactId);
+    props.setTheReceiver({
+      id: id,
+      fullname: name,
+    });
   };
 
   return contactList.map((contact) => (
@@ -31,7 +35,7 @@ const ContactList = (props) => {
       details={contact}
       editValues={(data) => props.submitEditValues(data)}
       handleDelete={() => props.handleDelete(contact.id)}
-      showChatUI={() => handleChatViews(contact.id)}
+      showChatUI={() => handleChatViews(contact)}
     />
   ));
 };
@@ -44,6 +48,6 @@ const mapDispatchtoProps = (dispatch) => ({
   handleDelete: (id) => dispatch(deletecontact(id)),
   showTheChatUI: () => dispatch(selectChatHistory()),
   showTheChatComponent: () => dispatch(selectChatsComponent()),
-  setTheReceiverId: (id) => dispatch(setReceiverId(id)),
+  setTheReceiver: (data) => dispatch(setReceiverId(data)),
 });
 export default connect(mapStateToProps, mapDispatchtoProps)(ContactList);

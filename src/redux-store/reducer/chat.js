@@ -13,7 +13,7 @@ export default function chatReducer(state = initialState, action) {
     case SEND:
       return { ...state, chats: [...state.chats, action.payload] };
     case SET_RECEIVER:
-      return { ...state, currentReceiverId: action.payload };
+      return { ...state, currentReceiver: action.payload };
     default:
       return state;
   }

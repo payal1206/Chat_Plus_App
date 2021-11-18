@@ -6,6 +6,7 @@ const initialState = {
     id: "",
     fullname: "",
   },
+  chathistory: [],
 };
 
 export default function chatReducer(state = initialState, action) {

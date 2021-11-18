@@ -15,7 +15,7 @@ const Chats = (props) => {
     const timeStamp = `${time.getHours()}:${time.getMinutes()}`;
     const chatData = {
       senderId: props.userId,
-      receiverId: props.receiverId,
+      receiverId: props.receiver.id,
       message: chat,
       timeStamp,
     };
@@ -28,7 +28,7 @@ const Chats = (props) => {
 
   return (
     <>
-      <SpaceHead />
+      <SpaceHead fullname={props.receiver?.fullname} />
       <div
         style={{
           height: "550px",
@@ -55,7 +55,7 @@ const Chats = (props) => {
 const mapStateToProps = (state) => ({
   userId: state.auth_slice.user.id,
   chats: state.chat_slice.chats,
-  receiverId: state.chat_slice.currentReceiverId,
+  receiver: state.chat_slice.currentReceiver,
 });
 const mapDispatchToProps = (dispatch) => ({
   submitChat: (data) => dispatch(sendChat(data)),

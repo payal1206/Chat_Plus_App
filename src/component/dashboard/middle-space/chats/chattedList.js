@@ -27,7 +27,7 @@ const ChattedList = (props) => {
           <Avatar alt="Pemy Sharp" src={Hello} />
         </Avatar>
       </ListItemIcon>
-      <ListItemText primary={details.name} secondary={details.message} />
+      <ListItemText primary={details.fullname} secondary={details.message} />
       <Typography>{details.timeStamp}</Typography>
     </ListItem>
   );

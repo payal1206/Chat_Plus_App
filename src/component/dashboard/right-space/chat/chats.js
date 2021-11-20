@@ -18,6 +18,8 @@ const Chats = (props) => {
       receiverId: props.receiver.id,
       message: chat,
       timeStamp,
+      fullname:props.receiver.fullname
+
     };
     console.log("chat", chatData);
     console.log(props.chats)

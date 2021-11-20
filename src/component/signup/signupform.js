@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
@@ -11,17 +11,19 @@ import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 export default function SignupForm(props) {
-  const [values, setValues] = React.useState({
+  const initialValues = {
     username: "",
     password: "",
     email: "",
     phone: "",
-    showPassword: false,
-  });
+  };
+  const [showPassword, setShowPassword] = useState(false);
+  const [values, setValues] = useState(initialValues);
 
   const handleSubmit = () => {
     // console.log(values);
     props.createUser({ ...values, id: Date.now() });
+    setValues(initialValues);
   };
 
   const handleChange = (prop) => (event) => {
@@ -103,7 +105,12 @@ export default function SignupForm(props) {
               value={values.email}
             />
           </FormControl>
-          <FormControl sx={{ width: "40ch" }}    required="true" name="Phone" variant="standard">
+          <FormControl
+            sx={{ width: "40ch" }}
+            required="true"
+            name="Phone"
+            variant="standard"
+          >
             <InputLabel>Phone</InputLabel>
             <Input
               onChange={handleChange("phone")}

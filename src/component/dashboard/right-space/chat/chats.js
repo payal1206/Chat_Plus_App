@@ -36,7 +36,7 @@ const Chats = (props) => {
           margin: "20px 5%",
         }}
       >
-        {props.chats[sessionId].map((chat) =>
+        {props.chats[sessionId]?.map((chat) =>
           chat.id === props.userId ? (
             <SenderChat key={chat.id} chat={chat} />
           ) : (

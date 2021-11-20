@@ -5,6 +5,7 @@ import Avatar from "@mui/material/Avatar";
 const SenderChat = (props) => {
   const { chat } = props;
   return (
+    <>
     <div className={classes.chatBox}>
       <p className={classes.time}>{chat.timeStamp} </p>
       &nbsp;&nbsp;
@@ -21,6 +22,7 @@ const SenderChat = (props) => {
         />
       </div>
     </div>
+    </>
   );
 };
 

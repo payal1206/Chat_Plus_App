@@ -7,7 +7,7 @@ const ReceiverChat = (props) => {
     <div className={classes.chatBox}>
       <div className={classes.avatar}>
         <Avatar
-          alt="Rohit"
+          alt="hello"
           src="/static/images/avatar/1.jpg"
           sx={{ width: 56, height: 56 }}
         />

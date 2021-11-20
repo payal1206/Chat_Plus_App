@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReceiverChat from "./receiver-chat";
 import SenderChat from "./sender-chat";
 import ChatInput from "./chat-input";
@@ -10,9 +10,6 @@ import { connect } from "react-redux";
 import { sendChat } from "../../../../redux-store/actions/chat";
 
 const Chats = (props) => {
-  // const [receiver, setReceiver] = useState({});
-
-  // useEffect(()=>setReceiver(props.re),[])
   const handleChatSubmit = (chat) => {
     const time = new Date();
     const timeStamp = `${time.getHours()}:${time.getMinutes()}`;
@@ -22,14 +19,10 @@ const Chats = (props) => {
       message: chat,
       timeStamp,
     };
-    // console.log("chat", chatData);
+    console.log("chat", chatData);
+    console.log(props.chats)
     props.submitChat(chatData);
   };
-
-  const chatSessionId = props.userId + props.receiver.id;
-  const chatHistory = props.chats[chatSessionId]
-    ? props.chats[chatSessionId]
-    : [];
 
   return (
     <>
@@ -41,13 +34,13 @@ const Chats = (props) => {
           margin: "20px 5%",
         }}
       >
-        {chatHistory.map((chat) =>
+        {/* {props.chats.map((chat) =>
           chat.id === props.userId ? (
             <SenderChat key={chat.id} chat={chat} />
           ) : (
             <ReceiverChat key={chat.id} chat={chat} />
           )
-        )}
+        )} */}
       </div>
       <Divider />
       <div>

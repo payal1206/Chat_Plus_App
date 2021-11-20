@@ -10,8 +10,10 @@ import Hello from "../../right-space/general/default/image/avatar//hello.jpeg";
 import { Typography } from "@mui/material";
 
 const ChattedList = (props) => {
+ 
   const { details } = props;
   return (
+    
     <ListItem
       divider
       bottom
@@ -26,7 +28,7 @@ const ChattedList = (props) => {
         </Avatar>
       </ListItemIcon>
       <ListItemText primary={details.name} secondary={details.message} />
-      <Typography>{details.time}</Typography>
+      <Typography>{details.timeStamp}</Typography>
     </ListItem>
   );
 };

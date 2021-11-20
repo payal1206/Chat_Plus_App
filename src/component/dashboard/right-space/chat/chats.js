@@ -18,14 +18,14 @@ const Chats = (props) => {
       receiverId: props.receiver.id,
       message: chat,
       timeStamp,
-      fullname:props.receiver.fullname
-
+      fullname: props.receiver.fullname,
     };
-    console.log("chat", chatData);
-    console.log(props.chats)
+    // console.log("chat", chatData);
+    // console.log(props.chats);
     props.submitChat(chatData);
   };
 
+  const sessionId = props.userId + props.receiver.id;
   return (
     <>
       <SpaceHead fullname={props.receiver?.fullname} />
@@ -36,13 +36,13 @@ const Chats = (props) => {
           margin: "20px 5%",
         }}
       >
-        {/* {props.chats.map((chat) =>
+        {props.chats[sessionId]?.map((chat) =>
           chat.id === props.userId ? (
             <SenderChat key={chat.id} chat={chat} />
           ) : (
             <ReceiverChat key={chat.id} chat={chat} />
           )
-        )} */}
+        )}
       </div>
       <Divider />
       <div>

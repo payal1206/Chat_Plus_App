@@ -4,11 +4,14 @@ import { connect } from "react-redux";
 import { Addcontact } from "../../../../redux-store/actions/contact";
 
 function AddForm(props) {
+  const [form] = Form.useForm();
   const onFinish = (values) => {
-    // console.log("Success:", values);
+    form.resetFields();    //reset form
     props.addcontact({ ...values, user_id: props.user_id, id: Date.now() });
   };
-
+  const handleCancel = () => {
+    form.resetFields();    //reset form
+  };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -25,6 +28,8 @@ function AddForm(props) {
       initialValues={{
         remember: true,
       }}
+      form={form}
+        name="dynamic_ruleEdit"
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >

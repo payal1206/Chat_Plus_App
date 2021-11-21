@@ -1,42 +1,28 @@
-import * as React from "react";
-import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
+import CustomFormControl from "./input-item";
+
 export default function SignupForm(props) {
-  const [values, setValues] = React.useState({
+  const initialValues = {
     username: "",
     password: "",
     email: "",
     phone: "",
-    showPassword: false,
-  });
+  };
+
+  const [values, setValues] = useState(initialValues);
 
   const handleSubmit = () => {
-    // console.log(values);
-    props.createUser({ ...values, id: Date.now() });
+    console.log("values", values);
+    props.createUser(values);
+    // setValues(initialValues);
   };
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
   };
 
   return (
@@ -77,66 +63,35 @@ export default function SignupForm(props) {
             alignContent: "space-between",
           }}
         >
-          <FormControl
-            sx={{ width: "40ch" }}
+          <CustomFormControl
             name="username"
-            variant="standard"
-            required="true"
-          >
-            <InputLabel>username</InputLabel>
-            <Input
-              type="text"
-              onChange={handleChange("username")}
-              value={values.username}
-            />
-          </FormControl>
-          <FormControl
-            sx={{ width: "40ch" }}
-            required="true"
+            label="Username"
+            type="text"
+            onChange={handleChange("username")}
+            value={values.username}
+          />
+          <CustomFormControl
             name="email"
-            variant="standard"
-          >
-            <InputLabel>email</InputLabel>
-            <Input
-              placeholder="hello@gmail.com"
-              onChange={handleChange("email")}
-              value={values.email}
-            />
-          </FormControl>
-          <FormControl sx={{ width: "40ch" }}    required="true" name="Phone" variant="standard">
-            <InputLabel>Phone</InputLabel>
-            <Input
-              onChange={handleChange("phone")}
-              type="number"
-              value={values.phone}
-            />
-          </FormControl>
-          <FormControl
-            sx={{ width: "40ch" }}
+            label="Email"
+            type="email"
+            onChange={handleChange("email")}
+            value={values.email}
+          />
+          <CustomFormControl
+            name="phone"
+            label="Phone"
+            type="number"
+            onChange={handleChange("phone")}
+            value={values.phone}
+          />
+          <CustomFormControl
+            adorn
             name="password"
-            variant="standard"
-          >
-            <InputLabel htmlFor="standard-adornment-password">
-              Password
-            </InputLabel>
-            <Input
-              id="standard-adornment-password"
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              onChange={handleChange("password")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
+            label="Password"
+            onChange={handleChange("password")}
+            value={values.password}
+          />
+
           <Upload>
             <Button icon={<UploadOutlined />}>Upload Picture</Button>
           </Upload>

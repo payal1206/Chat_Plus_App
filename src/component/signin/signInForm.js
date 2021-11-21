@@ -15,6 +15,27 @@ export default function SigninForm(props) {
     showPassword: false,
   });
 
+  const isDisabled = () => {
+    // let emailIsValid = false;
+    let passwordIsValid = false;
+    if (values.password === "" || !values.password) {
+      setValues({
+        password_error_text: null,
+      });
+    } else {
+      if (values.password.length >= 6) {
+           passwordIsValid = true;
+        setValues({
+          password_error_text: null,
+        });
+      } else {
+        setValues({
+          password_error_text: "Your password must be at least 6 characters",
+        });
+      }
+    }
+  };
+
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -32,6 +53,7 @@ export default function SigninForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     props.validateUser(values);
   };
 

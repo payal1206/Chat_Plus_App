@@ -14,7 +14,7 @@ function Signin(props) {
       (user) => user.username === data.username
     );
     if (validUser.length !== 0) {
-      if (data.password === validUser[0].password) {
+      if (data.password === validUser[0]) {
         setTimeout(
           props.handleUserLogin({
             id: validUser[0].id,
@@ -23,7 +23,7 @@ function Signin(props) {
           10000
         );
       } else {
-        window.alert("invalid password");
+        window.alert("Your password must be at least 6 characters");
       }
     } else {
       window.alert("invalid username");

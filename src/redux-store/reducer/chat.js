@@ -24,11 +24,12 @@ export default function chatReducer(state = initialState, action) {
       const recentReceiverIds = state.recentChats.map(
         ({ receiverId }) => receiverId
       );
-      const updatedRecentChats = recentReceiverIds.includes(payload.receiverId)
-        ? state.recentChats.map((recentchat) =>
-            recentchat.receiverId === payload.receiverId ? payload : recentchat
-          )
-        : [...state.recentChats, payload];
+      const filteredRecentChats = recentReceiverIds.includes(payload.receiverId)     
+        ? state.recentChats.filter(
+            (recentchat) => recentchat.receiverId != payload.receiverId
+          )//it remove the recentchat if it is false 
+        : state.recentChats;
+      const updatedRecentChats = [payload, ...filteredRecentChats];
 
       return { ...state, chats: newChats, recentChats: updatedRecentChats };
     }

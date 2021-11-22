@@ -11,7 +11,7 @@ import { Typography } from "@mui/material";
 
 const ChattedList = (props) => {
  
-  const { details } = props;
+  const { details} = props;
   return (
     
     <ListItem
@@ -22,15 +22,16 @@ const ChattedList = (props) => {
         padding: "10px",
       }}
     >
-      <ListItemIcon>
+      <ListItemIcon onClick={props.showTheChatComponent}>
         <Avatar>
           <Avatar alt="Pemy Sharp" src={Hello} />
         </Avatar>
       </ListItemIcon>
-      <ListItemText primary={details.fullname} secondary={details.message} />
+      <ListItemText primary={details.fullname} secondary={details.message}  />
       <Typography>{details.timeStamp}</Typography>
     </ListItem>
   );
 };
+
 
 export default ChattedList;

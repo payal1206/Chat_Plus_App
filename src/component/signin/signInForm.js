@@ -26,6 +26,7 @@ export default function SigninForm(props) {
   };
 
   const handleSubmit = (event) => {
+    console.log("values", values);
     event.preventDefault();
 
     props.validateUser(values);
@@ -66,8 +67,6 @@ export default function SigninForm(props) {
             alignContent: "space-between",
           }}
         >
-          {/* <FormControl sx={{ width: "40ch" }} variant="standard">
-            <InputLabel>username</InputLabel> */}
           <CustomFormControl
             name="email"
             label="Email"
@@ -75,30 +74,7 @@ export default function SigninForm(props) {
             value={values.email}
             onChange={handleChange("email")}
           />
-          {/* </FormControl>
-          <FormControl sx={{ width: "40ch" }} variant="standard">
-            <InputLabel htmlFor="standard-adornment-password">
-              Password
-            </InputLabel> */}
-          {/* <CustomFormControl
-             adorn
-              id="standard-adornment-password"
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              onChange={handleChange("password")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl> */}
+
           <CustomFormControl
             adorn
             name="password"

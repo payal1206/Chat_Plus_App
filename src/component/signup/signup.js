@@ -5,6 +5,7 @@ import SignupForm from "./signupform";
 import { selectSigninComponent } from "../../redux-store/actions/auth";
 import { connect } from "react-redux";
 import { adduser } from "../../redux-store/actions/users";
+// import { selectSigninComponent } from "../../redux-store/actions/auth";
 
 import { registerUserWithEmail } from "../../firebase/auth";
 
@@ -33,7 +34,7 @@ function Signup(props) {
               <Typography style={{ color: "red" }}>{isError}</Typography>
             )}
             <SignupForm
-              showSigninComponent={props.SigninComponent}
+              navigateToSignIn={props.SigninComponent}
               createUser={(values) => handleUserCreation(values)}
             />
           </div>

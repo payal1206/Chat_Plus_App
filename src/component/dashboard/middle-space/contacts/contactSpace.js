@@ -7,8 +7,18 @@ import AddForm from "./addform";
 import ContactHead from "./contact-head";
 import Search from "../general/search";
 import ContactList from "./contactList";
+import { notification } from "antd";
 function ContactSpace() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const onContactAdd = () => {
+    setIsModalVisible(false);
+    notification["success"]({
+      message: "Success",
+      description: "Contact was added successfully.",
+    });
+  };
+
   return (
     <div className={classes.contactPanelDiv}>
       <div className={classes.contactPanelHead}>
@@ -27,10 +37,10 @@ function ContactSpace() {
         <Modal
           title="ADD CONTACT"
           visible={isModalVisible}
-          onOk={() => setIsModalVisible(false)}
+          footer={null}
           onCancel={() => setIsModalVisible(false)}
         >
-          <AddForm />
+          <AddForm closeForm={onContactAdd} />
         </Modal>
         <ContactList />
       </div>

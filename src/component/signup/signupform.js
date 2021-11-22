@@ -4,7 +4,7 @@ import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 import CustomFormControl from "./input-item";
-import useEffectOnSecondRender from "./custom-useEffect";
+
 export default function SignupForm(props) {
   const initialValues = {
     username: "",
@@ -26,9 +26,9 @@ export default function SignupForm(props) {
   useEffect(() => handleSignUpClickable, [values]);
 
   const handleSubmit = () => {
-    console.log("values", values);
+    props.navigateToSignIn();
     props.createUser(values);
-    // setValues(initialValues);
+    setValues(initialValues);
   };
 
   const handleChange = (prop) => (event) => {
@@ -48,10 +48,7 @@ export default function SignupForm(props) {
         }}
       >
         <h3 style={{ color: "#508ee5" }}>CHAT+</h3>
-        <Button
-          onClick={() => props.showSigninComponent({})}
-          variant="outlined"
-        >
+        <Button onClick={() => props.navigateToSignIn()} variant="outlined">
           Signin
         </Button>
       </div>

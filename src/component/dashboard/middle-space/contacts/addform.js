@@ -6,12 +6,10 @@ import { Addcontact } from "../../../../redux-store/actions/contact";
 function AddForm(props) {
   const [form] = Form.useForm();
   const onFinish = (values) => {
-    form.resetFields();    //reset form
+    form.resetFields(); //reset form
     props.addcontact({ ...values, user_id: props.user_id, id: Date.now() });
   };
-  const handleCancel = () => {
-    form.resetFields();    //reset form
-  };
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -20,16 +18,13 @@ function AddForm(props) {
     <Form
       name="basic"
       labelCol={{
-        span: 8,
+        span: 5,
       }}
       wrapperCol={{
         span: 16,
       }}
-      initialValues={{
-        remember: true,
-      }}
       form={form}
-        name="dynamic_ruleEdit"
+      name="dynamic_ruleEdit"
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
@@ -45,7 +40,6 @@ function AddForm(props) {
       >
         <Input />
       </Form.Item>
-
       <Form.Item
         label="Email"
         name="email"
@@ -59,7 +53,7 @@ function AddForm(props) {
         <Input />
       </Form.Item>
       <Form.Item
-        label="Contact Number"
+        label="Phone"
         name="phone"
         rules={[
           {
@@ -73,11 +67,16 @@ function AddForm(props) {
 
       <Form.Item
         wrapperCol={{
-          offset: 10,
-          span: 30,
+          span: 16,
+          offset: 5,
         }}
       >
-        <Button type="primary" htmlType="submit">
+        <Button
+          style={{ width: "100%" }}
+          type="primary"
+          htmlType="submit"
+          onClick={props.closeForm}
+        >
           Save
         </Button>
       </Form.Item>

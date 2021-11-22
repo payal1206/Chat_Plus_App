@@ -5,7 +5,7 @@ import CustomFormControl from "./input-item";
 
 export default function SigninForm(props) {
   const [values, setValues] = React.useState({
-    username: "",
+    email: "",
     password: "",
     showPassword: false,
   });
@@ -69,11 +69,11 @@ export default function SigninForm(props) {
           {/* <FormControl sx={{ width: "40ch" }} variant="standard">
             <InputLabel>username</InputLabel> */}
           <CustomFormControl
-            name="username"
-            label="Username"
+            name="email"
+            label="Email"
             type="text"
-            value={values.username}
-            onChange={handleChange("username")}
+            value={values.email}
+            onChange={handleChange("email")}
           />
           {/* </FormControl>
           <FormControl sx={{ width: "40ch" }} variant="standard">

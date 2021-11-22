@@ -18,5 +18,16 @@ const registerUserWithEmail = async (email, password) => {
     };
   }
 };
+const signinUserWithUserEmail = async (email, password) => {
+  try {
+    const response = await signInWithEmailAndPassword(auth, email, password);
 
-export { registerUserWithEmail };
+    return response;
+  } catch (error) {
+    return {
+      errorMessage: error.message,
+    };
+  }
+};
+
+export { registerUserWithEmail, signinUserWithUserEmail};

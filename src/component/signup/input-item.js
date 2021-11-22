@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Input, TextField } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -8,17 +8,16 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
 const CustomFormControl = (props) => {
   const { name, label, type, onChange, value, adorn } = props;
-  const firstRender = useRef(true)
-
+  const skipInitialRender = useRef(true);
   const [fieldRequiredError, setFieldRequiredError] = useState({
     error: false,
     errorMessage: "Field is required",
   });
 
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false  // it's no longer the first render
-      return 
+    if (skipInitialRender.current) {
+      skipInitialRender.current = false;
+      return;
     }
     if (value === "") {
       setFieldRequiredError({

@@ -17,7 +17,7 @@ const CustomFormControl = (props) => {
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false  // it's no longer the first render
-      return 
+      return ;
     }
     if (value === "") {
       setFieldRequiredError({

@@ -21,7 +21,6 @@ const registerUserWithEmail = async (email, password) => {
 const signinUserWithUserEmail = async (email, password) => {
   try {
     const response = await signInWithEmailAndPassword(auth, email, password);
-
     return response;
   } catch (error) {
     return {
@@ -30,4 +29,4 @@ const signinUserWithUserEmail = async (email, password) => {
   }
 };
 
-export { registerUserWithEmail, signinUserWithUserEmail};
+export { registerUserWithEmail, signinUserWithUserEmail };

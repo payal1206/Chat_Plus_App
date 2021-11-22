@@ -4,7 +4,7 @@ import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 import CustomFormControl from "./input-item";
-
+import useEffectOnSecondRender from "./custom-useEffect";
 export default function SignupForm(props) {
   const initialValues = {
     username: "",
@@ -20,10 +20,11 @@ export default function SignupForm(props) {
     const { email, password, username, phone } = values;
     const emptyFieldExist =
       email === "" || password === "" || username === "" || phone === "";
-    isSignUpClickable.current = emptyFieldExist;
+    isSignUpClickable.current = !emptyFieldExist;
   };
 
   useEffect(() => handleSignUpClickable, [values]);
+
   const handleSubmit = () => {
     console.log("values", values);
     props.createUser(values);
@@ -113,7 +114,7 @@ export default function SignupForm(props) {
             }}
             onClick={handleSubmit}
             variant="contained"
-            disabled={isSignUpClickable.current}
+            disabled={!isSignUpClickable.current}
           >
             Signup
           </Button>

@@ -9,7 +9,6 @@ import IconButton from "@mui/material/IconButton";
 const CustomFormControl = (props) => {
   const { name, label, type, onChange, value, adorn } = props;
   const firstRender = useRef(true)
-
   const [fieldRequiredError, setFieldRequiredError] = useState({
     error: false,
     errorMessage: "Field is required",

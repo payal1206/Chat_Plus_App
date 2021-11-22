@@ -13,6 +13,7 @@ function Signin(props) {
     const validUser = props.users.filter(
       (user) => user.username === data.username
     );
+    console.log(validUser)
     if (validUser.length !== 0) {
       if (data.password === validUser[0]) {
         setTimeout(

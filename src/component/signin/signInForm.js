@@ -1,12 +1,7 @@
 import * as React from "react";
-import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 import Button from "@mui/material/Button";
+import CustomFormControl from "./input-item";
 
 export default function SigninForm(props) {
   const [values, setValues] = React.useState({
@@ -14,27 +9,6 @@ export default function SigninForm(props) {
     password: "",
     showPassword: false,
   });
-
-  const isDisabled = () => {
-    // let emailIsValid = false;
-    let passwordIsValid = false;
-    if (values.password === "" || !values.password) {
-      setValues({
-        password_error_text: null,
-      });
-    } else {
-      if (values.password.length >= 6) {
-           passwordIsValid = true;
-        setValues({
-          password_error_text: null,
-        });
-      } else {
-        setValues({
-          password_error_text: "Your password must be at least 6 characters",
-        });
-      }
-    }
-  };
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -92,19 +66,22 @@ export default function SigninForm(props) {
             alignContent: "space-between",
           }}
         >
-          <FormControl sx={{ width: "40ch" }} variant="standard">
-            <InputLabel>username</InputLabel>
-            <Input
-              type="text"
-              value={values.username}
-              onChange={handleChange("username")}
-            />
-          </FormControl>
+          {/* <FormControl sx={{ width: "40ch" }} variant="standard">
+            <InputLabel>username</InputLabel> */}
+          <CustomFormControl
+            name="username"
+            label="Username"
+            type="text"
+            value={values.username}
+            onChange={handleChange("username")}
+          />
+          {/* </FormControl>
           <FormControl sx={{ width: "40ch" }} variant="standard">
             <InputLabel htmlFor="standard-adornment-password">
               Password
-            </InputLabel>
-            <Input
+            </InputLabel> */}
+          {/* <CustomFormControl
+             adorn
               id="standard-adornment-password"
               type={values.showPassword ? "text" : "password"}
               value={values.password}
@@ -121,7 +98,14 @@ export default function SigninForm(props) {
                 </InputAdornment>
               }
             />
-          </FormControl>
+          </FormControl> */}
+          <CustomFormControl
+            adorn
+            name="password"
+            label="Password"
+            onChange={handleChange("password")}
+            value={values.password}
+          />
           <Button
             style={{
               height: "45px",

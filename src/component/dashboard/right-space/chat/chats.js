@@ -29,7 +29,7 @@ const Chats = (props) => {
   return (
     <>
       <SpaceHead fullname={props.receiver?.fullname} />
-      <div
+      <div //add scrollbar here
         style={{
           height: "550px",
           width: "90%",

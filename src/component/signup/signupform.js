@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
@@ -14,7 +14,16 @@ export default function SignupForm(props) {
   };
 
   const [values, setValues] = useState(initialValues);
+  const isSignUpClickable = useRef(false);
 
+  const handleSignUpClickable = () => {
+    const { email, password, username, phone } = values;
+    const emptyFieldExist =
+      email === "" || password === "" || username === "" || phone === "";
+    isSignUpClickable.current = emptyFieldExist;
+  };
+
+  useEffect(() => handleSignUpClickable, [values]);
   const handleSubmit = () => {
     console.log("values", values);
     props.createUser(values);
@@ -104,6 +113,7 @@ export default function SignupForm(props) {
             }}
             onClick={handleSubmit}
             variant="contained"
+            disabled={isSignUpClickable.current}
           >
             Signup
           </Button>

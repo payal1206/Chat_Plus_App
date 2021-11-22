@@ -9,13 +9,14 @@ import { adduser } from "../../redux-store/actions/users";
 import { registerUserWithEmail } from "../../firebase/auth";
 
 function Signup(props) {
-  //sign api request
   const [isError, setError] = React.useState("");
+  //sign api request
   const handleUserCreation = async (values) => {
     const { email, password } = values;
     const res = await registerUserWithEmail(email, password);
     if (!res.errorMessage) {
       // props.addUser(values)
+      console.log(res);
     } else {
       setError(res.errorMessage);
     }

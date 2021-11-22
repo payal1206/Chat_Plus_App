@@ -11,18 +11,14 @@ import {
 } from "../../../../redux-store/actions/view";
 import { setReceiverId } from "../../../../redux-store/actions/chat";
 const ChattedLists = (props) => {
-  // console.log(props.recentChat);
-
-  // const list = props.recentChat.reverse();
-  // console.log(list);
-  // console.log(props.recentChat.reverse());
-  const handleChatViews = (contact) => {
-    const { id, name } = contact;
+  const handleChatViews = (chat) => {
+    console.log(chat);
+    const { receiverId, fullname } = chat;
     props.showTheChatComponent();
     props.showTheChatUI();
     props.setTheReceiver({
-      id: id,
-      fullname: name,
+      id: receiverId,
+      fullname: fullname,
     });
   };
   return (
@@ -33,7 +29,7 @@ const ChattedLists = (props) => {
             <ChattedList
               key={idx}
               details={chat}
-              showTheChatComponent={props.showTheChatComponent}
+              showTheChatComponent={() => handleChatViews(chat)}
             />
           ))}
       </List>

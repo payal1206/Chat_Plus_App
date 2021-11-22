@@ -11,33 +11,19 @@ import {
 import { signinUserWithUserEmail } from "../../firebase/auth";
 
 function Signin(props) {
-  // const handleUserValidation = (data) => {
-  //   const validUser = props.users.filter(
-  //     (user) => user.username === data.username
-  //   );
-  //   console.log(validUser)
-  //   if (validUser.length !== 0) {
-  //     if (data.password === validUser[0]) {
-  //       setTimeout(
-  //         props.handleUserLogin({
-  //           id: validUser[0].id,
-  //           username: validUser[0].username,
-  //         }),
-  //         10000
-  //       );
-  //     } else {
-  //       window.alert("Your password must be at least 6 characters");
-  //     }
-  //   } else {
-  //     window.alert("invalid username");
-  //   }
-  // };
   const [isError, setError] = React.useState("");
-  const handleUserCreation = async (values) => {
+  const handleUserLogin = async (values) => {
     const { email, password } = values;
     const res = await signinUserWithUserEmail(email, password);
     if (!res.errorMessage) {
-      // props.addUser(values)
+      const { uid, email } = res.user;
+      setTimeout(
+        props.handleUserLogin({
+          id: uid,
+          username: email,
+        }),
+        10000
+      );
     } else {
       setError(res.errorMessage);
     }
@@ -56,7 +42,7 @@ function Signin(props) {
 
             <SigninForm
               showSignUpModal={props.SignupComponent}
-              validateUser={(values) => handleUserCreation(values)}
+              validateUser={(values) => handleUserLogin(values)}
             />
           </div>
         </Grid>

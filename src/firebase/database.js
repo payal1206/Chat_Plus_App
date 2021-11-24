@@ -34,7 +34,6 @@ async function addContactToFirestore(data) {
 //add chats
 //add recentchats
 //get recentchats
-//add user           -p-a-y-a-l-
 // edit contact
 //delete contact
 

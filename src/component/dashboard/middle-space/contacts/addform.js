@@ -2,12 +2,21 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import { connect } from "react-redux";
 import { Addcontact } from "../../../../redux-store/actions/contact";
+import { addContactToFirestore } from "../../../../firebase/database";
 
 function AddForm(props) {
   const [form] = Form.useForm();
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     form.resetFields(); //reset form
-    props.addcontact({ ...values, user_id: props.user_id, id: Date.now() });
+    //add contact to firestore
+    const res = await addContactToFirestore({
+      ...values,
+      user_id: props.user_id,
+    });
+    if (res.id) {
+      //add contact to redux store
+      props.addcontact({ ...values, user_id: props.user_id, id: res.id });
+    }
   };
 
   const onFinishFailed = (errorInfo) => {

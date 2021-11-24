@@ -5,8 +5,7 @@ import SignupForm from "./signupform";
 import { selectSigninComponent } from "../../redux-store/actions/auth";
 import { connect } from "react-redux";
 import { adduser } from "../../redux-store/actions/users";
-// import { selectSigninComponent } from "../../redux-store/actions/auth";
-
+import { addUserToFirestore } from "../../firebase/database";
 import { registerUserWithEmail } from "../../firebase/auth";
 
 function Signup(props) {
@@ -15,11 +14,22 @@ function Signup(props) {
   const handleUserCreation = async (values) => {
     const { email, password } = values;
     const res = await registerUserWithEmail(email, password);
-    if (!res.errorMessage) {
-      // props.addUser(values)
-      console.log(res);
-    } else {
+    if (res.errorMessage) {
+      //check if user was registered successfully
       setError(res.errorMessage);
+      return;
+    }
+    //add user to firestore user collection
+    const { username, phone } = values;
+    const firestoreResponse = await addUserToFirestore({
+      username,
+      email,
+      phone,
+    });
+    if (firestoreResponse.uid) {
+      //add user to redux store
+      const { uid } = firestoreResponse;
+      props.addUser({ uid, username, email, phone });
     }
   };
   return (

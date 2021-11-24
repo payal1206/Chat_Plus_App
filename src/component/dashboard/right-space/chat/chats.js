@@ -8,21 +8,26 @@ import { Divider } from "antd";
 //redux
 import { connect } from "react-redux";
 import { sendChat } from "../../../../redux-store/actions/chat";
-
+import { addChatToFirestore } from "../../../../firebase/database";
 const Chats = (props) => {
-  const handleChatSubmit = (chat) => {
+  const handleChatSubmit = async (chat) => {
     const time = new Date();
     const timeStamp = `${time.getHours()}:${time.getMinutes()}`;
     const chatData = {
       senderId: props.userId,
       receiverId: props.receiver.id,
       message: chat,
-      timeStamp,
       fullname: props.receiver.fullname,
     };
     // console.log("chat", chatData);
     // console.log(props.chats);
-    props.submitChat(chatData);
+
+    const res = await addChatToFirestore(chatData);
+
+    if (res.id) {
+      console.log("chats....................", res);
+      props.submitChat({ ...chatData, id: res.id });
+    }
   };
 
   const sessionId = props.userId + props.receiver.id;

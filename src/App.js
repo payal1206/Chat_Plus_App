@@ -1,11 +1,10 @@
 import React from "react";
 import "./App.css";
-import { db } from "./firebase/config";
 import Layout from "./component/dashboard/layout/layout";
 import Dashboard from "./component/dashboard/dashboard";
 import Signin from "./component/signin/signin";
 import Signup from "./component/signup/signup";
-import { ans} from "./firebase/database";
+import { addUserToFirestore } from "./firebase/database";
 import { connect } from "react-redux";
 
 function App(props) {
@@ -13,7 +12,6 @@ function App(props) {
     displayComponent: { showSigninComponent, showSignupComponent },
     user: { loggedin },
   } = props.userAuth;
-  console.log("firestore", ans);
 
   return (
     <div className="App">

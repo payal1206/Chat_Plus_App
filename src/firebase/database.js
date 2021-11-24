@@ -1,7 +1,7 @@
 import { collection, getDocs } from "firebase/firestore"; 
 import { db } from "./config";
 
-async function asyncCall() {   //getting data
+async function asyncCall() {   
 const querySnapshot = await getDocs(collection(db, "users"));
 querySnapshot.forEach((doc) => {
   console.log(doc.data());
@@ -10,9 +10,9 @@ querySnapshot.forEach((doc) => {
 //add contact
 //get contact
 //add chats
-//add recentchats
-//get recentchats    
-//add user           -p-a-y-a-l-
+//add recentchats        //
+//get recentchats
+//add user
 // edit contact
 //delete contact
 

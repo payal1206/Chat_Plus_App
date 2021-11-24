@@ -4,7 +4,7 @@ import { Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
 import CustomFormControl from "./input-item";
-
+import { notification } from "antd";
 export default function SignupForm(props) {
   const initialValues = {
     username: "",
@@ -26,6 +26,12 @@ export default function SignupForm(props) {
   useEffect(() => handleSignUpClickable, [values]);
 
   const handleSubmit = () => {
+    notification["success"]({
+      message: "Success",
+      description: "you are successfully signup.",
+    });
+  
+
     props.navigateToSignIn();
     props.createUser(values);
     setValues(initialValues);

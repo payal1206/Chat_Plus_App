@@ -7,14 +7,23 @@ import RightSpace from "./right-space/chat/rightSpace";
 import MiddleSpace from "./middle-space/general/middleSpace";
 import Loading from "./loading/loading";
 import { setAllContacts } from "../../firebase/database";
+import { setAllContactsInRedux } from "../../redux-store/actions/contact";
+import { connect } from "react-redux";
 
-export default function Dashboard() {
+function Dashboard(props) {
   const [isLoading, setIsLoading] = useState(true);
 
-  const contacts = setAllContacts("TyvgeBNdwbcsBFKrxNNwUys6orV2");
+  const initialAppData = async () => {
+    const contacts = await setAllContacts(props.userId);
+    // const recentChats = setAllRecentChats();
+    props.setAllContacts(contacts);
+    // props.setAllRecentChats(recentChats);
+    if (contacts.length > 0) {
+      setTimeout(() => setIsLoading(false), 7);
+    }
+  };
 
-  console.log("contact", contacts);
-  setTimeout(() => setIsLoading(false), 7);
+  initialAppData();
 
   const mainDashboard = (
     <Paper className={classes.muiPaper}>
@@ -34,3 +43,10 @@ export default function Dashboard() {
 
   return isLoading ? <Loading /> : mainDashboard;
 }
+const mapStateToProps = (state) => ({
+  userId: state.auth_slice.user.id,
+});
+const mapDispatchtoProps = (dispatch) => ({
+  setAllContacts: (data) => dispatch(setAllContactsInRedux(data)),
+});
+export default connect(mapStateToProps, mapDispatchtoProps)(Dashboard);

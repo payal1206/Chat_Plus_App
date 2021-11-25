@@ -3,7 +3,6 @@ import {
   DELETE_CONTACT,
   EDIT_CONTACT,
   SET_ALL_CONTACTS,
-  RECENT_CHAT
 } from "../actions/contact";
 const initialState = [];
 
@@ -18,12 +17,10 @@ const Reducer = (state = initialState, action) => {
 
     case DELETE_CONTACT:
       return state.filter((contact) => contact.id !== action.payload);
-    // case SET_ALL_CONTACTS:
-    //   return payload;  
-    //   case RECENT_CHATS:
-    //   return payload;  //the data from firestore
-
-
+    case SET_ALL_CONTACTS:
+      return action.payload;
+    // case RECENT_CHATS:
+    // return payload;  //the data from firestore
     default:
       return state;
   }

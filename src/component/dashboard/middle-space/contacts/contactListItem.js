@@ -53,6 +53,7 @@ const ContactListItem = (props) => {
         <EditContactForm
           values={details}
           submitValues={(data) => props.editValues(data)}
+          closeModal={() => setIsModalVisible(false)}
         />
       </Modal>
     </>

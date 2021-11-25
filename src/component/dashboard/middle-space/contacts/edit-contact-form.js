@@ -36,18 +36,12 @@ const EditContactForm = (props) => {
   const [form] = Form.useForm();
 
   const onFinish = async (values) => {
-    form.resetFields(); //reset form
     const newValues = { ...props.values, ...values };
-    
     //edit contact to firestore
-    const res = await editContactToFirestore(
-      newValues
-      
-    );
-    if (res.id) {
+    const res = await editContactToFirestore(newValues);
+    if (!res) {
       //edit contact to redux store
-
-      props.submitValues({ newValues, user_id: props.user_id, id: res.id });
+      props.submitValues(newValues);
     }
   };
 
@@ -109,7 +103,7 @@ const EditContactForm = (props) => {
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" onClick={props.closeModal}>
           SAVE
         </Button>
       </Form.Item>

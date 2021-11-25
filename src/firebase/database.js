@@ -97,3 +97,8 @@ export {
   deleteContactFromFirestore,
   setAllContacts,
 };
+
+
+// notication came before adding the contact
+//get contact
+//add chats

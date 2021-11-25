@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
-
+import { editContactToFirestore } from "../../../../firebase/database";
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -35,9 +35,20 @@ const tailFormItemLayout = {
 const EditContactForm = (props) => {
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
+    form.resetFields(); //reset form
     const newValues = { ...props.values, ...values };
-    props.submitValues(newValues);
+    
+    //edit contact to firestore
+    const res = await editContactToFirestore(
+      newValues
+      
+    );
+    if (res.id) {
+      //edit contact to redux store
+
+      props.submitValues({ newValues, user_id: props.user_id, id: res.id });
+    }
   };
 
   return (

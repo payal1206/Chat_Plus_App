@@ -2,6 +2,8 @@ import {
   collection,
   doc,
   getDocs,
+  setDoc,
+  updateDoc,
   addDoc,
   getDoc,
   setDoc,
@@ -66,9 +68,25 @@ async function addChatToFirestore(data) {
     return { err: "an error occured " + err.message };
   }
 }
+// edit contact
+async function editContactToFirestore(data) {
+  try {
+    //    const res= await setDoc(doc(collection(db, "contacts"),data.id),data);
+    const res = await setDoc(doc(db, "contacts", data.id), data);
+
+    console.log(res);
+  } catch (err) {
+    console.log("an error occured", err.message);
+  }
+}
 
 // edit contact   //setdoc
 //delete contact  //deletedoc
 
 // const ans = asyncCall();
-export { addUserToFirestore, addContactToFirestore, addChatToFirestore };
+export {
+  addUserToFirestore,
+  addContactToFirestore,
+  addChatToFirestore,
+  editContactToFirestore,
+};

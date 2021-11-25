@@ -11,23 +11,20 @@ import { sendChat } from "../../../../redux-store/actions/chat";
 import { addChatToFirestore } from "../../../../firebase/database";
 const Chats = (props) => {
   const handleChatSubmit = async (chat) => {
-    const time = new Date();
-    const timeStamp = `${time.getHours()}:${time.getMinutes()}`;
     const chatData = {
       senderId: props.userId,
       receiverId: props.receiver.id,
       message: chat,
       fullname: props.receiver.fullname,
     };
-    // console.log("chat", chatData);
-    // console.log(props.chats);
-
     const res = await addChatToFirestore(chatData);
-
-    if (res.id) {
-      console.log("chats....................", res);
-      props.submitChat({ ...chatData, id: res.id });
+    if (res.err) {
+      window.alert(res.err);
+      return;
     }
+    const time = res.createdAt.toDate();
+    const timeStamp = `${time.getHours()}:${time.getMinutes()}`;
+    props.submitChat({ ...res, timeStamp });
   };
 
   const sessionId = props.userId + props.receiver.id;

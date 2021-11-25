@@ -11,8 +11,8 @@ import {
   selectChatHistory,
   selectChatsComponent,
 } from "../../../../redux-store/actions/view";
-
 import { setReceiverId } from "../../../../redux-store/actions/chat";
+import { deleteContactFromFirestore } from "../../../../firebase/database";
 
 const ContactList = (props) => {
   const contactList = props.contacts.filter(
@@ -29,12 +29,19 @@ const ContactList = (props) => {
     });
   };
 
+  const deleteContact = async (id) => {
+    const res = await deleteContactFromFirestore(id);
+    if (!res) {
+      props.handleDelete(id);
+    }
+  };
+
   return contactList.map((contact) => (
     <ContactListItem
       key={contact.id}
       details={contact}
       editValues={(data) => props.submitEditValues(data)}
-      handleDelete={() => props.handleDelete(contact.id)}
+      handleDelete={() => deleteContact(contact.id)}
       showChatUI={() => handleChatViews(contact)}
     />
   ));

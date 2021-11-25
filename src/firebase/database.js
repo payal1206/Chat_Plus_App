@@ -1,24 +1,17 @@
 import {
   collection,
   doc,
-  getDocs,
-  setDoc,
-  updateDoc,
   addDoc,
+  getDocs,
   getDoc,
+  setDoc,
+  deleteDoc,
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "./config";
+import usefetchAllFromFirestore from "./usefetch";
 
-//getUsers
-async function asyncCall() {
-  //getting data
-  const querySnapshot = await getDocs(collection(db, "users"));
-  querySnapshot.forEach((doc) => {
-    console.log(doc.data());
-  });
-}
-
+//===users=====
 //addUser
 async function addUserToFirestore(data) {
   try {
@@ -28,7 +21,20 @@ async function addUserToFirestore(data) {
     console.log("an error occured", err.message);
   }
 }
+//getUsers
+async function asyncCall() {
+  //getting data
+  const querySnapshot = await getDocs(collection(db, "users"));
+  querySnapshot.forEach((doc) => {
+    console.log(doc.data());
+  });
+}
 
+// ===contacts====
+//get all contacts
+function setAllContacts() {
+  return usefetchAllFromFirestore(db, "contact");
+}
 //add contact
 async function addContactToFirestore(data) {
   try {
@@ -38,37 +44,51 @@ async function addContactToFirestore(data) {
     console.log("an error occured", err.message);
   }
 }
-// add chats
-async function addChatToFirestore(data) {
-  try {
-    const res = await addDoc(collection(db, "chats"), {
-      ...data,
-      createdAt: serverTimestamp(),
-    });
-    const ref = doc(db, "chats", res.id);
-    const docSnap = await getDoc(ref);
-    if (docSnap.exists()) {
-      const chat = docSnap.data();
-      return { ...chat, id: res.id };
-    } else {
-      console.log("No such document!");
-    }
-  } catch (err) {
-    console.log("an error occured", err.message);
-  }
-}
 // edit contact
 async function editContactToFirestore(data) {
   try {
-    //    const res= await setDoc(doc(collection(db, "contacts"),data.id),data);
-    const res = await setDoc(doc(db, "contacts", data.id), data);
-
-    console.log(res);
+    const { id } = data;
+    await setDoc(doc(collection(db, "contacts"), id), data);
   } catch (err) {
-    console.log("an error occured", err.message);
+    return { msg: "an error occured" + err.message };
+  }
+}
+//delete contact  //deletedoc
+async function deleteContactFromFirestore(id) {
+  try {
+    await deleteDoc(doc(db, "contacts", id));
+  } catch (err) {
+    return { msg: "an error occured" + err.message };
   }
 }
 
+//===chats=======
+// add chats and recentchats
+async function addChatToFirestore(data) {
+  try {
+    //add chat
+    const { id } = await addDoc(collection(db, "chats"), {
+      ...data,
+      createdAt: serverTimestamp(),
+    });
+    //add recent chat
+    await setDoc(doc(collection(db, "recentChats"), id), data);
+    //fetch the added chat
+    const ref = doc(db, "chats", id);
+    const fetchRes = await getDoc(ref);
+    const chat = fetchRes.data();
+    //return the chat details
+    return { ...chat, id };
+  } catch (err) {
+    return { err: "an error occured " + err.message };
+  }
+}
+//get all recent chats
+function setAllRecentChats() {
+  return usefetchAllFromFirestore(db, "recentChats");
+}
+
+// edit contact   //setdoc
 
 // const ans = asyncCall();
 export {
@@ -76,6 +96,7 @@ export {
   addContactToFirestore,
   addChatToFirestore,
   editContactToFirestore,
+  deleteContactFromFirestore,
 };
 
 

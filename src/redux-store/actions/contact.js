@@ -1,6 +1,7 @@
 const ADD_CONTACT = "ADD_CONTACT";
 const DELETE_CONTACT = "DELETE_CONTACT";
 const EDIT_CONTACT = "EDIT_CONTACT";
+const SET_CONTACT="SET_CONTACT";
 
 const Addcontact = (data) => {
   return {
@@ -20,11 +21,22 @@ const editContact = (data) => {
     payload: data,
   };
 };
+
+const Setcontact = (data) => {
+  return {
+    type:SET_CONTACT,
+    payload: data,
+  };
+};
+
+
 export {
   ADD_CONTACT,
   DELETE_CONTACT,
   EDIT_CONTACT,
+  SET_CONTACT,
   Addcontact,
   deletecontact,
   editContact,
+  Setcontact
 };

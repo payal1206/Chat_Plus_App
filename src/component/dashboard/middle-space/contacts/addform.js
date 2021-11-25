@@ -33,7 +33,6 @@ function AddForm(props) {
         span: 16,
       }}
       form={form}
-      name="dynamic_ruleEdit"
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >

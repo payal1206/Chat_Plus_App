@@ -69,12 +69,6 @@ async function editContactToFirestore(data) {
   }
 }
 
-//get contact
-//add chats
-//add recentchats
-//get recentchats
-// edit contact   //setdoc
-//delete contact  //deletedoc
 
 // const ans = asyncCall();
 export {
@@ -83,3 +77,8 @@ export {
   addChatToFirestore,
   editContactToFirestore,
 };
+
+
+// notication came before adding the contact
+//get contact
+//add chats

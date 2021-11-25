@@ -1,6 +1,23 @@
-import { collection, getDocs, addDoc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  addDoc,
+  getDoc,
+  setDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { db } from "./config";
+import usefetchAllFromFirestore from "./usefetch";
 
+//get all contacts
+function setAllContacts() {
+  return usefetchAllFromFirestore(db, "contact");
+}
+//get all contacts
+function setAllRecentChats() {
+  return usefetchAllFromFirestore(db, "recentChats");
+}
 //getUsers
 async function asyncCall() {
   //getting data
@@ -23,19 +40,35 @@ async function addUserToFirestore(data) {
 //add contact
 async function addContactToFirestore(data) {
   try {
-    const res = await addDoc(collection(db, "contact"), { ...data });
+    const res = await addDoc(collection(db, "contacts"), { ...data });
     return { id: res.id };
   } catch (err) {
     console.log("an error occured", err.message);
   }
 }
+// add chats and recentchats
+async function addChatToFirestore(data) {
+  try {
+    //add chat
+    const { id } = await addDoc(collection(db, "chats"), {
+      ...data,
+      createdAt: serverTimestamp(),
+    });
+    //add recent chat
+    await setDoc(doc(collection(db, "recentChat"), id), data);
+    //fetch the added chat
+    const ref = doc(db, "chats", id);
+    const fetchRes = await getDoc(ref);
+    const chat = fetchRes.data();
+    //return the chat details
+    return { ...chat, id };
+  } catch (err) {
+    return { err: "an error occured " + err.message };
+  }
+}
 
-//get contact
-//add chats
-//add recentchats
-//get recentchats
-// edit contact
-//delete contact
+// edit contact   //setdoc
+//delete contact  //deletedoc
 
 // const ans = asyncCall();
-export { addUserToFirestore, addContactToFirestore };
+export { addUserToFirestore, addContactToFirestore, addChatToFirestore };

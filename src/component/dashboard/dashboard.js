@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import classes from "./dashboard.module.css";
 
@@ -6,10 +6,14 @@ import SidePanel from "./side-panel/sidePanel";
 import RightSpace from "./right-space/chat/rightSpace";
 import MiddleSpace from "./middle-space/general/middleSpace";
 import Loading from "./loading/loading";
+import { setAllContacts } from "../../firebase/database";
 
 export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
 
+  const contacts = setAllContacts("TyvgeBNdwbcsBFKrxNNwUys6orV2");
+
+  console.log("contact", contacts);
   setTimeout(() => setIsLoading(false), 7);
 
   const mainDashboard = (

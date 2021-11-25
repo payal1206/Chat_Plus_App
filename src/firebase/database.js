@@ -32,8 +32,8 @@ async function asyncCall() {
 
 // ===contacts====
 //get all contacts
-function setAllContacts() {
-  return usefetchAllFromFirestore(db, "contact");
+function setAllContacts(uid) {
+  return usefetchAllFromFirestore(db, "contacts", uid);
 }
 //add contact
 async function addContactToFirestore(data) {
@@ -88,8 +88,6 @@ function setAllRecentChats() {
   return usefetchAllFromFirestore(db, "recentChats");
 }
 
-// edit contact   //setdoc
-
 // const ans = asyncCall();
 export {
   addUserToFirestore,
@@ -97,4 +95,5 @@ export {
   addChatToFirestore,
   editContactToFirestore,
   deleteContactFromFirestore,
+  setAllContacts,
 };

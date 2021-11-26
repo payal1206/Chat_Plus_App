@@ -2,14 +2,12 @@ import React from "react";
 import List from "@mui/material/List";
 import ChattedList from "./chattedList";
 import { connect } from "react-redux";
-// import {
-//   selectChatsComponent,
-// } from "../../../../redux-store/actions/view";
 import {
   selectChatHistory,
   selectChatsComponent,
 } from "../../../../redux-store/actions/view";
 import { setReceiverId } from "../../../../redux-store/actions/chat";
+
 const ChattedLists = (props) => {
   const handleChatViews = (chat) => {
     console.log(chat);

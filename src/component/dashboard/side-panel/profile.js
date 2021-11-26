@@ -2,7 +2,7 @@ import React from "react";
 import Avatar from "@mui/material/Avatar";
 import { connect } from "react-redux";
 import { UserProfileToFirestore } from "../../../firebase/database";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const styles = {
   avartar: {
     display: "flex",
@@ -24,18 +24,21 @@ const styles = {
   },
   text: {},
 };
+
 const Profile = (props) => {
+  const [state, setstate] = useState({});
   const UserProfile = async () => {
-    await UserProfileToFirestore(props.userid);
-    console.log(props.userid)
+    const res = await UserProfileToFirestore(props.userid);
+    // console.log(props.userid)
     // console.log("resss",res.data());
+    setstate(res);
   };
+
   useEffect(() => {
     // Update the document title using the browser API
-    UserProfile()
-  },[]);
+    UserProfile();
+  }, []);
   return (
-
     <>
       <div style={styles.avartar}>
         <div style={styles.circle}>
@@ -51,7 +54,7 @@ const Profile = (props) => {
             marginBottom: "0px",
           }}
         >
-          Payal Jain
+          {state.username}
         </p>
         <p
           style={{
@@ -59,7 +62,7 @@ const Profile = (props) => {
             fontWeight: "lighter",
           }}
         >
-          payal@jain.com
+      {state.email}
         </p>
       </div>
     </>

@@ -1,5 +1,7 @@
 const SEND = "SEND_CHAT";
 const SET_RECEIVER = "SET_RECEIVER_ID";
+const SET_ALL_RECENT_CHATS = "SET_ALL_RECENT_CHATS";
+const SET_CHATS = "SET_CHATS";
 
 const sendChat = (data) => ({
   type: SEND,
@@ -11,4 +13,22 @@ const setReceiverId = (id) => ({
   payload: id,
 });
 
-export { SEND, SET_RECEIVER, sendChat, setReceiverId };
+const setAllRecentChatsInRedux = (data) => {
+  return {
+    type: SET_ALL_RECENT_CHATS,
+    payload: data,
+  };
+};
+
+const setChatsInRedux = (data) => ({ type: SET_CHATS, payload: data });
+
+export {
+  SEND,
+  SET_RECEIVER,
+  SET_CHATS,
+  sendChat,
+  setReceiverId,
+  SET_ALL_RECENT_CHATS,
+  setAllRecentChatsInRedux,
+  setChatsInRedux,
+};

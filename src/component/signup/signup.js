@@ -21,14 +21,14 @@ function Signup(props) {
     }
     //add user to firestore user collection
     const { username, phone } = values;
-    const firestoreResponse = await addUserToFirestore({
+    const { uid } = res.user;
+    const firestoreResponse = await addUserToFirestore(uid, {
       username,
       email,
       phone,
     });
-    if (firestoreResponse.uid) {
+    if (!firestoreResponse) {
       //add user to redux store
-      const { uid } = firestoreResponse;
       props.addUser({ uid, username, email, phone });
     }
   };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReceiverChat from "./receiver-chat";
 import SenderChat from "./sender-chat";
 import ChatInput from "./chat-input";
@@ -7,9 +7,20 @@ import { Divider } from "antd";
 
 //redux
 import { connect } from "react-redux";
-import { sendChat } from "../../../../redux-store/actions/chat";
+import {
+  sendChat,
+  setChatsInRedux,
+} from "../../../../redux-store/actions/chat";
 import { addChatToFirestore } from "../../../../firebase/database";
+import { getChatsFromFirestore } from "../../../../firebase/database";
+
 const Chats = (props) => {
+  const sendChatsToRedux = async () => {
+    const chats = await getChatsFromFirestore(props.userId, props.receiver.id);
+    console.log("chats from firetore", chats);
+    props.setTheChats(chats);
+  };
+  useEffect(() => sendChatsToRedux(), [props.receiver.id]);
   const handleChatSubmit = async (chat) => {
     const chatData = {
       senderId: props.userId,
@@ -27,7 +38,6 @@ const Chats = (props) => {
     props.submitChat({ ...res, timeStamp });
   };
 
-  const sessionId = props.userId + props.receiver.id;
   return (
     <>
       <SpaceHead fullname={props.receiver?.fullname} />
@@ -38,7 +48,7 @@ const Chats = (props) => {
           margin: "20px 5%",
         }}
       >
-        {props.chats[sessionId]?.map((chat) =>
+        {props.chats[props.receiver.id]?.map((chat) =>
           chat.id === props.userId ? (
             <SenderChat key={chat.id} chat={chat} />
           ) : (
@@ -61,5 +71,6 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   submitChat: (data) => dispatch(sendChat(data)),
+  setTheChats: (data) => dispatch(setChatsInRedux(data)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Chats);

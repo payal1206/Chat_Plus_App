@@ -6,8 +6,10 @@ import SidePanel from "./side-panel/sidePanel";
 import RightSpace from "./right-space/chat/rightSpace";
 import MiddleSpace from "./middle-space/general/middleSpace";
 import Loading from "./loading/loading";
-import { setAllContacts } from "../../firebase/database";
+import { setAllContacts, setAllRecentChats } from "../../firebase/database";
 import { setAllContactsInRedux } from "../../redux-store/actions/contact";
+import { setAllRecentChatsInRedux } from "../../redux-store/actions/chat";
+
 import { connect } from "react-redux";
 
 function Dashboard(props) {
@@ -15,16 +17,15 @@ function Dashboard(props) {
 
   const initialAppData = async () => {
     const contacts = await setAllContacts(props.userId);
-    // const recentChats = setAllRecentChats();
+    const recentChats = await setAllRecentChats(props.userId);
     props.setAllContacts(contacts);
-    // props.setAllRecentChats(recentChats);
-    if (contacts.length > 0) {
+    props.setAllRecentChats(recentChats);
+    if (contacts && recentChats) {
       setTimeout(() => setIsLoading(false), 7);
     }
   };
 
-  initialAppData();
-
+  useEffect(() => initialAppData(), []);
   const mainDashboard = (
     <Paper className={classes.muiPaper}>
       <Grid container style={{ height: "100%" }}>
@@ -46,7 +47,10 @@ function Dashboard(props) {
 const mapStateToProps = (state) => ({
   userId: state.auth_slice.user.id,
 });
+
 const mapDispatchtoProps = (dispatch) => ({
   setAllContacts: (data) => dispatch(setAllContactsInRedux(data)),
+  setAllRecentChats: (data) => dispatch(setAllRecentChatsInRedux(data)),
 });
+
 export default connect(mapStateToProps, mapDispatchtoProps)(Dashboard);

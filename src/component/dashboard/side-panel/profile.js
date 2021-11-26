@@ -1,6 +1,8 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
-
+import { connect } from "react-redux";
+import { UserProfileToFirestore } from "../../../firebase/database";
+import { useEffect } from "react";
 const styles = {
   avartar: {
     display: "flex",
@@ -22,8 +24,18 @@ const styles = {
   },
   text: {},
 };
-const Profile = () => {
+const Profile = (props) => {
+  const UserProfile = async () => {
+    await UserProfileToFirestore(props.userid);
+    console.log(props.userid)
+    // console.log("resss",res.data());
+  };
+  useEffect(() => {
+    // Update the document title using the browser API
+    UserProfile()
+  },[]);
   return (
+
     <>
       <div style={styles.avartar}>
         <div style={styles.circle}>
@@ -54,4 +66,8 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  userid: state.auth_slice.user.id,
+});
+
+export default connect(mapStateToProps)(Profile);

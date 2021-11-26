@@ -12,7 +12,7 @@ function SidePanel(props) {
         <TopIcons />
       </div>
       <div className={classes.profileDiv}>
-        <Profile />
+        <Profile  />
       </div>
       <div className={classes.navigations}>
         <Navigation />

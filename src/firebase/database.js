@@ -87,6 +87,17 @@ async function addChatToFirestore(data) {
 function setAllRecentChats() {
   return usefetchAllFromFirestore(db, "recentChats");
 }
+//profile
+async function UserProfileToFirestore(id) {
+  try {
+    const docRef = doc(db, "users", id);
+    const docSnap = await getDoc(docRef);
+
+    console.log(docSnap.data());
+  } catch (err) {
+    console.log("an error occured", err.message);
+  }
+}
 
 // const ans = asyncCall();
 export {
@@ -96,8 +107,8 @@ export {
   editContactToFirestore,
   deleteContactFromFirestore,
   setAllContacts,
+  UserProfileToFirestore,
 };
-
 
 // notication came before adding the contact
 //get contact

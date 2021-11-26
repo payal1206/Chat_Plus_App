@@ -27,10 +27,10 @@ const styles = {
 
 const Profile = (props) => {
   const [state, setstate] = useState({});
+
   const UserProfile = async () => {
     const res = await UserProfileToFirestore(props.userid);
-    // console.log(props.userid)
-    // console.log("resss",res.data());
+    console.log("user", res);
     setstate(res);
   };
 
@@ -54,7 +54,7 @@ const Profile = (props) => {
             marginBottom: "0px",
           }}
         >
-          {state.username}
+          {state?.username}
         </p>
         <p
           style={{
@@ -62,7 +62,7 @@ const Profile = (props) => {
             fontWeight: "lighter",
           }}
         >
-      {state.email}
+          {state?.email}
         </p>
       </div>
     </>

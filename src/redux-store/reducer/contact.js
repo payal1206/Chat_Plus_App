@@ -4,6 +4,7 @@ import {
   EDIT_CONTACT,
   SET_ALL_CONTACTS,
 } from "../actions/contact";
+
 const initialState = [];
 
 const Reducer = (state = initialState, action) => {

@@ -2,7 +2,6 @@ const ADD_CONTACT = "ADD_CONTACT";
 const DELETE_CONTACT = "DELETE_CONTACT";
 const EDIT_CONTACT = "EDIT_CONTACT";
 const SET_ALL_CONTACTS = "SET_ALL_CONTACTS";
-const RECENT_CHAT = "RECENT_CHAT";
 
 const Addcontact = (data) => {
   return {
@@ -29,19 +28,12 @@ const setAllContactsInRedux = (data) => {
     payload: data,
   };
 };
-// const RecentChats = (data) => {
-//   return {
-//     type:RECENT_CHAT,
-//     payload: data,
-//   };
-// };
 
 export {
   ADD_CONTACT,
   DELETE_CONTACT,
   EDIT_CONTACT,
   SET_ALL_CONTACTS,
-  // RECENT_CHAT,
   Addcontact,
   deletecontact,
   editContact,

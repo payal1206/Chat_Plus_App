@@ -1,23 +1,35 @@
-import { useState, useEffect } from "react";
 import { getDocs, collection, query, where } from "@firebase/firestore";
 
-const UsefetchAllFromFirestore = (db, col, uid) => {
-  const [fetchedData, setFetchedData] = useState([]);
-  const fetchRequest = async () => {
-    try {
-      const result = [];
-      const selectedCollection = collection(db, col);
-      const searchQuery = query(
-        selectedCollection,
-        where("user_id", "==", uid)
-      );
-      const res = await getDocs(searchQuery);
-      res.forEach((x) => result.push({ id: x.id, ...x.data() }));
-      setFetchedData(result);
-    } catch (err) {}
-  };
-  useEffect(() => fetchRequest(), []);
+export const fetchAllFromFirestore = async (db, col, uid, p = "user_id") => {
+  const fetchedData = [];
+  try {
+    const selectedCollection = collection(db, col);
+    const searchQuery = query(selectedCollection, where(p, "==", uid));
+    const res = await getDocs(searchQuery);
+    res.forEach((x) => fetchedData.push({ id: x.id, ...x.data() }));
+  } catch (err) {
+    console.log("the collection", col);
+    console.log(err);
+  }
+
   return fetchedData;
 };
 
-export default UsefetchAllFromFirestore;
+export const fetchChatHistory = (db, col) => {
+  const chatHistory = [];
+  const selectedCollection = collection(db, col);
+  return async (uid, cid) => {
+    const searchQuery = query(
+      selectedCollection,
+      where("senderId", "==", uid),
+      where("receiverId", "==", cid)
+    );
+    try {
+      const res = await getDocs(searchQuery);
+      res.forEach((x) => chatHistory.push({ id: x.id, ...x.data() }));
+    } catch (err) {
+      console.log(err);
+    }
+    return chatHistory;
+  };
+};

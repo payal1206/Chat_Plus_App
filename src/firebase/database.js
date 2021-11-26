@@ -9,14 +9,13 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "./config";
-import usefetchAllFromFirestore from "./usefetch";
+import { fetchAllFromFirestore, fetchChatHistory } from "./usefetch";
 
 //===users=====
 //addUser
-async function addUserToFirestore(data) {
+async function addUserToFirestore(id, data) {
   try {
-    const res = await addDoc(collection(db, "users"), { ...data });
-    return { uid: res.id };
+    await setDoc(doc(collection(db, "users"), id), { ...data });
   } catch (err) {
     console.log("an error occured", err.message);
   }
@@ -33,7 +32,7 @@ async function asyncCall() {
 // ===contacts====
 //get all contacts
 function setAllContacts(uid) {
-  return usefetchAllFromFirestore(db, "contacts", uid);
+  return fetchAllFromFirestore(db, "contacts", uid);
 }
 //add contact
 async function addContactToFirestore(data) {
@@ -72,7 +71,7 @@ async function addChatToFirestore(data) {
       createdAt: serverTimestamp(),
     });
     //add recent chat
-    await setDoc(doc(collection(db, "recentChats"), id), data);
+    await setDoc(doc(collection(db, "recentChats"), data.receiverId), data);
     //fetch the added chat
     const ref = doc(db, "chats", id);
     const fetchRes = await getDoc(ref);
@@ -84,9 +83,11 @@ async function addChatToFirestore(data) {
   }
 }
 //get all recent chats
-function setAllRecentChats() {
-  return usefetchAllFromFirestore(db, "recentChats");
+function setAllRecentChats(id) {
+  return fetchAllFromFirestore(db, "recentChats", id, "senderId");
 }
+//get chats
+const getChatsFromFirestore = fetchChatHistory(db, "chats");
 
 // const ans = asyncCall();
 export {
@@ -96,8 +97,9 @@ export {
   editContactToFirestore,
   deleteContactFromFirestore,
   setAllContacts,
+  setAllRecentChats,
+  getChatsFromFirestore,
 };
-
 
 // notication came before adding the contact
 //get contact

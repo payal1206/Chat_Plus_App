@@ -28,16 +28,11 @@ const styles = {
 const Profile = (props) => {
   const [state, setstate] = useState({});
 
-  const UserProfile = async () => {
+  const getUserInfo = async () => {
     const res = await UserProfileToFirestore(props.userid);
-    console.log("user", res);
     setstate(res);
   };
-
-  useEffect(() => {
-    // Update the document title using the browser API
-    UserProfile();
-  }, []);
+  useEffect(() => getUserInfo(), []);
   return (
     <>
       <div style={styles.avartar}>

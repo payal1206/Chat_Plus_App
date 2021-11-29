@@ -21,11 +21,11 @@ function Dashboard(props) {
     props.setAllContacts(contacts);
     props.setAllRecentChats(recentChats);
     if (contacts && recentChats) {
-      setTimeout(() => setIsLoading(false), 7);
+      setIsLoading(false);
     }
   };
-
   useEffect(() => initialAppData(), []);
+  //
   const mainDashboard = (
     <Paper className={classes.muiPaper}>
       <Grid container style={{ height: "100%" }}>

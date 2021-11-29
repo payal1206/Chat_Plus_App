@@ -18,9 +18,12 @@ const Chats = (props) => {
   const sendChatsToRedux = async () => {
     const chats = await getChatsFromFirestore(props.userId, props.receiver.id);
     console.log("chats from firetore", chats);
-    props.setTheChats(chats);
+    if (chats.length > 0) {
+      props.setTheChats(chats);
+    }
   };
   useEffect(() => sendChatsToRedux(), [props.receiver.id]);
+
   const handleChatSubmit = async (chat) => {
     const chatData = {
       senderId: props.userId,

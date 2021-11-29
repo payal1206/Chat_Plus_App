@@ -43,11 +43,10 @@ export default function chatReducer(state = initialState, action) {
       const { payload } = action;
       const label = payload[0];
       console.log("label", label);
-      return state;
-      // return {
-      //   ...state,
-      //   chats: { ...state.chats, [payload[0].receiverId]: payload },
-      // };
+      return {
+        ...state,
+        chats: { ...state.chats, [label.receiverId]: payload },
+      };
     }
     case SET_ALL_RECENT_CHATS:
       return {

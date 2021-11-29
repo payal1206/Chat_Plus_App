@@ -21,13 +21,13 @@ async function addUserToFirestore(id, data) {
   }
 }
 //getUsers
-async function asyncCall() {
-  //getting data
-  const querySnapshot = await getDocs(collection(db, "users"));
-  querySnapshot.forEach((doc) => {
-    console.log(doc.data());
-  });
-}
+// async function asyncCall() {
+//   //getting data
+//   const querySnapshot = await getDocs(collection(db, "users"));
+//   querySnapshot.forEach((doc) => {
+//     console.log(doc.data());
+//   });
+// }
 
 // ===contacts====
 //get all contacts

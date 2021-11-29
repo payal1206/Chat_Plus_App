@@ -7,6 +7,7 @@ import {
   selectChatsComponent,
 } from "../../../../redux-store/actions/view";
 import { setReceiverId } from "../../../../redux-store/actions/chat";
+import { height } from "@mui/system";
 
 const ChattedLists = (props) => {
   const handleChatViews = (chat) => {
@@ -20,7 +21,16 @@ const ChattedLists = (props) => {
     });
   };
   return (
-    <div>
+    <div
+      style={{
+        textoverflow: "ellipsis",
+        overflow: " hidden",
+        marginBottom:"24px",
+        whiteSpace:"...",
+        width:"250px",
+      
+      }}
+    >
       <List>
         {props.recentChat != undefined &&
           props.recentChat.map((chat, idx) => (

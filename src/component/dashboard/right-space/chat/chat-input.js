@@ -27,8 +27,6 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
-
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
@@ -55,6 +53,8 @@ const ChatInput = (props) => {
   };
 
   const handleChatSubmit = () => {
+    if (state == "") return;
+    
     props.chatInput(state);
     setstate("");
   };
@@ -62,39 +62,39 @@ const ChatInput = (props) => {
     <>
       <List>
         <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "40px",
-                  height: "40px",
-                  border: "1px solid grey",
-                  borderRadius: "50%",
-                }}
-              >
-                <AddIcon />
-              </div>
-            </ListItemIcon>
-            <ListItemText>
-              <Search>
-                <StyledInputBase
-                  value={state}
-                  onChange={handleChange}
-                  placeholder="Message…"
-                  // inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
-            </ListItemText>
-            <SendIcon
-
-              onClick={handleChatSubmit}
-              fontSize="large"
-              // style={{ color: "green" }}
-            />
-          </ListItemButton>
+          {/* <ListItemButton> */}
+          <ListItemIcon>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "40px",
+                height: "40px",
+                border: "1px solid grey",
+                borderRadius: "50%",
+              }}
+            >
+              <AddIcon />
+            </div>
+          </ListItemIcon>
+          <ListItemText>
+            <Search>
+              <StyledInputBase
+                value={state}
+                onChange={handleChange}
+                placeholder="Message…"
+                // inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </ListItemText>
+          <SendIcon
+            color="inherit"
+            onClick={handleChatSubmit}
+            fontSize="large"
+            // style={{ color: "green" }}
+          />
+          {/* </ListItemButton> */}
         </ListItem>
       </List>
     </>

@@ -24,7 +24,7 @@ const ContactListItem = (props) => {
         <ListItemButton>
           <ListItemIcon>
             <Avatar>
-              <Avatar alt="Pemy Sharp" src="" />
+              <Avatar alt="Remy Sharp" src="" />
             </Avatar>
           </ListItemIcon>
           <ListItemText
@@ -32,14 +32,15 @@ const ContactListItem = (props) => {
             secondary={details.email}
             onClick={showChatUI}
           />
-          <Dropdown
+           <Dropdown
             trigger={["click"]}
             overlay={menu}
             placement="bottomLeft"
             arrow
           >
+        {/* {  <div></div>} */}
             <MoreVertOutlinedIcon style={{ color: "gray" }} />
-          </Dropdown>
+          </Dropdown> 
         </ListItemButton>
       </ListItem>
 

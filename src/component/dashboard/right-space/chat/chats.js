@@ -4,6 +4,7 @@ import SenderChat from "./sender-chat";
 import ChatInput from "./chat-input";
 import SpaceHead from "../general/right-space-layout/right-space-head";
 import { Divider } from "antd";
+import "./scroll.css"
 
 //redux
 import { connect } from "react-redux";
@@ -22,6 +23,7 @@ const Chats = (props) => {
   };
   useEffect(() => sendChatsToRedux(), [props.receiver.id]);
   const handleChatSubmit = async (chat) => {
+    //add here
     const chatData = {
       senderId: props.userId,
       receiverId: props.receiver.id,
@@ -41,13 +43,16 @@ const Chats = (props) => {
   return (
     <>
       <SpaceHead fullname={props.receiver?.fullname} />
-      <div //add scrollbar here
+      <div  className="scrollbar"//add scrollbar here 
         style={{
           height: "550px",
           width: "90%",
           margin: "20px 5%",
+          
+          
         }}
       >
+      
         {props.chats[props.receiver.id]?.map((chat) =>
           chat.id === props.userId ? (
             <SenderChat key={chat.id} chat={chat} />

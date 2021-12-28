@@ -7,14 +7,13 @@ import {
   selectChatsComponent,
 } from "../../../../redux-store/actions/view";
 import { setReceiverId } from "../../../../redux-store/actions/chat";
-import { height } from "@mui/system";
 
 const ChattedLists = (props) => {
   const handleChatViews = (chat) => {
-    console.log(chat);
     const { receiverId, fullname } = chat;
     props.showTheChatComponent();
     props.showTheChatUI();
+    console.log("changing receiver from " + props.prevR + "to " + fullname);
     props.setTheReceiver({
       id: receiverId,
       fullname: fullname,
@@ -25,10 +24,9 @@ const ChattedLists = (props) => {
       style={{
         textoverflow: "ellipsis",
         overflow: " hidden",
-        marginBottom:"24px",
-        whiteSpace:"...",
-        width:"250px",
-      
+        marginBottom: "24px",
+        whiteSpace: "...",
+        width: "250px",
       }}
     >
       <List>
@@ -48,6 +46,7 @@ const ChattedLists = (props) => {
 const mapStateToProps = (state) => ({
   recentChat: state.chat_slice.recentChats,
   contacts: state.contact_slice,
+  prevR: state.chat_slice.currentReceiver.fullname,
 });
 const mapDispatchtoProps = (dispatch) => ({
   showTheChatUI: () => dispatch(selectChatHistory()),

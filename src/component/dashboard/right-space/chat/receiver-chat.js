@@ -1,29 +1,25 @@
 import React from "react";
-import classes from "./receiver-chat.module.css";
+import classes from "./sender-chat.module.css";
 import Avatar from "@mui/material/Avatar";
 
-const SenderChat = (props) => {
-  const { chat } = props;
+const ReceiverChat = (props) => {
   return (
-    <>
     <div className={classes.chatBox}>
-      <p className={classes.time}>{chat.timeStamp} </p>
-      &nbsp;&nbsp;
-      <div className={classes.textBox}>
-        <div className={classes.textDiv}>
-          <p className={classes.message}>{chat.message} </p>
-        </div>
-      </div>
       <div className={classes.avatar}>
         <Avatar
-          alt="Payal"
+          alt="hello"
           src="/static/images/avatar/1.jpg"
           sx={{ width: 56, height: 56 }}
         />
       </div>
+      <div className={classes.textBox}>
+        <div className={classes.textDiv}>
+          <p className={classes.message}>crazy man !!!!!</p>
+        </div>
+      </div>
+      <p className={classes.time}>time</p>
     </div>
-    </>
   );
 };
 
-export default SenderChat;
+export default ReceiverChat;

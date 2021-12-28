@@ -16,9 +16,9 @@ export const fetchAllFromFirestore = async (db, col, uid, p = "user_id") => {
 };
 
 export const fetchChatHistory = (db, col) => {
-  const chatHistory = [];
   const selectedCollection = collection(db, col);
   return async (uid, cid) => {
+    const chatHistory = [];
     const searchQuery = query(
       selectedCollection,
       where("senderId", "==", uid),

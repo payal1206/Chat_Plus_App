@@ -34,7 +34,6 @@ export default function chatReducer(state = initialState, action) {
           ) //it remove the recentchat if it is false
         : state.recentChats;
       const updatedRecentChats = [payload, ...filteredRecentChats];
-
       return { ...state, chats: newChats, recentChats: updatedRecentChats };
     }
     case SET_RECEIVER:
@@ -42,7 +41,8 @@ export default function chatReducer(state = initialState, action) {
     case SET_CHATS: {
       const { payload } = action;
       const label = payload[0];
-      console.log("label", label);
+      // console.log("previous chats", state.chats[label.receiverId]);
+      // console.log("incoming chats", payload);
       return {
         ...state,
         chats: { ...state.chats, [label.receiverId]: payload },

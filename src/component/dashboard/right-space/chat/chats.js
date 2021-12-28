@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import ReceiverChat from "./receiver-chat";
-import SenderChat from "./sender-chat";
+import ReceiverChat from "./sender-chat";
+import SenderChat from "./receiver-chat";
 import ChatInput from "./chat-input";
 import SpaceHead from "../general/right-space-layout/right-space-head";
 import { Divider } from "antd";
-import "./scroll.css"
+import "./scroll.css";
 
 //redux
 import { connect } from "react-redux";
@@ -17,6 +17,7 @@ import { getChatsFromFirestore } from "../../../../firebase/database";
 
 const Chats = (props) => {
   const sendChatsToRedux = async () => {
+    // console.log("the current receiver is ", props.receiver.fullname);
     const chats = await getChatsFromFirestore(props.userId, props.receiver.id);
     console.log("chats from firetore", chats);
     if (chats.length > 0) {
@@ -38,24 +39,20 @@ const Chats = (props) => {
       window.alert(res.err);
       return;
     }
-    const time = res.createdAt.toDate();
-    const timeStamp = `${time.getHours()}:${time.getMinutes()}`;
-    props.submitChat({ ...res, timeStamp });
+    props.submitChat(res);
   };
 
   return (
     <>
       <SpaceHead fullname={props.receiver?.fullname} />
-      <div  className="scrollbar"//add scrollbar here 
+      <div
+        className="scrollbar" //add scrollbar here
         style={{
           height: "550px",
           width: "90%",
           margin: "20px 5%",
-          
-          
         }}
       >
-      
         {props.chats[props.receiver.id]?.map((chat) =>
           chat.id === props.userId ? (
             <SenderChat key={chat.id} chat={chat} />

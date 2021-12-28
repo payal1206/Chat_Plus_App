@@ -69,6 +69,7 @@ async function addChatToFirestore(data) {
     const { id } = await addDoc(collection(db, "chats"), {
       ...data,
       createdAt: serverTimestamp(),
+      sent: true,
     });
     //add recent chat
     await setDoc(doc(collection(db, "recentChats"), data.receiverId), data);

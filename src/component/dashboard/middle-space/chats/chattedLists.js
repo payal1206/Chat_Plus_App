@@ -13,7 +13,6 @@ const ChattedLists = (props) => {
     const { receiverId, fullname } = chat;
     props.showTheChatComponent();
     props.showTheChatUI();
-    console.log("changing receiver from " + props.prevR + "to " + fullname);
     props.setTheReceiver({
       id: receiverId,
       fullname: fullname,

@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./receiver-chat.module.css";
 import Avatar from "@mui/material/Avatar";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const SenderChat = (props) => {
   const { chat } = props;
@@ -10,7 +11,9 @@ const SenderChat = (props) => {
   return (
     <>
       <div className={classes.chatBox}>
-        <p className={classes.time}>{chat.timeStamp} </p>
+        <div className={classes.time}>
+          {chat.sent ? chat.timeStamp : <AccessTimeIcon />}{" "}
+        </div>
         &nbsp;&nbsp;
         <div className={classes.textBox}>
           <div className={classes.textDiv}>

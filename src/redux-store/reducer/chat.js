@@ -3,6 +3,7 @@ import {
   SET_RECEIVER,
   SET_ALL_RECENT_CHATS,
   SET_CHATS,
+  UPDATE_SENT_STATUS,
 } from "../actions/chat";
 
 const initialState = {
@@ -41,8 +42,6 @@ export default function chatReducer(state = initialState, action) {
     case SET_CHATS: {
       const { payload } = action;
       const label = payload[0];
-      // console.log("previous chats", state.chats[label.receiverId]);
-      // console.log("incoming chats", payload);
       return {
         ...state,
         chats: { ...state.chats, [label.receiverId]: payload },
@@ -52,6 +51,19 @@ export default function chatReducer(state = initialState, action) {
       return {
         ...state,
         recentChats: action.payload,
+      };
+    case UPDATE_SENT_STATUS:
+      const selectedChats = state.chats[action.payload.receiverId];
+      const updatedSelectedChats = selectedChats.map((chat) =>
+        chat.id === action.payload.id ? action.payload : chat
+      );
+      const chatsWithSentStatusUpdated = {
+        ...state.chats,
+        [action.payload.receiverId]: updatedSelectedChats,
+      };
+      return {
+        ...state,
+        chats: chatsWithSentStatusUpdated,
       };
     default:
       return state;

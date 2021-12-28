@@ -11,15 +11,14 @@ import { connect } from "react-redux";
 import {
   sendChat,
   setChatsInRedux,
+  updateChatSentStatusInRedux,
 } from "../../../../redux-store/actions/chat";
 import { addChatToFirestore } from "../../../../firebase/database";
 import { getChatsFromFirestore } from "../../../../firebase/database";
 
 const Chats = (props) => {
   const sendChatsToRedux = async () => {
-    // console.log("the current receiver is ", props.receiver.fullname);
     const chats = await getChatsFromFirestore(props.userId, props.receiver.id);
-    console.log("chats from firetore", chats);
     if (chats.length > 0) {
       props.setTheChats(chats);
     }
@@ -33,13 +32,15 @@ const Chats = (props) => {
       receiverId: props.receiver.id,
       message: chat,
       fullname: props.receiver.fullname,
+      sent: false,
     };
+    props.submitChat(chatData);
     const res = await addChatToFirestore(chatData);
     if (res.err) {
       window.alert(res.err);
       return;
     }
-    props.submitChat(res);
+    props.updateChatSentStatus(res);
   };
 
   return (
@@ -55,7 +56,7 @@ const Chats = (props) => {
       >
         {props.chats[props.receiver.id]?.map((chat) =>
           chat.id === props.userId ? (
-            <SenderChat key={chat.id} chat={chat} />
+            <SenderChat key={chat.id} chat={chat} sent={false} />
           ) : (
             <ReceiverChat key={chat.id} chat={chat} />
           )
@@ -77,5 +78,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   submitChat: (data) => dispatch(sendChat(data)),
   setTheChats: (data) => dispatch(setChatsInRedux(data)),
+  updateChatSentStatus: (id) => dispatch(updateChatSentStatusInRedux(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Chats);

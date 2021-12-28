@@ -53,10 +53,11 @@ const ChatInput = (props) => {
   };
 
   const handleChatSubmit = () => {
-    if (state == "") return;
+    if (state === "") return;
     props.chatInput(state);
     setstate("");
   };
+
   return (
     <>
       <List>

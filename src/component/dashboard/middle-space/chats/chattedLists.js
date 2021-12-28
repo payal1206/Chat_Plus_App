@@ -9,6 +9,14 @@ import {
 import { setReceiverId } from "../../../../redux-store/actions/chat";
 
 const ChattedLists = (props) => {
+  function truncateString(str, num) {
+    if (str.length > num) {
+      console.log(str);
+      return str.slice(0, num) + "..........";
+    } else {
+      return str;
+    }
+  }
   const handleChatViews = (chat) => {
     const { receiverId, fullname } = chat;
     props.showTheChatComponent();
@@ -22,21 +30,24 @@ const ChattedLists = (props) => {
     <div
       style={{
         textoverflow: "ellipsis",
-        overflow: " hidden",
+        overflow: "hidden",
         marginBottom: "24px",
         whiteSpace: "...",
-        width: "250px",
+        width: "325px",
       }}
     >
       <List>
         {props.recentChat != undefined &&
-          props.recentChat.map((chat, idx) => (
-            <ChattedList
-              key={idx}
-              details={chat}
-              showTheChatComponent={() => handleChatViews(chat)}
-            />
-          ))}
+          props.recentChat.map((chat, idx) => {
+            const str = truncateString(chat, 5);
+            return (
+              <ChattedList
+                key={idx}
+                details={str}
+                showTheChatComponent={() => handleChatViews(chat)}
+              />
+            );
+          })}
       </List>
     </div>
   );

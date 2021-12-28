@@ -3,6 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import { connect } from "react-redux";
 import { UserProfileToFirestore } from "../../../firebase/database";
 import { useEffect, useState } from "react";
+
 const styles = {
   avartar: {
     display: "flex",
@@ -41,7 +42,6 @@ const Profile = (props) => {
         </div>
       </div>
       <div style={styles.text}>
-        {/* <ListItemText primary="Payal Jain" secondary="payal@jain.com" /> */}
         <p
           style={{
             color: "white",
@@ -49,6 +49,7 @@ const Profile = (props) => {
             marginBottom: "0px",
           }}
         >
+        {/* console.log(state.username); */}
           {state?.username}
         </p>
         <p

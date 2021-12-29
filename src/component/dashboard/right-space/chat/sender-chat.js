@@ -8,6 +8,7 @@ const SenderChat = (props) => {
   // console.log("chat", chat);
   // const time = chat.createdAt.toDate();
   // const timeStamp = `${time.getHours()}:${time.getMinutes()}`;
+
   return (
     <>
       <div className={classes.chatBox}>

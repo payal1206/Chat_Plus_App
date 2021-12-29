@@ -15,7 +15,6 @@ const ChattedList = (props) => {
   return (
     <ListItem
       divider
-      bottom
       disablePadding
       // style={{
       //   padding: "10px",

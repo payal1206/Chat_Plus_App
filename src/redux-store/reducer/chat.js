@@ -54,8 +54,8 @@ export default function chatReducer(state = initialState, action) {
       };
     case UPDATE_SENT_STATUS:
       const selectedChats = state.chats[action.payload.receiverId];
-      const updatedSelectedChats = selectedChats.map((chat) =>
-        chat.id === action.payload.id ? action.payload : chat
+      const updatedSelectedChats = selectedChats.map(
+        (chat) => (chat.id === "temp_id" ? action.payload : chat) // using "temp_id" is a temporal solution
       );
       const chatsWithSentStatusUpdated = {
         ...state.chats,

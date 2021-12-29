@@ -34,7 +34,7 @@ const Chats = (props) => {
       fullname: props.receiver.fullname,
       sent: false,
     };
-    props.submitChat(chatData);
+    props.submitChat({ ...chatData, id: "temp_id" });
     const res = await addChatToFirestore(chatData);
     if (res.err) {
       window.alert(res.err);
@@ -78,6 +78,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   submitChat: (data) => dispatch(sendChat(data)),
   setTheChats: (data) => dispatch(setChatsInRedux(data)),
-  updateChatSentStatus: (id) => dispatch(updateChatSentStatusInRedux(id)),
+  updateChatSentStatus: (data) => dispatch(updateChatSentStatusInRedux(data)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Chats);

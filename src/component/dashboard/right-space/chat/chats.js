@@ -51,7 +51,7 @@ const Chats = (props) => {
       <div
         className="scrollbar" //add scrollbar here
         style={{
-          height: "550px",
+          height: "600px",
           width: "90%",
           margin: "20px 5%",
         }}
@@ -64,8 +64,14 @@ const Chats = (props) => {
           )
         )}
       </div>
-      <Divider />
-      <div>
+      <Divider style={{ marginBottom: "0px" }} />
+      <div
+        style={{
+          background: "whitesmoke",
+          height: "100px",
+          padding: " 15px 0px",
+        }}
+      >
         <ChatInput chatInput={(chat) => handleChatSubmit(chat)} />
       </div>
     </>

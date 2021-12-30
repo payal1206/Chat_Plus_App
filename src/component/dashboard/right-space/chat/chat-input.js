@@ -1,49 +1,8 @@
 import React, { useState } from "react";
-import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
-
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import SendIcon from "@mui/icons-material/Send";
-import AddIcon from "@mui/icons-material/Add";
-import { List, ListItemText } from "@mui/material";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: "20px",
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.35),
-  },
-  border: "1px solid rgba(203, 206, 206, 0.609)",
-  margin: theme.spacing(1),
-  marginLeft: "20px",
-  width: "100%",
-  height: "45px",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(),
-    width: "97%",
-  },
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    // transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "34ch",
-      "&:focus": {
-        width: "45ch",
-      },
-    },
-  },
-}));
-
+import { Grid } from "@mui/material";
+import "./input.css";
 const ChatInput = (props) => {
   const [state, setstate] = useState("");
 
@@ -59,45 +18,37 @@ const ChatInput = (props) => {
   };
 
   return (
-    <>
-      <List>
-        <ListItem disablePadding>
-          {/* <ListItemButton> */}
-          <ListItemIcon>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "40px",
-                height: "40px",
-                border: "1px solid grey",
-                borderRadius: "50%",
-              }}
-            >
-              <AddIcon />
-            </div>
-          </ListItemIcon>
-          <ListItemText>
-            <Search>
-              <StyledInputBase
-                value={state}
-                onChange={handleChange}
-                placeholder="Message…"
-                // inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
-          </ListItemText>
+    <div
+      style={{
+        height: "70px",
+        margin: "0px 2%",
+        width: "95%",
+      }}
+    >
+      <Grid container>
+        <Grid item xs={1}>
+          <AttachFileIcon
+            style={{ marginTop: "10px", height: "30px", width: "35px" }}
+          />
+        </Grid>
+        <Grid item xs={10}>
+          <textarea
+            className="text-area-input"
+            placeholder="Write your message..."
+            value={state}
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item xs={1}>
           <SendIcon
             color="inherit"
             onClick={handleChatSubmit}
             fontSize="large"
-            // style={{ color: "green" }}
+            style={{ marginTop: "7px", color: state !== "" ? "green" : "" }}
           />
-          {/* </ListItemButton> */}
-        </ListItem>
-      </List>
-    </>
+        </Grid>
+      </Grid>
+    </div>
   );
 };
 

@@ -5,7 +5,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const SenderChat = (props) => {
   const { chat } = props;
-  const time = getTime(chat.createdAt.seconds, chat.createdAt.nanoseconds);
+  const time = getTime(chat.createdAt?.seconds, chat.createdAt?.nanoseconds);
 
   return (
     <>

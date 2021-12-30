@@ -1,4 +1,10 @@
-import { getDocs, collection, query, where } from "@firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  orderBy,
+} from "@firebase/firestore";
 
 export const fetchAllFromFirestore = async (db, col, uid, p = "user_id") => {
   const fetchedData = [];
@@ -22,7 +28,8 @@ export const fetchChatHistory = (db, col) => {
     const searchQuery = query(
       selectedCollection,
       where("senderId", "==", uid),
-      where("receiverId", "==", cid)
+      where("receiverId", "==", cid),
+      orderBy("createdAt")
     );
     try {
       const res = await getDocs(searchQuery);

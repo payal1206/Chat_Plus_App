@@ -19,6 +19,7 @@ import { getChatsFromFirestore } from "../../../../firebase/database";
 const Chats = (props) => {
   const sendChatsToRedux = async () => {
     const chats = await getChatsFromFirestore(props.userId, props.receiver.id);
+    console.log("chats from firebase", chats);
     if (chats.length > 0) {
       props.setTheChats(chats);
     }
@@ -34,23 +35,14 @@ const Chats = (props) => {
       fullname: props.receiver.fullname,
       sent: false,
     };
-    // props.submitChat({ ...chatData, id: "temp_id" });
+    props.submitChat({ ...chatData, id: "temp_id" });
     const res = await addChatToFirestore(chatData);
     if (res.err) {
       window.alert(res.err);
       return;
     }
     const dateString = res.createdAt.toDate().toString();
-    // const date = dateString.split(" ");
-    // const sentDate = {
-    //   weekday: date[0],
-    //   month: date[1],
-    //   day: date[2],
-    //   year: date[3],
-    //   time: date[4],
-    // };
-    // console.log("sentDate", sentDate);
-    // props.updateChatSentStatus({ ...res, createdAt: sentDate });
+    props.updateChatSentStatus(res);
   };
 
   return (

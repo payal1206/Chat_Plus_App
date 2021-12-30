@@ -5,15 +5,13 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const SenderChat = (props) => {
   const { chat } = props;
-  // console.log("chat", chat);
-  // const time = chat.createdAt.toDate();
-  // const timeStamp = `${time.getHours()}:${time.getMinutes()}`;
+  const time = getTime(chat.createdAt.seconds, chat.createdAt.nanoseconds);
 
   return (
     <>
       <div className={classes.chatBox}>
         <div className={classes.time}>
-          {chat.sent ? chat.timeStamp : <AccessTimeIcon />}{" "}
+          {chat.sent ? time : <AccessTimeIcon />}{" "}
         </div>
         &nbsp;&nbsp;
         <div className={classes.textBox}>
@@ -34,3 +32,10 @@ const SenderChat = (props) => {
 };
 
 export default SenderChat;
+
+function getTime(mins, nanos) {
+  const totalMillis = nanos / 1000000 + mins * 1000;
+  const theDate = new Date(totalMillis);
+  const time = `${theDate.getHours()}:${theDate.getMinutes()}`;
+  return time;
+}

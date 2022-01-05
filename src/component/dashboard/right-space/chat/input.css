@@ -1,0 +1,14 @@
+.text-area-input {
+  display: inline;
+  width: 100%;
+  /* margin: 10px 15px; */
+  border-radius: 50px;
+  padding-left: 15px;
+  padding-top: 10px;
+  height: 50px;
+  font-size: 15px;
+}
+
+.text-area-input:focus {
+  border: 1px solid green;
+}

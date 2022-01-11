@@ -4,14 +4,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-// import hello from "../default/image/avatar/hello.jpeg";
-import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-import { Dropdown } from "antd";
 import Hello from "../../right-space/general/default/image/avatar//hello.jpeg";
-import { Typography } from "@mui/material";
 
 const ChattedList = (props) => {
   const { details } = props;
+  const shortMessage = truncateString(details.message, 30);
+
   return (
     <ListItem
       divider
@@ -29,7 +27,7 @@ const ChattedList = (props) => {
         <ListItemText
           onClick={props.showTheChatComponent}
           primary={details.fullname}
-          secondary={details.message}
+          secondary={shortMessage}
         />
       </ListItemButton>
       {/* <Typography>{details.timeStamp}</Typography> */}
@@ -38,3 +36,11 @@ const ChattedList = (props) => {
 };
 
 export default ChattedList;
+
+function truncateString(str, num) {
+  if (str.length > num) {
+    return str.slice(0, num) + "...";
+  } else {
+    return str;
+  }
+}

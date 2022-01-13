@@ -18,7 +18,7 @@ import { getChatsFromFirestore } from "../../../../firebase/database";
 
 const Chats = (props) => {
   const sendChatsToRedux = async () => {
-    const chats = await getChatsFromFirestore(props.userId, props.receiver.id);
+    const chats = await getChatsFromFirestore(props.user.id, props.receiver.id);
     console.log("chats from firebase", chats);
     if (chats.length > 0) {
       props.setTheChats(chats);
@@ -28,11 +28,11 @@ const Chats = (props) => {
 
   const handleChatSubmit = async (chat) => {
     //add here
+    console.log("current receiver", props.receiver);
     const chatData = {
-      senderId: props.userId,
-      receiverId: props.receiver.id,
+      senderId: props.user.phone,
+      receiverId: props.receiver.id, //this is phone number
       message: chat,
-      fullname: props.receiver.fullname,
       sent: false,
     };
     props.submitChat({ ...chatData, id: "temp_id" });
@@ -79,7 +79,7 @@ const Chats = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  userId: state.auth_slice.user.id,
+  user: state.auth_slice.user,
   chats: state.chat_slice.chats,
   receiver: state.chat_slice.currentReceiver,
 });

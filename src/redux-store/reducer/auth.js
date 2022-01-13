@@ -7,6 +7,7 @@ const initialState = {
   },
   user: {
     id: "",
+    phone: "",
     username: "",
     loggedin: false,
   },
@@ -21,8 +22,7 @@ function authReducer(state = initialState, action) {
           showSignupComponent: false,
         },
         user: {
-          id: action.payload.id,
-          username: action.payload.username,
+          ...action.payload,
           loggedin: true,
         },
       };
@@ -51,6 +51,7 @@ function authReducer(state = initialState, action) {
         user: {
           id: "",
           username: "",
+          phone: "",
           loggedin: false,
         },
 

@@ -9,7 +9,7 @@ import {
 const initialState = {
   chats: {},
   currentReceiver: {
-    id: "",
+    id: "", //this id is the phone number
     fullname: "",
   },
   recentChats: [],

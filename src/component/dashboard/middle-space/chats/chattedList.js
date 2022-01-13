@@ -7,8 +7,16 @@ import Avatar from "@mui/material/Avatar";
 import Hello from "../../right-space/general/default/image/avatar//hello.jpeg";
 
 const ChattedList = (props) => {
-  const { details } = props;
-  const shortMessage = truncateString(details.message, 30);
+  const {
+    details: { message, receiverId, senderId },
+  } = props;
+  const theReceiverId = senderId === props.user.phone ? receiverId : senderId;
+  // console.log("contact", props.contacts);
+  const receiver = props.contacts.filter(
+    ({ phone }) => theReceiverId === phone
+  );
+  const displayName = receiver.length > 0 ? receiver[0].name : theReceiverId;
+  const shortMessage = truncateString(message, 30);
 
   return (
     <ListItem
@@ -26,7 +34,7 @@ const ChattedList = (props) => {
         </ListItemIcon>
         <ListItemText
           onClick={props.showTheChatComponent}
-          primary={details.fullname}
+          primary={displayName}
           secondary={shortMessage}
         />
       </ListItemButton>

@@ -7,7 +7,7 @@ import {
   selectSignupComponent,
   loginUser,
 } from "../../redux-store/actions/auth";
-
+import { getUserPhoneNumber } from "../../firebase/database";
 import { signinUserWithUserEmail } from "../../firebase/auth";
 
 function Signin(props) {
@@ -17,10 +17,12 @@ function Signin(props) {
     const res = await signinUserWithUserEmail(email, password);
     if (!res.errorMessage) {
       const { uid, email } = res.user;
+      const phone = await getUserPhoneNumber(uid);
       setTimeout(
         props.handleUserLogin({
           id: uid,
           username: email,
+          phone,
         }),
         10000
       );

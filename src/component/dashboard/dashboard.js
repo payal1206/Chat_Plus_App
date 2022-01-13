@@ -16,8 +16,9 @@ function Dashboard(props) {
   const [isLoading, setIsLoading] = useState(true);
 
   const initialAppData = async () => {
-    const contacts = await setAllContacts(props.userId);
-    const recentChats = await setAllRecentChats(props.userId);
+    const contacts = await setAllContacts(props.user.id);
+    const recentChats = await setAllRecentChats(props.user.phone);
+    console.log("recents", recentChats);
     props.setAllContacts(contacts);
     props.setAllRecentChats(recentChats);
     if (contacts && recentChats) {
@@ -45,7 +46,7 @@ function Dashboard(props) {
   return isLoading ? <Loading /> : mainDashboard;
 }
 const mapStateToProps = (state) => ({
-  userId: state.auth_slice.user.id,
+  user: state.auth_slice.user,
 });
 
 const mapDispatchtoProps = (dispatch) => ({

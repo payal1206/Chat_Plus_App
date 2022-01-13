@@ -20,11 +20,11 @@ const ContactList = (props) => {
   );
 
   const handleChatViews = (contact) => {
-    const { id, name } = contact;
+    const { phone, name } = contact;
     props.showTheChatComponent();
     props.showTheChatUI();
     props.setTheReceiver({
-      id: id,
+      id: phone,
       fullname: name,
     });
   };

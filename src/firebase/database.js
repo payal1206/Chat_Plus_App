@@ -2,7 +2,6 @@ import {
   collection,
   doc,
   addDoc,
-  getDocs,
   getDoc,
   setDoc,
   deleteDoc,
@@ -19,6 +18,13 @@ async function addUserToFirestore(id, data) {
   } catch (err) {
     console.log("an error occured", err.message);
   }
+}
+
+async function getUserPhoneNumber(id) {
+  const ref = doc(db, "users", id);
+  const response = await getDoc(ref);
+  const data = response.data();
+  return data.phone;
 }
 //getUsers
 // async function asyncCall() {
@@ -84,15 +90,27 @@ async function addChatToFirestore(data) {
   }
 }
 //get all recent chats
-function setAllRecentChats(id) {
-  return fetchAllFromFirestore(db, "recentChats", id, "senderId");
+async function setAllRecentChats(id) {
+  const sentByUser = await fetchAllFromFirestore(
+    db,
+    "recentChats",
+    id,
+    "senderId"
+  );
+  const receivedByUser = await fetchAllFromFirestore(
+    db,
+    "recentChats",
+    id,
+    "receiverId"
+  );
+  console.log("merging", [...sentByUser, ...receivedByUser]);
+  return [...sentByUser, ...receivedByUser];
 }
 //profile
 async function UserProfileToFirestore(id) {
   try {
     const docRef = doc(db, "users", id);
     const docSnap = await getDoc(docRef);
-
     return docSnap.data();
   } catch (err) {
     console.log("an error occured", err.message);
@@ -112,6 +130,7 @@ export {
   UserProfileToFirestore,
   setAllRecentChats,
   getChatsFromFirestore,
+  getUserPhoneNumber,
 };
 
 // notication came before adding the contact

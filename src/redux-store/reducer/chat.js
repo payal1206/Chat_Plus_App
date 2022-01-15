@@ -25,14 +25,13 @@ export default function chatReducer(state = initialState, action) {
           ? [...state.chats[payload.receiverId], payload]
           : [payload],
       };
-
-      const recentReceiverIds = state.recentChats.map(
-        ({ receiverId }) => receiverId
-      );
-      const filteredRecentChats = recentReceiverIds.includes(payload.receiverId)
+      //get all linkIds from recentChats
+      const recentLinkIds = state.recentChats.map(({ linkId }) => linkId);
+      //check if incoming linkId exist in recentChats
+      const filteredRecentChats = recentLinkIds.includes(payload.linkId)
         ? state.recentChats.filter(
-            (recentchat) => recentchat.receiverId != payload.receiverId
-          ) //it remove the recentchat if it is false
+            (recentchat) => recentchat.linkId != payload.linkId
+          ) //if the linkId exist? replace the chat
         : state.recentChats;
       const updatedRecentChats = [payload, ...filteredRecentChats];
       return { ...state, chats: newChats, recentChats: updatedRecentChats };

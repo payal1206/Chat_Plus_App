@@ -3,6 +3,7 @@ import ReceiverChat from "./sender-chat";
 import SenderChat from "./receiver-chat";
 import ChatInput from "./chat-input";
 import SpaceHead from "../general/right-space-layout/right-space-head";
+import generateLinkId from "../../../../helper_modules/generateLink";
 import { Divider } from "antd";
 import "./scroll.css";
 
@@ -32,6 +33,7 @@ const Chats = (props) => {
     const chatData = {
       senderId: props.user.phone,
       receiverId: props.receiver.id, //this is phone number
+      linkId: generateLinkId(props.user.phone, props.receiver.id),
       message: chat,
       sent: false,
     };

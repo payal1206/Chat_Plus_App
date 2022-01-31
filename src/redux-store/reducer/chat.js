@@ -21,8 +21,8 @@ export default function chatReducer(state = initialState, action) {
       const { payload } = action;
       const newChats = {
         ...state.chats,
-        [payload.receiverId]: state.chats[payload.receiverId]
-          ? [...state.chats[payload.receiverId], payload]
+        [payload.linkId]: state.chats[payload.linkId]
+          ? [...state.chats[payload.linkId], payload]
           : [payload],
       };
       //get all linkIds from recentChats
@@ -43,7 +43,7 @@ export default function chatReducer(state = initialState, action) {
       const label = payload[0];
       return {
         ...state,
-        chats: { ...state.chats, [label.receiverId]: payload },
+        chats: { ...state.chats, [label.linkId]: payload },
       };
     }
     case SET_ALL_RECENT_CHATS:
@@ -52,13 +52,13 @@ export default function chatReducer(state = initialState, action) {
         recentChats: action.payload,
       };
     case UPDATE_SENT_STATUS:
-      const selectedChats = state.chats[action.payload.receiverId];
+      const selectedChats = state.chats[action.payload.linkId];
       const updatedSelectedChats = selectedChats.map(
         (chat) => (chat.id === "temp_id" ? action.payload : chat) // using "temp_id" is a temporal solution
       );
       const chatsWithSentStatusUpdated = {
         ...state.chats,
-        [action.payload.receiverId]: updatedSelectedChats,
+        [action.payload.linkId]: updatedSelectedChats,
       };
       return {
         ...state,

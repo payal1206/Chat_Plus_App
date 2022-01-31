@@ -18,22 +18,21 @@ import { addChatToFirestore } from "../../../../firebase/database";
 import { getChatsFromFirestore } from "../../../../firebase/database";
 
 const Chats = (props) => {
+  const linkId = generateLinkId(props.user.phone, props.receiverId);
   const sendChatsToRedux = async () => {
-    const chats = await getChatsFromFirestore(props.user.id, props.receiver.id);
-    console.log("chats from firebase", chats);
+    const chats = await getChatsFromFirestore(linkId);
     if (chats.length > 0) {
       props.setTheChats(chats);
     }
   };
-  useEffect(() => sendChatsToRedux(), [props.receiver.id]);
+  useEffect(() => sendChatsToRedux(), [props.receiverId]);
 
   const handleChatSubmit = async (chat) => {
     //add here
-    console.log("current receiver", props.receiver);
     const chatData = {
       senderId: props.user.phone,
-      receiverId: props.receiver.id, //this is phone number
-      linkId: generateLinkId(props.user.phone, props.receiver.id),
+      receiverId: props.receiverId, //this is phone number
+      linkId,
       message: chat,
       sent: false,
     };
@@ -43,13 +42,15 @@ const Chats = (props) => {
       window.alert(res.err);
       return;
     }
-    const dateString = res.createdAt.toDate().toString();
     props.updateChatSentStatus(res);
   };
 
+  //getting receiver's fullname
+  const displayName = getDisplayName(props.contacts, props.receiverId);
+
   return (
     <>
-      <SpaceHead fullname={props.receiver?.fullname} />
+      <SpaceHead fullname={displayName} />
       <div
         className="scrollbar" //add scrollbar here
         style={{
@@ -58,7 +59,7 @@ const Chats = (props) => {
           margin: "20px 5%",
         }}
       >
-        {props.chats[props.receiver.id]?.map((chat) =>
+        {props.chats[linkId]?.map((chat) =>
           chat.id === props.userId ? (
             <SenderChat key={chat.id} chat={chat} />
           ) : (
@@ -79,11 +80,17 @@ const Chats = (props) => {
     </>
   );
 };
-
+//function for getting receiver's name or phone
+function getDisplayName(contacts, id) {
+  const theReceiver = contacts.filter(({ phone }) => phone === id);
+  const displayName = theReceiver[0] ? theReceiver[0]["name"] : id;
+  return displayName;
+}
 const mapStateToProps = (state) => ({
   user: state.auth_slice.user,
   chats: state.chat_slice.chats,
-  receiver: state.chat_slice.currentReceiver,
+  receiverId: state.chat_slice.currentReceiver.id,
+  contacts: state.contact_slice,
 });
 const mapDispatchToProps = (dispatch) => ({
   submitChat: (data) => dispatch(sendChat(data)),

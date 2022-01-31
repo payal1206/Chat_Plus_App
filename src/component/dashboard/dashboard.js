@@ -18,7 +18,6 @@ function Dashboard(props) {
   const initialAppData = async () => {
     const contacts = await setAllContacts(props.user.id);
     const recentChats = await setAllRecentChats(props.user.phone);
-    console.log("recents", recentChats);
     props.setAllContacts(contacts);
     props.setAllRecentChats(recentChats);
     if (contacts && recentChats) {

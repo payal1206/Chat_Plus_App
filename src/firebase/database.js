@@ -132,7 +132,3 @@ export {
   getChatsFromFirestore,
   getUserPhoneNumber,
 };
-
-// notication came before adding the contact
-//get contact
-//add chats

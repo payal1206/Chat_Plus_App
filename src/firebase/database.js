@@ -8,7 +8,11 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "./config";
-import { fetchAllFromFirestore, fetchChatHistory } from "./usefetch";
+import {
+  fetchAllFromFirestore,
+  fetchChatHistory,
+  chatListerner,
+} from "./usefetch";
 
 //===users=====
 //addUser
@@ -69,10 +73,12 @@ async function deleteContactFromFirestore(id) {
 
 //===chats=======
 // add chats and recentchats
+
 async function addChatToFirestore(data) {
   try {
     //add chat
-    const { id } = await addDoc(collection(db, "chats"), {
+    const collectionPath = `chats/link_${data.linkId}/${data.linkId}`;
+    const { id } = await addDoc(collection(db, collectionPath), {
       ...data,
       createdAt: serverTimestamp(),
       sent: true,
@@ -80,7 +86,7 @@ async function addChatToFirestore(data) {
     //add recent chat
     await setDoc(doc(collection(db, "recentChats"), data.linkId), data);
     //fetch the added chat
-    const ref = doc(db, "chats", id);
+    const ref = doc(db, collectionPath, id);
     const fetchRes = await getDoc(ref);
     const chat = fetchRes.data();
     //return the chat details
@@ -103,7 +109,6 @@ async function setAllRecentChats(id) {
     id,
     "receiverId"
   );
-  console.log("merging", [...sentByUser, ...receivedByUser]);
   return [...sentByUser, ...receivedByUser];
 }
 //profile
@@ -118,6 +123,7 @@ async function UserProfileToFirestore(id) {
 }
 //get chats
 const getChatsFromFirestore = fetchChatHistory(db, "chats");
+const listener = (id, arr) => chatListerner(db, "chats", id, arr);
 
 // const ans = asyncCall();
 export {
@@ -131,4 +137,5 @@ export {
   setAllRecentChats,
   getChatsFromFirestore,
   getUserPhoneNumber,
+  listener,
 };

@@ -1,11 +1,11 @@
-const SEND = "SEND_CHAT";
+const SEND_CHAT = "SEND_CHAT";
 const SET_RECEIVER = "SET_RECEIVER_ID";
 const SET_ALL_RECENT_CHATS = "SET_ALL_RECENT_CHATS";
 const SET_CHATS = "SET_CHATS";
 const UPDATE_SENT_STATUS = "UPDATE_SENT_STATUS";
 
 const sendChat = (data) => ({
-  type: SEND,
+  type: SEND_CHAT,
   payload: data,
 });
 
@@ -27,7 +27,7 @@ const updateChatSentStatusInRedux = (id) => ({
 const setChatsInRedux = (data) => ({ type: SET_CHATS, payload: data });
 
 export {
-  SEND,
+  SEND_CHAT,
   SET_RECEIVER,
   SET_CHATS,
   sendChat,

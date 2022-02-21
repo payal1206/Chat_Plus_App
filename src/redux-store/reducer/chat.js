@@ -1,5 +1,5 @@
 import {
-  SEND,
+  SEND_CHAT,
   SET_RECEIVER,
   SET_ALL_RECENT_CHATS,
   SET_CHATS,
@@ -17,12 +17,14 @@ const initialState = {
 
 export default function chatReducer(state = initialState, action) {
   switch (action.type) {
-    case SEND: {
+    case SEND_CHAT: {
       const { payload } = action;
       const newChats = {
         ...state.chats,
         [payload.linkId]: state.chats[payload.linkId]
-          ? [...state.chats[payload.linkId], payload]
+          ? chatExists(state.chats[payload.linkId], payload)
+            ? state.chats[payload.linkId]
+            : [...state.chats[payload.linkId], payload]
           : [payload],
       };
       //get all linkIds from recentChats
@@ -30,7 +32,7 @@ export default function chatReducer(state = initialState, action) {
       //check if incoming linkId exist in recentChats
       const filteredRecentChats = recentLinkIds.includes(payload.linkId)
         ? state.recentChats.filter(
-            (recentchat) => recentchat.linkId != payload.linkId
+            (recentchat) => recentchat.linkId !== payload.linkId
           ) //if the linkId exist? replace the chat
         : state.recentChats;
       const updatedRecentChats = [payload, ...filteredRecentChats];
@@ -67,4 +69,8 @@ export default function chatReducer(state = initialState, action) {
     default:
       return state;
   }
+}
+
+function chatExists(chats, chat) {
+  return chats.find(({ id }) => id === chat.id) !== undefined;
 }

@@ -1,23 +1,19 @@
-const msg1 = {
-  sid: "payal",
-  rid: "law",
-};
-const recentPairs = [
-  ["law", "payal"],
-  ["law", "sam"],
-];
-const meg0 = {
-  sid: "yashee",
-  rid: "payal",
-};
-const incoming_msg2 = {
-  sid: "law",
-  rid: "payal",
-};
+//const str = '[["wew","wewe"],["dsdsd","cdsdsf"],["123","4567"]]';
 
-// ["law","payal"] or ["payal","law"]
-if (recentPairs.includes([sid, rid]) || recentPairs.includes([rid, sid])) {
-  //replace
-} else {
-  //maintain
+function convertToArr(stringedArr) {
+  const splitter = (str, a) => str.slice(1, -1).split(a);
+  const temp = splitter(stringedArr, "],");
+  const stringedArrList = temp.map((el, idx) =>
+    idx !== temp.length - 1 ? (el + "]").toString() : el
+  );
+  return stringedArrList
+    .map((el) => splitter(el, ","))
+    .map((ele) => ele.map((e) => e.slice(1, -1)));
 }
+
+//['"wew"', '"wewe"'].map((el) => console.log(el));
+// console.log(convertToArr(str));
+// console.log(parseInt("[1]"));
+const str = '[["wew","wewe"],["dsdsd","cdsdsf"],["123","4567"]]';
+console.log("JSON:::", JSON.parse(str));
+console.log("self:::", convertToArr(str));

@@ -29,7 +29,7 @@ const ChattedLists = (props) => {
       }}
     >
       <List>
-        {props.recentChat != undefined &&
+        {props.recentChat !== undefined &&
           props.recentChat.map((chat, idx) => (
             <ChattedList
               user={props.user}

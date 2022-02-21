@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import ReceiverChat from "./sender-chat";
-import SenderChat from "./receiver-chat";
+import SingleChat from "./single-chat-layout";
 import ChatInput from "./chat-input";
 import SpaceHead from "../general/right-space-layout/right-space-head";
 import generateLinkId from "../../../../helper_modules/generateLink";
@@ -15,18 +14,35 @@ import {
   updateChatSentStatusInRedux,
 } from "../../../../redux-store/actions/chat";
 import { addChatToFirestore } from "../../../../firebase/database";
-import { getChatsFromFirestore } from "../../../../firebase/database";
+import { getChatsFromFirestore, listener } from "../../../../firebase/database";
 
 const Chats = (props) => {
   const linkId = generateLinkId(props.user.phone, props.receiverId);
+
+  const sendProgressChatsToRedux = () => {
+    const populateOngoingChatsArray = (chat) => {
+      const theChat = { id: chat.id, ...chat.data() };
+      const chatExistInRedux =
+        props.chats[linkId].find(({ id }) => id === chat.id) !== undefined;
+      if (!chatExistInRedux && theChat.senderId !== props.user.phone) {
+        props.submitChat(theChat);
+      }
+    };
+    listener(linkId, populateOngoingChatsArray);
+  };
+
   const sendChatsToRedux = async () => {
     const chats = await getChatsFromFirestore(linkId);
     if (chats.length > 0) {
       props.setTheChats(chats);
     }
   };
-  useEffect(() => sendChatsToRedux(), [props.receiverId]);
 
+  useEffect(() => sendChatsToRedux(), [linkId, sendChatsToRedux]);
+  useEffect(
+    () => sendProgressChatsToRedux(),
+    [linkId, sendProgressChatsToRedux]
+  );
   const handleChatSubmit = async (chat) => {
     //add here
     const chatData = {
@@ -60,10 +76,10 @@ const Chats = (props) => {
         }}
       >
         {props.chats[linkId]?.map((chat) =>
-          chat.id === props.userId ? (
-            <SenderChat key={chat.id} chat={chat} />
+          chat.senderId === props.user.phone ? (
+            <SingleChat senderUI key={chat.id} chat={chat} />
           ) : (
-            <ReceiverChat key={chat.id} chat={chat} />
+            <SingleChat key={chat.id} chat={chat} />
           )
         )}
       </div>

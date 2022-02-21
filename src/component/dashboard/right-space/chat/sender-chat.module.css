@@ -1,6 +1,6 @@
 .chatBox {
-  width: 70%;
-  text-align: left;
+  width: 100%;
+  text-align: right;
 }
 
 .avatar {
@@ -14,10 +14,10 @@
 .textBox {
   display: inline-block;
   margin-right: 10px;
-  max-width: 70%;
+  max-width: 100%;
 }
 .textDiv {
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(189, 190, 190);
   margin-top: 0px;
   min-height: 50px;
   max-width: 100%;

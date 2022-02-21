@@ -4,6 +4,7 @@ import {
   query,
   where,
   orderBy,
+  onSnapshot,
 } from "@firebase/firestore";
 
 export const fetchAllFromFirestore = async (db, col, uid, p = "user_id") => {
@@ -22,14 +23,11 @@ export const fetchAllFromFirestore = async (db, col, uid, p = "user_id") => {
 };
 
 export const fetchChatHistory = (db, col) => {
-  const selectedCollection = collection(db, col);
   return async (lid) => {
+    const theCollection = `${col}/link_${lid}/${lid}`;
+    const selectedCollection = collection(db, theCollection);
     const chatHistory = [];
-    const searchQuery = query(
-      selectedCollection,
-      where("linkId", "==", lid),
-      orderBy("createdAt")
-    );
+    const searchQuery = query(selectedCollection, orderBy("createdAt"));
     try {
       const res = await getDocs(searchQuery);
       res.forEach((x) => chatHistory.push({ id: x.id, ...x.data() }));
@@ -39,3 +37,14 @@ export const fetchChatHistory = (db, col) => {
     return chatHistory;
   };
 };
+
+export function chatListerner(db, col, lid, fxn) {
+  const theCollection = `${col}/link_${lid}/${lid}`;
+  const selectedCollection = collection(db, theCollection);
+  const searchQuery = query(selectedCollection, orderBy("createdAt"));
+  return onSnapshot(searchQuery, (querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      fxn(doc);
+    });
+  });
+}

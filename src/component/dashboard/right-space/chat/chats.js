@@ -19,6 +19,7 @@ import { getChatsFromFirestore, listener } from "../../../../firebase/database";
 const Chats = (props) => {
   const linkId = generateLinkId(props.user.phone, props.receiverId);
 
+  //listen to ongoing chats and update redux
   const sendProgressChatsToRedux = () => {
     const populateOngoingChatsArray = (chat) => {
       const theChat = { id: chat.id, ...chat.data() };
@@ -31,6 +32,7 @@ const Chats = (props) => {
     listener(linkId, populateOngoingChatsArray);
   };
 
+  //set all chats on initial render
   const sendChatsToRedux = async () => {
     const chats = await getChatsFromFirestore(linkId);
     if (chats.length > 0) {
@@ -98,8 +100,8 @@ const Chats = (props) => {
 };
 //function for getting receiver's name or phone
 function getDisplayName(contacts, id) {
-  const theReceiver = contacts.filter(({ phone }) => phone === id);
-  const displayName = theReceiver[0] ? theReceiver[0]["name"] : id;
+  const theReceiver = contacts.find(({ phone }) => phone === id);
+  const displayName = theReceiver ? theReceiver.name : id;
   return displayName;
 }
 const mapStateToProps = (state) => ({
